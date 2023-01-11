@@ -1,11 +1,12 @@
 .slider_container {
   margin: auto;
+  background-color: black;
   /* height: 200px; */
 }
 .image_container {
   /* display: grid;
   place-content: center; */
-  height: 250px;
+  height: 200px;
   width: 200px;
 }
 .image_main {

@@ -7,6 +7,14 @@ import metamask from "../img/banner_metamask.jpg";
 import dex from "../img/banner_dex.png";
 import coinMarketCap from "../img/banner_coinMarketCap.png";
 import coinGecko from "../img/banner_coinGecko.jpg";
+
+import Insight from "../img/brands/insight.png";
+import Coincheckup from "../img/brands/coincheckup.png";
+import Yahoo from "../img/brands/yahoo.png";
+import Coindesk from "../img/brands/coindesk.png";
+import Cointelegraph from "../img/brands/cointelegraph.png";
+import CoinSniper from "../img/brands/coinsniper.png";
+
 import bsc from "../img/banner_bsc.jpg";
 import aws from "../img/banner_aws.png";
 import "slick-carousel/slick/slick.css";
@@ -54,19 +62,19 @@ const BrandsBanner = () => {
       <Slider {...settings}>
         <a href='https://unity.com/' target='_blank' rel='noreferrer'>
           <div className='image_container'>
-            <img src={unity} alt='unit' className='image_main' />
+            <img src={Insight} alt='unit' className='image_main' />
           </div>
         </a>
 
         <a href='https://trustwallet.com/' target='_blank' rel='noreferrer'>
           <div className='image_container'>
-            <img src={trustWallet} alt='trustWallet' className='image_main' />
+            <img src={Coincheckup} alt='trustWallet' className='image_main' />
           </div>
         </a>
 
         <a href='https://metamask.io/' target='_blank' rel='noreferrer'>
           <div className='image_container'>
-            <img src={metamask} alt='metamask' className='image_main' />
+            <img src={Yahoo} alt='metamask' className='image_main' />
           </div>
         </a>
 
@@ -76,35 +84,23 @@ const BrandsBanner = () => {
           rel='noreferrer'
         >
           <div className='image_container'>
-            <img src={dex} alt='dex' className='image_main' />
+            <img src={Coindesk} alt='dex' className='image_main' />
           </div>
         </a>
 
         <a href='https://coinmarketcap.com/' target='_blank' rel='noreferrer'>
           <div className='image_container'>
             <img
-              src={coinMarketCap}
+              src={Cointelegraph}
               alt='coinMarketCap'
               className='image_main'
             />
           </div>
         </a>
 
-        <a href='https://www.coingecko.com/' target='_blank' rel='noreferrer'>
-          <div className='image_container'>
-            <img src={coinGecko} alt='coinGecko' className='image_main' />
-          </div>
-        </a>
-
         <a href='https://www.bnbchain.org/en' target='_blank' rel='noreferrer'>
           <div className='image_container'>
-            <img src={bsc} alt='bsc' className='image_main' />
-          </div>
-        </a>
-
-        <a href='https://aws.amazon.com/' target='_blank' rel='noreferrer'>
-          <div className='image_container'>
-            <img src={aws} alt='aws' className='image_main' />
+            <img src={CoinSniper} alt='bsc' className='image_main' />
           </div>
         </a>
       </Slider>
