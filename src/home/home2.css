@@ -296,6 +296,12 @@
   width: 200px !important;
   height: 200px !important;
 }
+
+.lb_100X100_size{
+  width: 100px !important;
+  height: 100px !important;
+}
+
 .lb_img_border_curv{
   border-radius: 20px;
 }

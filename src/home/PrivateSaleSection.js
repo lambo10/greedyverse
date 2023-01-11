@@ -1,6 +1,8 @@
 import './home.css';
 import './home2.css';
 import game_logo from '../img/gameLogo.png';
+import img_app_store_btn_g  from '../img/app-store-btn-bg.ce495d2.svg';
+import img_play_store_btn_bg  from '../img/play-store-btn-bg.18b9bcd.svg';
 const PrivateSaleSection = () => {
     return(
         <div className="container-fluid lb_hero_bg" data-v-2a374f33="">
@@ -18,7 +20,18 @@ const PrivateSaleSection = () => {
                     </div>
                     <a href='https://greedyverse.gitbook.io/white-paper'><div className='lb_whitePaper lb_game_logo'>whitepaper</div></a>
                     <br/>
-                    <div className="gap-4 lb_game_logo lb_padding_top_15" data-v-0f1be33d=""><a href="https://twitter.com/MetaApesGame" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="twitter-logo" data-v-0f1be33d=""></div></a> <a href="https://discord.gg/qhtxG4BrtX" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="discord-logo" data-v-0f1be33d=""></div></a> <a href="https://www.instagram.com/metaapesgame/" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="instagram-logo" data-v-0f1be33d=""></div></a> <a href="mailto:info@metaapesgame.com" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="email-logo" data-v-0f1be33d=""></div></a></div>
+                    <div>
+                <button className="play-store-btn d-md-inline d-none" data-v-2a374f33=""><a
+                            href="#" target="_blank"
+                            data-v-2a374f33=""><img src={img_play_store_btn_bg} alt=""
+                                                    data-v-2a374f33="" /></a></button>
+                        <button className="app-store-btn d-md-inline d-none" data-v-2a374f33=""><a
+                            href="#" target="_blank"
+                            data-v-2a374f33=""><img src={img_app_store_btn_g} alt=""
+                                                    data-v-2a374f33="" /></a></button>
+                </div>
+                <br/>
+                    <div className="gap-4 lb_game_logo lb_padding_top_15" data-v-0f1be33d=""><a href="#" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="twitter-logo" data-v-0f1be33d=""></div></a> <a href="#" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="discord-logo" data-v-0f1be33d=""></div></a> <a href="#" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="instagram-logo" data-v-0f1be33d=""></div></a> <a href="#" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="email-logo" data-v-0f1be33d=""></div></a></div>
                    
                     </div>
                    </div>
@@ -44,6 +57,8 @@ const PrivateSaleSection = () => {
                 <div className='lb_txt_size_12 lb_padding_top_10 lb_txt_color_white2'>Raised <span className='lb_txt_size_15'>2,686,660 USDT</span> out of <span className='lb_txt_size_15'>3,075,000 USDT</span></div>
                 <div className='lb_txt_size_12 lb_padding_top_10 lb_txt_color_white2'>Sold <span className='lb_txt_size_15'>138,051,106 $GVERSE</span> out of <span className='lb_txt_size_15'>150,000,000 $GVERSE</span></div>
                 
+
+
                 <div className='lb_padding_top_10'> <a href='#'><div className='lb_saleBTN lb_game_logo'>Buy now</div></a></div>
                
 
@@ -64,6 +79,17 @@ const PrivateSaleSection = () => {
                     </div>
                     <a href='https://greedyverse.gitbook.io/white-paper'><div className='lb_whitePaper lb_game_logo'>whitepaper</div></a>
                     <br/>
+                    <div>
+                <button className="play-store-btn d-md-inline" data-v-2a374f33=""><a
+                            href="#" target="_blank"
+                            data-v-2a374f33=""><img src={img_play_store_btn_bg} alt=""
+                                                    data-v-2a374f33="" /></a></button>
+                        <button className="app-store-btn d-md-inline" data-v-2a374f33=""><a
+                            href="#" target="_blank"
+                            data-v-2a374f33=""><img src={img_app_store_btn_g} alt=""
+                                                    data-v-2a374f33="" /></a></button>
+                </div>
+                
                     <div className="gap-4 lb_game_logo lb_padding_top_15" data-v-0f1be33d=""><a href="https://twitter.com/MetaApesGame" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="twitter-logo" data-v-0f1be33d=""></div></a> <a href="https://discord.gg/qhtxG4BrtX" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="discord-logo" data-v-0f1be33d=""></div></a> <a href="https://www.instagram.com/metaapesgame/" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="instagram-logo" data-v-0f1be33d=""></div></a> <a href="mailto:info@metaapesgame.com" className='lb_game_logo' target="_blank" data-v-0f1be33d=""><div className="email-logo" data-v-0f1be33d=""></div></a></div>
                    
                     </div>
