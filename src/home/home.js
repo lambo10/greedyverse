@@ -16,13 +16,16 @@ import NavigationBar from './NavigationBar';
 import TokenNomics from './TokenNomicsSection';
 import Team from './Team';
 import BrandsBanner from './BrandsBanner';
+import Presale from '../components/presale/Presale';
 
 const home = () => {
     return(
        <div>
+        
         <NavigationBar/>
         {/* <SaleNotitficationBanner/> */}
         <PrivateSaleSection/>
+        <Presale />
         <PosterSection/>
         {/* <VideoSection/> */}
         <AboutSection1/>
