@@ -1,6 +1,6 @@
 import './home.css';
 import './home2.css';
-import img_logo from '../img/gameLogo.png';
+import img_logo from '../img/GREEDY_CLANS_NORM.png';
 import img_app_store_btn_g  from '../img/app-store-btn-bg.ce495d2.svg';
 import img_play_store_btn_bg  from '../img/play-store-btn-bg.18b9bcd.svg';
 import img_app_store_btn_g_mobile from '../img/appStoreBtnBlack.png';
@@ -35,7 +35,7 @@ const PosterSection = () => {
                 </div>
             </div>
             <div className="row h-100 p-3" data-v-2a374f33="">
-                <div className="col-12 col-lg-7 col-xl-10 mt-auto mb-xl-0" data-v-2a374f33=""><h1
+                <div className="col-12 col-lg-7 col-xl-10 mt-auto lb_margin-b-up mb-xl-0" data-v-2a374f33=""><h1
                     className="heading-1 burbank text-uppercase text-white mb-xl-0 lb_txt_color_orange" data-v-2a374f33="">
                     <div className="text-yellow lb_txt_color_white">MAY THE GREEDIEST WIN!!</div>
                 </h1>
