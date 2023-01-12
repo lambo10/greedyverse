@@ -688,3 +688,111 @@ p[data-v-3942c62a] {
     text-align: left !important;
   }
 }
+.disapear_on_desktop {
+  display: none;
+}
+
+.lb_img_tokeknNomics {
+  width: 50% !important;
+}
+
+.lb_border_1px {
+  border: solid 1px;
+}
+.lb_radius_10 {
+  border-radius: 10px;
+}
+
+.lb_border_color_grey {
+  border-color: rgb(183, 183, 183);
+}
+
+.lb_padding_full20 {
+  padding: 20px;
+}
+
+.lb_50X50_size {
+  width: 200px !important;
+  height: 200px !important;
+}
+
+.lb_100X100_size {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+.lb_img_border_curv {
+  border-radius: 20px;
+}
+.lb_padding_top10 {
+  padding-top: 10px;
+}
+.lb_footer {
+  min-height: 500px !important;
+}
+.lb_txt_only_color_white {
+  color: white;
+}
+.lb_txt_only_color_black {
+  color: black;
+}
+
+.lb_txt_only_color_orange_onHover:hover {
+  color: orange;
+}
+.lb_margin-b-up {
+  margin-bottom: 0rem;
+}
+.lb_width_100P {
+  width: 100%;
+}
+.lb_padding_top_30P {
+  padding-top: 100px;
+}
+.lb_remove_text_decoration {
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .lb_game_logo_img {
+    width: 350px;
+    height: 200px;
+  }
+  .lb_sale_section_padding {
+    padding-top: 30px !important;
+  }
+  .disapear_on_mobile {
+    display: none;
+  }
+  .disapear_on_desktop {
+    display: block;
+  }
+  .lb_hero_bg {
+    background: url(../img/private_sale_background.png) no-repeat 50%;
+    background-size: cover;
+    height: 0;
+    min-height: 1200px;
+  }
+}
+
+@media (max-width: 990px) {
+  .disapear_on_mobile {
+    display: none;
+  }
+  .disapear_on_desktop {
+    display: block;
+  }
+
+  .lb_hero_bg {
+    background: url(../img/private_sale_background.png) no-repeat 50%;
+    background-size: cover;
+    height: 0;
+    min-height: 1200px;
+  }
+  .lb_img_tokeknNomics {
+    width: 100% !important;
+  }
+  .mobileTxtAlignment {
+    text-align: left !important;
+  }
+}

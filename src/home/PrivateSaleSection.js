@@ -3,6 +3,7 @@ import "./home2.css";
 import game_logo from "../img/gameLogo.png";
 import img_app_store_btn_g from "../img/app-store-btn-bg.ce495d2.svg";
 import img_play_store_btn_bg from "../img/play-store-btn-bg.18b9bcd.svg";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 const PrivateSaleSection = () => {
   return (
@@ -136,9 +137,9 @@ const PrivateSaleSection = () => {
 
               <div className='lb_padding_top_10'>
                 {" "}
-                <a href='#'>
+                <Link to='/presale'>
                   <div className='lb_saleBTN lb_game_logo'>Buy now</div>
-                </a>
+                </Link>
               </div>
             </div>
           </Sale>
@@ -155,9 +156,11 @@ const PrivateSaleSection = () => {
                 data-v-2a374f33=''
               >
                 <span className='text-yellow '>GreedyVerse</span> is an
-                innovative ecosystem comprising of a multiplayer battle strategy
-                NFT play-to-earn game(greeedy Kingdoms) and a defi DAO(greedy
-                Pups)
+                innovative gamefi project building the next generation of
+                Play-to-earn games that are fun and immersive, starting with
+                GREEDY CLANS - A multiplayer real-time battle strategy game
+                built on the blockchain where players can build, battle, earn
+                and connect. Our solutions.
               </div>
             </div>
             <a href='https://greedyverse.gitbook.io/white-paper'>

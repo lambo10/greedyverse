@@ -16,27 +16,40 @@ import NavigationBar from "./NavigationBar";
 import TokenNomics from "./TokenNomicsSection";
 import Team from "./Team";
 import BrandsBanner from "./BrandsBanner";
+import Presale from "../components/presale/Presale";
+import UnderDevelopmentSection from "./UnderDevelopmentSection";
 import Nav from "../Layout/Nav";
 
 const home = () => {
   return (
-    <div>
+    <div
+      style={{
+        overflowX: "hidden",
+      }}
+    >
+      {/* <UnderDevelopmentSection/> */}
+
       <Nav />
-      {/* <NavigationBar /> */}
+
       {/* <SaleNotitficationBanner/> */}
+
       <PrivateSaleSection />
+      <BrandsBanner />
       <PosterSection />
+
       {/* <VideoSection/> */}
+
       <AboutSection1 />
       <AboutSection2 />
       <AboutSection3 />
+
       {/* <JoinDiscordSection/> */}
       {/* <NftDisplaySection/> */}
+
       <TokenNomics />
       <RoadMapSection />
       <GetStarted />
       <Team />
-      <BrandsBanner />
       <Faq />
       <Footer />
     </div>
