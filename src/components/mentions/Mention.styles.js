@@ -1,24 +1,24 @@
 import styled from "styled-components";
 
-const StyledSupport = styled.section`
+const StyledMention = styled.section`
   margin: auto;
   margin-top: 100px;
   width: 80%;
   height: auto;
 
-  .supportList {
+  .mentionsList {
     width: 90%;
     margin: auto;
     height: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     padding: 10px;
   }
 
-  .supportImgContainer {
+  .mentionsImgContainer {
     position: relative;
     width: 200px;
     border-radius: 10px;
@@ -26,7 +26,7 @@ const StyledSupport = styled.section`
     height: 150px;
   }
 
-  .supportImg {
+  .mentionsImg {
     position: absolute;
     width: 90%;
     height: 100%;
@@ -34,4 +34,4 @@ const StyledSupport = styled.section`
   }
 `;
 
-export default StyledSupport;
+export default StyledMention;

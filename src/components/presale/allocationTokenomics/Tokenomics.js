@@ -65,6 +65,9 @@ function Tokenomics() {
           </aside>
         </div>
       </div>
+      <div className="seeTokenomics">
+        See detailed info about tokenomics <a href="#">here</a>
+      </div>
     </StyledTokenomics>
   );
 }
