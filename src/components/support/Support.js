@@ -6,7 +6,7 @@ function Support() {
   return (
     <StyledSupport>
       <Header text="Supported by" />
-      {/* <main className="supportList">
+      <main className="supportList">
         {support.map((item) => (
           <div className="supportImgContainer">
             <img
@@ -17,7 +17,7 @@ function Support() {
             />
           </div>
         ))}
-      </main> */}
+      </main>
     </StyledSupport>
   );
 }
