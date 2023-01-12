@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import colors from "../../../constants/colors";
 const StyledTokenomics = styled.section`
   width: 100%;
   height: auto;
