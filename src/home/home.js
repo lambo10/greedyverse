@@ -17,27 +17,43 @@ import TokenNomics from './TokenNomicsSection';
 import Team from './Team';
 import BrandsBanner from './BrandsBanner';
 import Presale from '../components/presale/Presale';
+import UnderDevelopmentSection from './UnderDevelopmentSection';
 
 const home = () => {
     return(
        <div>
         
+        {/* <UnderDevelopmentSection/> */}
+
+
         <NavigationBar/>
+
+        
         {/* <SaleNotitficationBanner/> */}
+
+
         <PrivateSaleSection/>
-        <Presale />
+        <Presale/>
+        <BrandsBanner/>
         <PosterSection/>
+
+
         {/* <VideoSection/> */}
+
+
         <AboutSection1/>
         <AboutSection2/>
         <AboutSection3/>
+
+
         {/* <JoinDiscordSection/> */}
         {/* <NftDisplaySection/> */}
+
+
         <TokenNomics/>
         <RoadMapSection/>
         <GetStarted/>
         <Team/>
-        <BrandsBanner/>
         <Faq/>
         <Footer/>
        </div>

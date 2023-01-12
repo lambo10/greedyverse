@@ -322,7 +322,16 @@
   color: orange;
 }
 .lb_margin-b-up{
-  margin-bottom: 4rem;
+  margin-bottom: 0rem;
+}
+.lb_width_100P{
+  width: 100%;
+}
+.lb_padding_top_30P{
+  padding-top: 100px;
+}
+.lb_remove_text_decoration{
+  text-decoration: none;
 }
 
   

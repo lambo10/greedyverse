@@ -10,15 +10,14 @@ const RoadMapSection = () => {
     <div className='bg-black-1 p-t-150 p-b-120'>
       <div className='container mt-10'>
         <div className='text-center mb-3'>
-          <img src={HeaderTop} alt='header-top' className='mb-3' />
+          {/* <img src={HeaderTop} alt='header-top' className='mb-3' /> */}
           <h1 className='heading-6 burbank text-white fw-bold text-center text-uppercase m-0 p-0 '>
             ROADMAP
           </h1>
           <HeaderImage src={HeaderBottom} alt='header-bottom' />
         </div>
         <HeaderText className='heading-6 burbank fw-bold text-center text-uppercase'>
-          Roadmap milestones and deadlines are subject to change. Read a
-          detailed version in the White Paper.
+        The GreedyVerse Roadmap lays down the important milestones and expected development timeline for the project.
         </HeaderText>
         <DetailsContainer>
           <div className='row text-white'>

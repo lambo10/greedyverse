@@ -74,7 +74,7 @@ const PrivateSaleSection = () => {
                     <div className='lb_padding20'>
                     <div
                     className="lb_sale1_section supercellmagic_font text-uppercase text-white mb-xl-0 " data-v-2a374f33="">
-                    <span className="text-yellow ">GreedyVerse</span> is an innovative ecosystem comprising of a multiplayer battle strategy NFT play-to-earn game(greeedy Kingdoms) and a defi DAO(greedy Pups)
+                    <span className="text-yellow ">GreedyVerse</span> is an innovative gamefi project building the next generation of Play-to-earn games that are fun and immersive, starting with GREEDY CLANS - A multiplayer real-time battle strategy game built on the blockchain where players can build, battle, earn and connect.  Our solutions.
                 </div>
                     </div>
                     <a href='https://greedyverse.gitbook.io/white-paper'><div className='lb_whitePaper lb_game_logo'>whitepaper</div></a>
