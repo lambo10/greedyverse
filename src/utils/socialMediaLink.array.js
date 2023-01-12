@@ -2,7 +2,6 @@ import discord from "../img/discord-logo.e02c7a2.svg";
 import twitter from "../img/twitter-logo.654ff38.svg";
 import instagram from "../img/instagram-logo.dad579c.svg";
 import email from "../img/email.svg";
-// import { ReactComponent as Twitter } from "../img/twitter-logo.654ff38.svg";
 
 const socialMediaLink = [
   {
