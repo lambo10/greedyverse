@@ -1,6 +1,7 @@
 .slider_container {
   margin: auto;
   background-color: black;
+  overflow: hidden;
   /* height: 200px; */
 }
 .image_container {

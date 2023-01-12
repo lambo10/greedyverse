@@ -104,6 +104,8 @@ const DetailsWrapper = styled.div`
     left: 0;
     position: absolute;
     top: 0;
+    padding-left: 1rem;
+    margin-left: 15px;
   }
   &::before {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAn1BMVEUAAADyzoryzoryzorTsn3yzoryzoryzoryzoryzoryzoryzoryzoryzoryzoqxk2nyzoryzoryzoryzorHm2nUuoTFnGqffFjBj16qimLNrXrOp3Onh1/HrX3Wv4nyzoq2mm2ceVWceVW+i1rYvofyzorWt4HYwIrPuISZdlO8hVbGrXy7hlXXv4rQuIXYu4XYwInGrX27n3LOp3Omh2CIAUFzAAAALXRSTlMAPurC/mL53NLLin44GQX+Z8RIJ/5VUf38VlL7+/nk41paVFFOIfz5+efhWk5ehSb/AAAA/klEQVQoz4WT2XKDMAxFr03ZAw2hBkK2tmm605X//7aMSCQHP5Azw4sPI+QrAUElhQ4CXSQKLn4YpSrL80ylUeiP1CH2FATlxQcIajfHiPlO3l3oGRxmeoGBkt3YliBiW/Ph7VEqx0OfnnV1XYv1qOdQvr1c932/XnKXIaAidve3J9hGCknK7o+pMJAmKM5VPza/zKY9ZwGdgTBfF7waOso0ghzEtrtkS0d5wNJ0PwMdPS9PJ8llYb6FZ3JUVhqCuWFaHo69CtrVP7GqIFexIaC6I8hxCBSf2KZp9pD4xsFj//4JG7wdmYsfTw57ek3YugtGjind1SyvL/Xk73AEOFoZb/rmWvEAAAAASUVORK5CYII=)
@@ -114,10 +116,7 @@ const DetailsWrapper = styled.div`
     position: absolute;
     top: -15px;
     width: 28px;
-  }
-
-  @media (max-width: 576px) {
-    margin-left: 1rem;
+    margin-left: 15px;
   }
 `;
 const Details = styled.div`
