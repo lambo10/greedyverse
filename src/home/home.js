@@ -28,7 +28,7 @@ const home = () => {
     >
       {/* <UnderDevelopmentSection/> */}
 
-      <NavigationBar />
+      {/* <NavigationBar /> */}
 
       {/* <SaleNotitficationBanner/> */}
 
