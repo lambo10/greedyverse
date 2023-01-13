@@ -11,6 +11,7 @@ import Header from "../header/Header";
 import SelectWallet from "./selectWallet/SelectWallet";
 import TransactionDetails from "./transactionDetails/TransactionDetails";
 import Tokenomics from "./allocationTokenomics/Tokenomics";
+import Mention from "../mentions/Mentions";
 
 function Presale() {
   const [isWalletConnected, setIsWalletConnected] = useState(false); // state that checks if connected
@@ -122,6 +123,7 @@ function Presale() {
         </section>
       </section>
       <Support />
+      <Mention />
       <Tokenomics />
     </StyledPresale>
   );

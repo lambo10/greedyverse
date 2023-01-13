@@ -92,6 +92,20 @@ const StyledTokenomics = styled.section`
     position: absolute;
   }
 
+  .seeTokenomics {
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .seeTokenomics a {
+    color: #fbae04;
+    text-decoration: none;
+  }
+
+  .seeTokenomics a:hover {
+    text-decoration: underline;
+  }
+
   @media (min-width: 769px) and (max-width: 1024px) {
     .frameHolder {
       background-image: none !important;

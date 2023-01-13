@@ -1,12 +1,15 @@
-import trust from "../img/trustwallet.svg";
-import gecko from "../img/coingecko-logo-vector.svg";
+import trust from "../img/trustWallet.png";
+import gecko from "../img/coinGecko.png";
 import binance from "../img/binance.svg";
-import amazon from "../img/amazon-com-light.svg";
-import pancakeswap from "../img/PancakeSwap-Crypto-Logo.svg";
+import amazon from "../img/amazon.png";
+import metamask from "../img/metamask-removebg.png";
+import dex from "../img/banner_dex.png";
+import PancakeSwap from "../img/PancakeSwap.png";
+import coinCap from "../img/coinCap.png";
 
 const support = [
   {
-    icon: pancakeswap,
+    icon: metamask,
     title: "Pancakeswap",
     alt: "Pancakeswap",
   },
@@ -27,6 +30,21 @@ const support = [
   },
   {
     icon: amazon,
+    title: "Amazon",
+    alt: "Amazon",
+  },
+  {
+    icon: dex,
+    title: "Amazon",
+    alt: "Amazon",
+  },
+  {
+    icon: PancakeSwap,
+    title: "Amazon",
+    alt: "Amazon",
+  },
+  {
+    icon: coinCap,
     title: "Amazon",
     alt: "Amazon",
   },
