@@ -19,6 +19,8 @@ import BrandsBanner from "./BrandsBanner";
 import Presale from "../components/presale/Presale";
 import UnderDevelopmentSection from "./UnderDevelopmentSection";
 
+import React from "react";
+
 const home = () => {
   return (
     <div
@@ -30,7 +32,7 @@ const home = () => {
 
       <NavigationBar />
 
-      {/* <SaleNotitficationBanner/> */}
+      {/* <SaleNotitficationBanner /> */}
 
       <PrivateSaleSection />
       <BrandsBanner />

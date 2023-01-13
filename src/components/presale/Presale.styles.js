@@ -6,6 +6,7 @@ const StyledPresale = styled.section`
   position: relative;
   z-index: 1;
   padding-bottom: 50px;
+  overflow-x: hidden;
 
   .bg_shade {
     width: 100%;
@@ -60,6 +61,8 @@ const StyledPresale = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
+    /* background-color: #fff; */
   }
 
   .socialIconContainer {
@@ -69,6 +72,8 @@ const StyledPresale = styled.section`
   .socialIcon {
     width: 15px;
     height: 15px;
+    color: #fff;
+    /* background: #fff; */
   }
 
   .connectWalletSection {

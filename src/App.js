@@ -1,10 +1,11 @@
 import "./App.css";
-import Home from "./home/home.js";
+import Home from "./home/Home.js";
 import React from "react";
 import Presale from "./components/presale/Presale";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import Error from "./components/error/Error";
+
 function App() {
   return (
     <BrowserRouter>

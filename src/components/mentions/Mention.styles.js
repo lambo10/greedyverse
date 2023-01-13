@@ -22,7 +22,7 @@ const StyledMention = styled.section`
     position: relative;
     width: 200px;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
     height: 150px;
   }
 
@@ -31,6 +31,20 @@ const StyledMention = styled.section`
     width: 90%;
     height: 100%;
     border-radius: 4px;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    .mentionsList {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .mentionsImgContainer {
+      position: relative;
+      width: 45%;
+      border-radius: 10px;
+      margin-top: 10px;
+      height: 150px;
+    }
   }
 `;
 
