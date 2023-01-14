@@ -2,10 +2,11 @@ import React from "react";
 import StyledSupport from "./Support.styles";
 import Header from "../header/Header";
 import support from "../../utils/support.array";
+
 function Support() {
   return (
     <StyledSupport>
-      <Header text="Supported by" />
+      <Header text="Powered  by" />
       <main className="supportList">
         {support.map((item) => (
           <div className="supportImgContainer">
