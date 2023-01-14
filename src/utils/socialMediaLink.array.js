@@ -28,7 +28,7 @@ const socialMediaLink = [
     icon: email,
     title: "Email",
     alt: "Email",
-    link: "#",
+    link: "support@greedyverse.co",
   },
   {
     icon: AiFillMediumCircle,

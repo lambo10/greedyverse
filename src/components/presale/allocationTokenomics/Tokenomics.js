@@ -1,7 +1,7 @@
 import React from "react";
 import StyledTokenomics from "./Tokenomics.styles";
 import indicator from "../../../utils/tokenomicsIndicator.array";
-import tokenAllocation from "../../../img/tokenomic-piechart.png";
+import tokenAllocation from "../../../img/tokenomic-piechart.webp";
 import tokenBg from "../../../img/tokenomic_bg.png";
 import Header from "../../header/Header";
 
