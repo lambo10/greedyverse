@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { AiFillMediumCircle } from "react-icons/ai";
 import { BsTelegram } from "react-icons/bs";
 import styled from "styled-components";
+
 const PrivateSaleSection = () => {
   const iconStyling = {
     width: "30px",
@@ -98,7 +99,7 @@ const PrivateSaleSection = () => {
               <div className="instagram-logo" data-v-0f1be33d=""></div>
             </a>{" "}
             <a
-              href="#"
+              href="support@greedyverse.co"
               className="lb_game_logo"
               target="_blank"
               data-v-0f1be33d=""

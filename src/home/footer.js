@@ -50,7 +50,7 @@ const Footer = () => {
             >
               <div className="instagram-logo" data-v-0f1be33d=""></div>
             </a>{" "}
-            <a href="" target="_blank" data-v-0f1be33d="">
+            <a href="support@greedyverse.co" target="_blank" data-v-0f1be33d="">
               <div className="email-logo" data-v-0f1be33d=""></div>
             </a>
             <a href="https://medium.com/@greedyverseproject" target="_blank">
