@@ -1,0 +1,38 @@
+.lb_timeline-container {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  
+  .lb_timeline-event {
+    width: 300px;
+    float: left;
+    margin-right: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .lb_event-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .lb_event-description {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .lb_event-date {
+    display: block;
+    font-size: 12px;
+    color: #999;
+  }
+
+  @media screen and (max-width: 768px) {
+    .lb_timeline-container {
+      overflow-x: scroll;
+    }
+  }

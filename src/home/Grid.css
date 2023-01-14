@@ -1,0 +1,59 @@
+.lb_grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .lb_grid_image {
+    width: 150px;
+    height: 100px;
+  }
+
+  .lb_grid_image_horizontal {
+    width: 200px;
+    height: 70px;
+  }
+
+  .lb_grid_image_horizontal2 {
+    width: 200px;
+    height: 50px;
+  }
+
+  .lb_grid_image_horizontal3 {
+    width: 130px;
+    height: 60px;
+  }
+  
+  @media (min-width: 768px) {
+    .lb_grid-item {
+      width: 25%;
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .lb_grid-item {
+      width: 50%;
+      padding: 30px;
+    }
+
+    .lb_grid_image {
+        width: 195px;
+        height: 130px;
+      }
+    
+      .lb_grid_image_horizontal {
+        width: 130px;
+        height: 45.5px;
+      }
+    
+      .lb_grid_image_horizontal2 {
+        width: 130px;
+        height: 32.5px;
+      }
+    
+      .lb_grid_image_horizontal3 {
+        width: 97.5px;
+        height: 40px;
+      }
+
+  }
