@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import StyledPresale from "./Presale.styles";
 import bgImage from "../../img/private_sale_background.png";
 import greedyVerseLogo from "../../img/gameLogo.png";

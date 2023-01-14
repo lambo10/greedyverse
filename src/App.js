@@ -1,5 +1,5 @@
 import "./App.css";
-import Home from "./home/Home.js";
+// import Home from "./home/Home.js";
 import React from "react";
 import Presale from "./components/presale/Presale";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledMention = styled.section`
   margin: auto;
-  margin-top: 100px;
+  /* margin-top: 100px; */
   width: 80%;
   height: auto;
 

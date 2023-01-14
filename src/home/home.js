@@ -32,8 +32,6 @@ const home = () => {
 
       <NavigationBar />
 
-      {/* <SaleNotitficationBanner /> */}
-
       <PrivateSaleSection />
       <BrandsBanner />
       <PosterSection />
