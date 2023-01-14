@@ -18,7 +18,6 @@ import Team from "./Team";
 import BrandsBanner from "./BrandsBanner";
 import Presale from "../components/presale/Presale";
 import UnderDevelopmentSection from "./UnderDevelopmentSection";
-import Nav from "../Layout/Nav";
 
 import React from "react";
 
@@ -31,7 +30,7 @@ const home = () => {
     >
       {/* <UnderDevelopmentSection/> */}
 
-      <Nav />
+      <NavigationBar />
 
       {/* <SaleNotitficationBanner /> */}
 

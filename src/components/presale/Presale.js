@@ -12,7 +12,7 @@ import SelectWallet from "./selectWallet/SelectWallet";
 import TransactionDetails from "./transactionDetails/TransactionDetails";
 import Tokenomics from "./allocationTokenomics/Tokenomics";
 import Mention from "../mentions/Mentions";
-
+import RoadMapSectionPresale from "./roadMap/RoadMapSectionPresale";
 function Presale() {
   const [isWalletConnected, setIsWalletConnected] = useState(false); // state that checks if connected
   const [connectWallet, setConnectWallet] = useState(false);
@@ -32,7 +32,7 @@ function Presale() {
         </header>
         <div className="socialMediaLinks">
           {socialMediaLink.map((item) => (
-            <a href={item.link}>
+            <a href={item.link} target="_blank">
               <div
                 className="socialLink"
                 title={item.title}
@@ -125,6 +125,7 @@ function Presale() {
       <Support />
       <Mention />
       <Tokenomics />
+      <RoadMapSectionPresale />
     </StyledPresale>
   );
 }

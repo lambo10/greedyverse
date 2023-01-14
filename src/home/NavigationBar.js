@@ -14,27 +14,27 @@ function Navbar() {
     <header>
       <h3>
         {" "}
-        <div className='d-inline-block logo-container' data-v-2a374f33=''>
-          <a href='#' data-v-2a374f33=''>
+        <div className="d-inline-block logo-container" data-v-2a374f33="">
+          <a href="#" data-v-2a374f33="">
             <img
               src={logo}
-              alt='logo'
-              className='img-fluid meta-apes-logo'
-              data-v-2a374f33=''
+              alt="logo"
+              className="img-fluid meta-apes-logo"
+              data-v-2a374f33=""
             />
           </a>
         </div>
       </h3>
       <nav ref={navRef}>
-        <a href='/#'>Home</a>
-        <a href='/#'>Airdrop</a>
-        <a href='/#'>Presale</a>
-        <a href='/#'>WhitePaper</a>
-        <button className='nav-btn nav-close-btn' onClick={showNavbar}>
+        <a href="/#">Home</a>
+        <a href="/#">Airdrop</a>
+        <a href="/#">Presale</a>
+        <a href="/#">WhitePaper</a>
+        <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
         </button>
       </nav>
-      <button className='nav-btn' onClick={showNavbar}>
+      <button className="nav-btn" onClick={showNavbar}>
         <FaBars />
       </button>
 

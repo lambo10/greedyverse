@@ -465,7 +465,6 @@ p[data-v-3942c62a] {
   max-width: 100%;
   box-sizing: border-box;
 }
-
 .disapear_on_mobile {
   display: block;
 }
@@ -752,6 +751,9 @@ p[data-v-3942c62a] {
 .lb_remove_text_decoration {
   text-decoration: none;
 }
+.lb_txt_orange{
+  color: orange;
+}
 
 @media (max-width: 767px) {
   .lb_game_logo_img {
@@ -795,4 +797,9 @@ p[data-v-3942c62a] {
   .mobileTxtAlignment {
     text-align: left !important;
   }
+  .indicatorChart {
+    width: 100% !important;
+    height: 70% !important;
+    position: absolute;
+}
 }
