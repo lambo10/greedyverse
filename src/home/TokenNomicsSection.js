@@ -21,7 +21,7 @@ const TokenNomicsSection = () => {
               alignItems: "center",
               justifyContent: "center",
               backgroundColor: "transparent",
-              fontSize: "25px",
+              fontSize: "35px",
             }}
           >
             Tokenomics
@@ -77,7 +77,7 @@ const TokenNomicsSection = () => {
               <div>
                 <b>BEP-20</b>
               </div>
-              <div>BNB Token</div>
+              <div>BSC Token</div>
             </div>
           </div>
           <div
@@ -86,9 +86,9 @@ const TokenNomicsSection = () => {
           >
             <div className="lb_border_1px lb_radius_10 lb_padding_full20 lb_border_color_grey">
               <div>
-                <b>1 Billion</b>
+                <b>10 BILLION</b>
               </div>
-              <div>Total Sale</div>
+              <div>Total Supply</div>
             </div>
           </div>
           <div
@@ -97,11 +97,14 @@ const TokenNomicsSection = () => {
           >
             <div className="lb_border_1px lb_radius_10 lb_padding_full20 lb_border_color_grey">
               <div>
-                <b>D2T</b>
+                <b>GVERSE</b>
               </div>
-              <div>D2T Token</div>
+              <div>Symbol</div>
             </div>
           </div>
+        </div>
+        <div className="lb_width_100P lb_txt_center">
+        <b><a className="lb_txt_orange lb_remove_text_decoration">See detailed info about tokenomics and Utilities here</a></b>
         </div>
       </div>
     </>

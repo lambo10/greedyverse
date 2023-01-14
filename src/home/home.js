@@ -19,6 +19,7 @@ import BrandsBanner from "./BrandsBanner";
 import Presale from "../components/presale/Presale";
 import UnderDevelopmentSection from "./UnderDevelopmentSection";
 import Nav from "../Layout/Nav";
+import PoweredBy from "../home/PoweredBy";
 
 import React from "react";
 
@@ -34,7 +35,7 @@ const home = () => {
       <Nav />
 
       {/* <SaleNotitficationBanner /> */}
-
+      
       <PrivateSaleSection />
       <BrandsBanner />
       <PosterSection />
@@ -52,6 +53,7 @@ const home = () => {
       <RoadMapSection />
       <GetStarted />
       <Team />
+      <PoweredBy/>
       <Faq />
       <Footer />
     </div>

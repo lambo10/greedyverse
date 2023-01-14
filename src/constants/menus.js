@@ -2,13 +2,13 @@ const menus = [
   {
     id: 1,
     name: "Home",
-    path: "home",
+    path: "/",
   },
-  {
-    id: 2,
-    name: "Airdrop",
-    path: "airdrop",
-  },
+  // {
+  //   id: 2,
+  //   name: "Airdrop",
+  //   path: "airdrop",
+  // },
   {
     id: 3,
     name: "Presale",
@@ -17,7 +17,7 @@ const menus = [
   {
     id: 4,
     name: "Whitepaper",
-    path: "whitepaper",
+    path: "https://greedyverse.gitbook.io/white-paper",
   },
 ];
 

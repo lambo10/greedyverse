@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { AiFillMediumCircle } from "react-icons/ai";
 import { BsTelegram } from "react-icons/bs";
 import styled from "styled-components";
+
 const PrivateSaleSection = () => {
   const iconStyling = {
     width: "30px",
@@ -18,16 +19,19 @@ const PrivateSaleSection = () => {
   return (
     // <div className="container-fluid lb_hero_bg" data-v-2a374f33="">
     <div
-      className="row  p-3 lb_sale_section_padding lb_hero_bg"
+      className="row  p-3 lb_sale_section_padding lb_hero_bg padding_on_mobile"
       data-v-2a374f33=""
       style={{
         height: "auto",
       }}
     >
+    
       <div
         className="col-lg-6 lb_txt_center disapear_on_mobile"
         data-v-2a374f33=""
       >
+
+        
         <div className="blackColor ml-2" data-v-2a374f33="">
           <img
             src={game_logo}
@@ -43,11 +47,11 @@ const PrivateSaleSection = () => {
               gamefi project building the next generation of Play-to-earn games
               that are fun and immersive, starting with GREEDY CLANS - A
               multiplayer real-time battle strategy game built on the blockchain
-              where players can build, battle, earn and connect. Our <a href="https://greedyverse.gitbook.io/white-paper/introduction/problems-with-crypto-games-and-our-solutions">SOLUTIONS</a>.
+              where players can build, battle, earn and connect. Our <a className="lb_txt_orange lb_remove_text_decoration" href="https://greedyverse.gitbook.io/white-paper/introduction/problems-with-crypto-games-and-our-solutions">SOLUTIONS</a>.
             </div>
           </div>
           <a href="https://greedyverse.gitbook.io/white-paper">
-            <div className="lb_whitePaper lb_game_logo lb_txt_orange">whitepaper</div>
+            <div className="lb_whitePaper lb_game_logo">whitepaper</div>
           </a>
           <br />
           <div>
@@ -73,6 +77,9 @@ const PrivateSaleSection = () => {
             className="gap-4 lb_game_logo lb_padding_top_15"
             data-v-0f1be33d=""
           >
+            <a href="https://t.me/GreedyVerseProject" target="_blank">
+              <BsTelegram style={iconStyling} />
+            </a>
             <a
               href="https://www.twitter.com/GreedyVerse"
               className="lb_game_logo"
@@ -97,20 +104,20 @@ const PrivateSaleSection = () => {
             >
               <div className="instagram-logo" data-v-0f1be33d=""></div>
             </a>{" "}
+          
+            <a href="https://medium.com/@greedyverseproject" target="_blank">
+              <AiFillMediumCircle style={iconStyling} />
+            </a>
+
             <a
-              href="#"
+              href="mailto:support@greedyverse.co"
               className="lb_game_logo"
               target="_blank"
               data-v-0f1be33d=""
             >
               <div className="email-logo" data-v-0f1be33d=""></div>
             </a>
-            <a href="https://medium.com/@greedyverseproject" target="_blank">
-              <AiFillMediumCircle style={iconStyling} />
-            </a>
-            <a href="https://t.me/GreedyVerseProject" target="_blank">
-              <BsTelegram style={iconStyling} />
-            </a>
+            
           </div>
         </div>
       </div>
@@ -176,11 +183,11 @@ const PrivateSaleSection = () => {
               gamefi project building the next generation of Play-to-earn games
               that are fun and immersive, starting with GREEDY CLANS - A
               multiplayer real-time battle strategy game built on the blockchain
-              where players can build, battle, earn and connect. Our solutions.
-            </div>
+              where players can build, battle, earn and connect. Our <a className="lb_txt_orange lb_remove_text_decoration" href="https://greedyverse.gitbook.io/white-paper/introduction/problems-with-crypto-games-and-our-solutions">SOLUTIONS</a>.
+             </div>
           </div>
           <a href="https://greedyverse.gitbook.io/white-paper">
-            <div className="lb_whitePaper lb_game_logo">whitepaper</div>
+            <div className="lb_whitePaper lb_game_logo lb_txt_orange">whitepaper</div>
           </a>
           <br />
           <div>
@@ -200,6 +207,18 @@ const PrivateSaleSection = () => {
             className="gap-4 lb_game_logo lb_padding_top_15"
             data-v-0f1be33d=""
           >
+             <a href="https://t.me/GreedyVerseProject" target="_blank">
+              <BsTelegram
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  color: "#fff",
+                  margin: "4px",
+                  transform: "translateY(-10px)",
+                }}
+              />
+            </a>
+
             <a
               href="https://www.twitter.com/GreedyVerse"
               className="lb_game_logo"
@@ -224,14 +243,7 @@ const PrivateSaleSection = () => {
             >
               <div className="instagram-logo" data-v-0f1be33d=""></div>
             </a>{" "}
-            <a
-              href="#"
-              className="lb_game_logo"
-              target="_blank"
-              data-v-0f1be33d=""
-            >
-              <div className="email-logo" data-v-0f1be33d=""></div>
-            </a>
+          
             <a href="https://medium.com/@greedyverseproject" target="_blank">
               <AiFillMediumCircle
                 style={{
@@ -243,17 +255,16 @@ const PrivateSaleSection = () => {
                 }}
               />
             </a>
-            <a href="https://t.me/GreedyVerseProject" target="_blank">
-              <BsTelegram
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  color: "#fff",
-                  margin: "4px",
-                  transform: "translateY(-10px)",
-                }}
-              />
+
+            <a
+              href="mailto:support@greedyverse.co"
+              className="lb_game_logo"
+              target="_blank"
+              data-v-0f1be33d=""
+            >
+              <div className="email-logo" data-v-0f1be33d=""></div>
             </a>
+           
           </div>
         </div>
       </div>

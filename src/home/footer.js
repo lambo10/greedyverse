@@ -29,6 +29,9 @@ const Footer = () => {
           data-v-0f1be33d=""
         >
           <div className="col-12 flex-wrap d-flex gap-4" data-v-0f1be33d="">
+          <a href="https://t.me/GreedyVerseProject" target="_blank">
+              <BsTelegram style={iconStyling} />
+            </a>
             <a
               href="https://www.twitter.com/GreedyVerse"
               target="_blank"
@@ -50,15 +53,15 @@ const Footer = () => {
             >
               <div className="instagram-logo" data-v-0f1be33d=""></div>
             </a>{" "}
-            <a href="" target="_blank" data-v-0f1be33d="">
-              <div className="email-logo" data-v-0f1be33d=""></div>
-            </a>
+            
             <a href="https://medium.com/@greedyverseproject" target="_blank">
               <AiFillMediumCircle style={iconStyling} />
             </a>
-            <a href="https://t.me/GreedyVerseProject" target="_blank">
-              <BsTelegram style={iconStyling} />
+            
+            <a href="mailto:support@greedyverse.co" target="_blank" data-v-0f1be33d="">
+              <div className="email-logo" data-v-0f1be33d=""></div>
             </a>
+
           </div>
           <div className="col-12 col-lg-7" data-v-0f1be33d="">
             <div className="col-12" data-v-0f1be33d="">
@@ -78,25 +81,25 @@ const Footer = () => {
                 className="d-inline-block lb_txt_only_color_white"
                 data-v-0f1be33d=""
               >
-                <a
+                {/* <a
                   href="/privacy-policy"
                   className="lb_txt_only_color_white link-light"
                   data-v-0f1be33d=""
                 >
                   Privacy Policy
-                </a>
+                </a> */}
               </div>{" "}
               <div
                 className="d-inline-block lb_txt_only_color_white"
                 data-v-0f1be33d=""
               >
-                <a
+                {/* <a
                   href="/terms-of-use"
                   className="lb_txt_only_color_white link-light"
                   data-v-0f1be33d=""
                 >
                   Terms Of Use
-                </a>
+                </a> */}
               </div>{" "}
               <div
                 className="d-inline-block lb_txt_only_color_white"
@@ -117,7 +120,7 @@ const Footer = () => {
               >
                 <span className="lb_txt_only_color_white" data-v-0f1be33d="">
                   <a
-                    href="mailto:info@metaapesgame.com"
+                   href="mailto:support@greedyverse.co"
                     className="lb_txt_only_color_white link-light"
                     data-v-0f1be33d=""
                   >
@@ -136,7 +139,7 @@ const Footer = () => {
                 className="col-5 d-block d-lg-none d-flex align-items-center flex-wrap"
                 data-v-0f1be33d=""
               >
-                <a
+                {/* <a
                   href="/privacy-policy"
                   className="lb_txt_only_color_white link-light"
                   data-v-0f1be33d=""
@@ -150,7 +153,7 @@ const Footer = () => {
                   data-v-0f1be33d=""
                 >
                   Terms Of use
-                </a>
+                </a> */}
                 &nbsp;
                 <a
                   href="/audit.pdf"

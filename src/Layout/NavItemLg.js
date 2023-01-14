@@ -6,7 +6,7 @@ const NavItemLg = ({ menu, isScrolling }) => {
   return (
     <div className='position-relative'>
       <NavItem isScrolling={isScrolling} role='button'>
-        <Link to={menu.path}>{menu.name}</Link>
+        <a href={menu.path} to={menu.path}>{menu.name}</a>
       </NavItem>
     </div>
   );
