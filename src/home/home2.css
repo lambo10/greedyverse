@@ -465,7 +465,10 @@ p[data-v-3942c62a] {
   max-width: 100%;
   box-sizing: border-box;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
 .disapear_on_mobile {
   display: block;
 }
@@ -642,6 +645,8 @@ p[data-v-3942c62a] {
   color: orange;
 }
 .lb_margin-b-up {
+<<<<<<< HEAD
+=======
   margin-bottom: 4rem;
 }
 
@@ -741,6 +746,7 @@ p[data-v-3942c62a] {
   color: orange;
 }
 .lb_margin-b-up {
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
   margin-bottom: 0rem;
 }
 .lb_width_100P {
