@@ -13,11 +13,7 @@ const StyledSupport = styled.section`
     display: flex;
     flex-direction: row;
     align-items: center;
-<<<<<<< HEAD
-    justify-content: center;
-=======
     justify-content: space-between;
->>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
     flex-wrap: wrap;
     padding: 10px;
   }

@@ -25,11 +25,7 @@ const BrandsBanner = () => {
   const settings = {
     dots: false,
     infinite: true,
-<<<<<<< HEAD
-    slidesToShow: 4,
-=======
     slidesToShow: 3,
->>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -62,49 +58,49 @@ const BrandsBanner = () => {
     ],
   };
   return (
-    <div className='slider_container'>
+    <div className="slider_container">
       <Slider {...settings}>
-        <a href='https://unity.com/' target='_blank' rel='noreferrer'>
-          <div className='image_container'>
-            <img src={Insight} alt='unit' className='image_main' />
+        <a href="https://unity.com/" target="_blank" rel="noreferrer">
+          <div className="image_container">
+            <img src={Insight} alt="unit" className="image_main" />
           </div>
         </a>
 
-        <a href='https://trustwallet.com/' target='_blank' rel='noreferrer'>
-          <div className='image_container'>
-            <img src={Coincheckup} alt='trustWallet' className='image_main' />
+        <a href="https://trustwallet.com/" target="_blank" rel="noreferrer">
+          <div className="image_container">
+            <img src={Coincheckup} alt="trustWallet" className="image_main" />
           </div>
         </a>
 
-        <a href='https://metamask.io/' target='_blank' rel='noreferrer'>
-          <div className='image_container'>
-            <img src={Yahoo} alt='metamask' className='image_main' />
+        <a href="https://metamask.io/" target="_blank" rel="noreferrer">
+          <div className="image_container">
+            <img src={Yahoo} alt="metamask" className="image_main" />
           </div>
         </a>
 
         <a
-          href='https://www.dextools.io/app/en'
-          target='_blank'
-          rel='noreferrer'
+          href="https://www.dextools.io/app/en"
+          target="_blank"
+          rel="noreferrer"
         >
-          <div className='image_container'>
-            <img src={Coindesk} alt='dex' className='image_main' />
+          <div className="image_container">
+            <img src={Coindesk} alt="dex" className="image_main" />
           </div>
         </a>
 
-        <a href='https://coinmarketcap.com/' target='_blank' rel='noreferrer'>
-          <div className='image_container'>
+        <a href="https://coinmarketcap.com/" target="_blank" rel="noreferrer">
+          <div className="image_container">
             <img
               src={Cointelegraph}
-              alt='coinMarketCap'
-              className='image_main'
+              alt="coinMarketCap"
+              className="image_main"
             />
           </div>
         </a>
 
-        <a href='https://www.bnbchain.org/en' target='_blank' rel='noreferrer'>
-          <div className='image_container'>
-            <img src={CoinSniper} alt='bsc' className='image_main' />
+        <a href="https://www.bnbchain.org/en" target="_blank" rel="noreferrer">
+          <div className="image_container">
+            <img src={CoinSniper} alt="bsc" className="image_main" />
           </div>
         </a>
       </Slider>

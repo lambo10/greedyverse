@@ -22,11 +22,7 @@ const StyledMention = styled.section`
     position: relative;
     width: 200px;
     border-radius: 10px;
-<<<<<<< HEAD
-    margin-top: 5px;
-=======
     margin-top: 10px;
->>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
     height: 150px;
   }
 
@@ -36,7 +32,6 @@ const StyledMention = styled.section`
     height: 100%;
     border-radius: 4px;
   }
-<<<<<<< HEAD
 
   @media (min-width: 320px) and (max-width: 480px) {
     .mentionsList {
@@ -51,8 +46,6 @@ const StyledMention = styled.section`
       height: 150px;
     }
   }
-=======
->>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
 `;
 
 export default StyledMention;
