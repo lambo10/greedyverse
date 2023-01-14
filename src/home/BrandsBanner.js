@@ -25,7 +25,11 @@ const BrandsBanner = () => {
   const settings = {
     dots: false,
     infinite: true,
+<<<<<<< HEAD
     slidesToShow: 4,
+=======
+    slidesToShow: 3,
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,

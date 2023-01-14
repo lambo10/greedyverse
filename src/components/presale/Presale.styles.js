@@ -6,7 +6,10 @@ const StyledPresale = styled.section`
   position: relative;
   z-index: 1;
   padding-bottom: 50px;
+<<<<<<< HEAD
   overflow-x: hidden;
+=======
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
 
   .bg_shade {
     width: 100%;
@@ -61,8 +64,11 @@ const StyledPresale = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
     color: #fff;
     /* background-color: #fff; */
+=======
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
   }
 
   .socialIconContainer {
@@ -72,8 +78,11 @@ const StyledPresale = styled.section`
   .socialIcon {
     width: 15px;
     height: 15px;
+<<<<<<< HEAD
     color: #fff;
     /* background: #fff; */
+=======
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
   }
 
   .connectWalletSection {

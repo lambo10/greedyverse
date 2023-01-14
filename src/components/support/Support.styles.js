@@ -13,7 +13,11 @@ const StyledSupport = styled.section`
     display: flex;
     flex-direction: row;
     align-items: center;
+<<<<<<< HEAD
     justify-content: center;
+=======
+    justify-content: space-between;
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
     flex-wrap: wrap;
     padding: 10px;
   }
@@ -32,6 +36,7 @@ const StyledSupport = styled.section`
     height: 100%;
     border-radius: 4px;
   }
+<<<<<<< HEAD
 
   @media (min-width: 320px) and (max-width: 480px) {
     .supportList {
@@ -46,6 +51,8 @@ const StyledSupport = styled.section`
       height: 150px;
     }
   }
+=======
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
 `;
 
 export default StyledSupport;

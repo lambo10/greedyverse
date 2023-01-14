@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
+=======
+import React, { useState } from "react";
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
 import StyledPresale from "./Presale.styles";
 import bgImage from "../../img/private_sale_background.png";
 import greedyVerseLogo from "../../img/gameLogo.png";
@@ -12,12 +16,18 @@ import SelectWallet from "./selectWallet/SelectWallet";
 import TransactionDetails from "./transactionDetails/TransactionDetails";
 import Tokenomics from "./allocationTokenomics/Tokenomics";
 import Mention from "../mentions/Mentions";
+<<<<<<< HEAD
 import RoadMapSectionPresale from "./roadMap/RoadMapSectionPresale";
+=======
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
 
 function Presale() {
   const [isWalletConnected, setIsWalletConnected] = useState(false); // state that checks if connected
   const [connectWallet, setConnectWallet] = useState(false);
+<<<<<<< HEAD
 
+=======
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
   return (
     <StyledPresale
       style={{
@@ -34,7 +44,11 @@ function Presale() {
         </header>
         <div className="socialMediaLinks">
           {socialMediaLink.map((item) => (
+<<<<<<< HEAD
             <a href={item.link} target="_blank">
+=======
+            <a href={item.link}>
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
               <div
                 className="socialLink"
                 title={item.title}
@@ -127,7 +141,10 @@ function Presale() {
       <Support />
       <Mention />
       <Tokenomics />
+<<<<<<< HEAD
       <RoadMapSectionPresale />
+=======
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
     </StyledPresale>
   );
 }

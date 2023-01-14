@@ -4,6 +4,7 @@ import HeaderTop from "../img/roadmap_before.png";
 import HeaderBottom from "../img/roadmap_after.png";
 import styled from "styled-components";
 import colors from "../constants/colors";
+<<<<<<< HEAD
 import React from "react";
 
 const RoadMapSection = () => {
@@ -25,6 +26,27 @@ const RoadMapSection = () => {
           <div className="row text-white">
             <DetailsWrapper className="col-lg-3 sm-l col-sm-4 col-12">
               <Details className="fw-bold pt-4">
+=======
+
+const RoadMapSection = () => {
+  return (
+    <div className='bg-black-1 p-t-150 p-b-120'>
+      <div className='container mt-10'>
+        <div className='text-center mb-3'>
+          {/* <img src={HeaderTop} alt='header-top' className='mb-3' /> */}
+          <h1 className='heading-6 burbank text-white fw-bold text-center text-uppercase m-0 p-0 '>
+            ROADMAP
+          </h1>
+          <HeaderImage src={HeaderBottom} alt='header-bottom' />
+        </div>
+        <HeaderText className='heading-6 burbank fw-bold text-center text-uppercase'>
+        The GreedyVerse Roadmap lays down the important milestones and expected development timeline for the project.
+        </HeaderText>
+        <DetailsContainer>
+          <div className='row text-white'>
+            <DetailsWrapper className='col-lg-3 sm-l col-sm-4 col-12'>
+              <Details className='fw-bold pt-4'>
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
                 <h4>PHASE 1</h4>
                 <ul>
                   <li>Greedy Clans development</li>
@@ -36,8 +58,13 @@ const RoadMapSection = () => {
               </Details>
             </DetailsWrapper>
 
+<<<<<<< HEAD
             <DetailsWrapper className="col-lg-3 sm-l col-sm-4 col-12">
               <Details className="fw-bold pt-4">
+=======
+            <DetailsWrapper className='col-lg-3 sm-l col-sm-4 col-12'>
+              <Details className='fw-bold pt-4'>
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
                 <h4>PHASE 2</h4>
                 <ul>
                   <li>Beta version (Greedy Clans)</li>
@@ -52,8 +79,13 @@ const RoadMapSection = () => {
               </Details>
             </DetailsWrapper>
 
+<<<<<<< HEAD
             <DetailsWrapper className="col-lg-3  sm-l col-sm-4 col-12">
               <Details className="fw-bold pt-4">
+=======
+            <DetailsWrapper className='col-lg-3  sm-l col-sm-4 col-12'>
+              <Details className='fw-bold pt-4'>
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
                 <h4>PHASE 3</h4>
                 <ul>
                   <li>DEC & CEX listings</li>
@@ -69,8 +101,13 @@ const RoadMapSection = () => {
               </Details>
             </DetailsWrapper>
 
+<<<<<<< HEAD
             <DetailsWrapper className="col-lg-3 sm-l col-sm-4 col-12">
               <Details className="fw-bold pt-4">
+=======
+            <DetailsWrapper className='col-lg-3 sm-l col-sm-4 col-12'>
+              <Details className='fw-bold pt-4'>
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
                 <h4>PHASE 4</h4>
                 <ul>
                   <li>More CEX listings</li>
@@ -93,10 +130,17 @@ const RoadMapSection = () => {
 const HeaderImage = styled.img`
   height: 20px;
 `;
+<<<<<<< HEAD
 export const HeaderText = styled.h4`
   color: ${colors.darkText};
 `;
 export const DetailsWrapper = styled.div`
+=======
+const HeaderText = styled.h4`
+  color: ${colors.darkText};
+`;
+const DetailsWrapper = styled.div`
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
   position: relative;
   &::after {
     border-left: 1px dashed #fff;
@@ -105,6 +149,11 @@ export const DetailsWrapper = styled.div`
     left: 0;
     position: absolute;
     top: 0;
+<<<<<<< HEAD
+=======
+    padding-left: 1rem;
+    margin-left: 15px;
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
   }
   &::before {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAn1BMVEUAAADyzoryzoryzorTsn3yzoryzoryzoryzoryzoryzoryzoryzoryzoryzoqxk2nyzoryzoryzoryzorHm2nUuoTFnGqffFjBj16qimLNrXrOp3Onh1/HrX3Wv4nyzoq2mm2ceVWceVW+i1rYvofyzorWt4HYwIrPuISZdlO8hVbGrXy7hlXXv4rQuIXYu4XYwInGrX27n3LOp3Omh2CIAUFzAAAALXRSTlMAPurC/mL53NLLin44GQX+Z8RIJ/5VUf38VlL7+/nk41paVFFOIfz5+efhWk5ehSb/AAAA/klEQVQoz4WT2XKDMAxFr03ZAw2hBkK2tmm605X//7aMSCQHP5Azw4sPI+QrAUElhQ4CXSQKLn4YpSrL80ylUeiP1CH2FATlxQcIajfHiPlO3l3oGRxmeoGBkt3YliBiW/Ph7VEqx0OfnnV1XYv1qOdQvr1c932/XnKXIaAidve3J9hGCknK7o+pMJAmKM5VPza/zKY9ZwGdgTBfF7waOso0ghzEtrtkS0d5wNJ0PwMdPS9PJ8llYb6FZ3JUVhqCuWFaHo69CtrVP7GqIFexIaC6I8hxCBSf2KZp9pD4xsFj//4JG7wdmYsfTw57ek3YugtGjind1SyvL/Xk73AEOFoZb/rmWvEAAAAASUVORK5CYII=)
@@ -115,6 +164,7 @@ export const DetailsWrapper = styled.div`
     position: absolute;
     top: -15px;
     width: 28px;
+<<<<<<< HEAD
   }
 
   @media (max-width: 576px) {
@@ -122,6 +172,12 @@ export const DetailsWrapper = styled.div`
   }
 `;
 export const Details = styled.div`
+=======
+    margin-left: 15px;
+  }
+`;
+const Details = styled.div`
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
   padding-left: 2rem;
   & h4 {
     color: ${colors.yellow};
@@ -130,7 +186,11 @@ export const Details = styled.div`
     color: ${colors.darkText};
   }
 `;
+<<<<<<< HEAD
 export const DetailsContainer = styled.div`
+=======
+const DetailsContainer = styled.div`
+>>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
   margin-top: 3rem;
 `;
 export default RoadMapSection;
