@@ -6,10 +6,7 @@ const StyledPresale = styled.section`
   position: relative;
   z-index: 1;
   padding-bottom: 50px;
-<<<<<<< HEAD
   overflow-x: hidden;
-=======
->>>>>>> ad48899e29989a914c14d08b768d41331a47fa18
 
   .bg_shade {
     width: 100%;
