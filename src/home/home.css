@@ -10007,7 +10007,7 @@ fieldset:disabled .btn {
   font-weight: 600;
 }
 .hero-bg {
-  background: url(../img/hero-bg.f9e52b4.jpg) no-repeat 50%;
+  background: url(../img/hero-bg.f9e52b4.webp) no-repeat 50%;
   background-size: cover;
   height: 0;
   min-height: 900px;
@@ -10017,12 +10017,12 @@ fieldset:disabled .btn {
   min-height: 640px;
 }
 .strategy-bg {
-  background: url(../img/strategy.e682530.png) no-repeat 50%;
+  background: url(../img/strategy.e682530.webp) no-repeat 50%;
   background-size: cover;
   min-height: 650px;
 }
 .exploration-bg {
-  background: url(../img/exploration.5390ad1.jpg) no-repeat 50%;
+  background: url(../img/exploration.5390ad1.webp) no-repeat 50%;
   background-size: cover;
   min-height: 650px;
 }

@@ -372,13 +372,13 @@ p[data-v-3942c62a] {
   left: 0px;
   width: 100%;
   height: 100%;
-  background-image: "../img/private_sale_background.jpg";
+  background-image: "../img/private_sale_background.webp";
   opacity: 0.5;
   z-index: -1;
 }
 
 .lb_hero_bg {
-  background: url(../img/private_sale_background.png) no-repeat 50%;
+  background: url(../img/private_sale_background.webp) no-repeat 50%;
   background-size: cover;
   height: 0;
   min-height: 900px;

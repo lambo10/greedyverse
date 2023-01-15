@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StyledPresale from "./Presale.styles";
-import bgImage from "../../img/private_sale_background.png";
+import bgImage from "../../img/private_sale_background.webp";
 import greedyVerseLogo from "../../img/gameLogo.png";
 import socialMediaLink from "../../utils/socialMediaLink.array";
 import socialIconDecorator from "../../img/SocialIconDecorator.svg";
