@@ -1,8 +1,7 @@
 import "./home.css";
 import "./home2.css";
-import tokenNomics from "../img/tokenNomics.png";
 import indicator from "../utils/tokenomicsIndicator.array";
-import tokenPicture from "../img/tokenomic-piechart.png";
+import tokenPicture from "../img/tokenomic-piechart.webp";
 import StyledHomeTokenomicsSection from "./HomeTokenomicSection.styles";
 const TokenNomicsSection = () => {
   return (

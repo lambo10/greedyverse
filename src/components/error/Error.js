@@ -1,6 +1,6 @@
 import React from "react";
 import StyledError from "./Error.styles";
-import bgImage from "../../img/private_sale_background.png";
+import bgImage from "../../img/private_sale_background.webp";
 
 function Error() {
   return (
