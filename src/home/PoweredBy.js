@@ -1,6 +1,6 @@
 import "./home.css";
 import "./home2.css";
-import tokenNomics from "../img/tokenNomics.png";
+import tokenNomics from "../img/tokenomic-piechart.webp";
 import indicator from "../utils/tokenomicsIndicator.array";
 import tokenPicture from "../img/tokenomic-piechart.png";
 import StyledHomeTokenomicsSection from "./HomeTokenomicSection.styles";

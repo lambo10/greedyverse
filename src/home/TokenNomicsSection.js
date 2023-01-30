@@ -103,7 +103,7 @@ const TokenNomicsSection = () => {
           </div>
         </div>
         <div className="lb_width_100P lb_txt_center">
-        <b><a className="lb_txt_orange lb_remove_text_decoration">See detailed info about tokenomics and Utilities here</a></b>
+        <b><a href="https://greedyverse.gitbook.io/white-paper/tokenomics/tokenomics" className="lb_txt_orange lb_remove_text_decoration">See detailed info about tokenomics and Utilities here</a></b>
         </div>
       </div>
     </>

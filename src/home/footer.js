@@ -166,7 +166,7 @@ const Footer = () => {
                 &nbsp;
                 <span className="lb_txt_only_color_white" data-v-0f1be33d="">
                   <a
-                    href="mailto:info@metaapesgame.com"
+                    href="mailto:support@greedyverse.co"
                     className="lb_txt_only_color_white link-light"
                     data-v-0f1be33d=""
                   >

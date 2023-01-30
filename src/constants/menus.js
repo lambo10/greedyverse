@@ -4,16 +4,21 @@ const menus = [
     name: "Home",
     path: "/",
   },
+  {
+    id: 2,
+    name: "Private Sale",
+    path: "/",
+  },
   // {
   //   id: 2,
   //   name: "Airdrop",
   //   path: "airdrop",
   // },
-  {
-    id: 3,
-    name: "Presale",
-    path: "presale",
-  },
+  // {
+  //   id: 3,
+  //   name: "Presale",
+  //   path: "presale",
+  // },
   {
     id: 4,
     name: "Whitepaper",

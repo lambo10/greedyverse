@@ -12,6 +12,7 @@ import GetStarted from "./getStarted";
 import Faq from "./faq";
 import Footer from "./footer";
 import PrivateSaleSection from "./PrivateSaleSection";
+import PrivateSaleSectionNotStarted from "./privateSaleSectionNotStarted";
 import NavigationBar from "./NavigationBar";
 import TokenNomics from "./TokenNomicsSection";
 import Team from "./Team";
@@ -36,11 +37,11 @@ const home = () => {
 
       {/* <SaleNotitficationBanner /> */}
       
-      <PrivateSaleSection />
+      <PrivateSaleSectionNotStarted />
       <BrandsBanner />
       <PosterSection />
 
-      {/* <VideoSection/> */}
+      <VideoSection/>
 
       <AboutSection1 />
       <AboutSection2 />

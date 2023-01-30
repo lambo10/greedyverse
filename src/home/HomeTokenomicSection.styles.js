@@ -86,7 +86,9 @@ const StyledHomeTokenomicsSection = styled.section`
     }
 
     .indicatorChartContainer {
-      width: 80%;
+      position: relative;
+      width: 50%;
+      height: 50vh;
     }
   }
 
@@ -103,7 +105,9 @@ const StyledHomeTokenomicsSection = styled.section`
     }
 
     .indicatorChartContainer {
+      position: relative;
       width: 80%;
+      height: 60vh;
     }
   }
 
@@ -120,7 +124,9 @@ const StyledHomeTokenomicsSection = styled.section`
     }
 
     .indicatorChartContainer {
+      position: relative;
       width: 80%;
+      height: 38vh;
     }
   }
 `;

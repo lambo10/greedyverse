@@ -413,6 +413,14 @@ p[data-v-3942c62a] {
   font-size: 25px;
   line-height: 30px;
 }
+.lb_embeded_vid{
+  vertical-align: middle;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  box-sizing: border-box;
+  width: 100% !important;
+  min-height: 600px !important;
+}
 @font-face {
   font-family: supercellmagic;
   src: url(../fonts/SUPERCELL-MAGIC_0.TTF);
@@ -755,27 +763,34 @@ p[data-v-3942c62a] {
   color: orange !important;
 }
 
-@media (max-width: 767px) {
-  .lb_game_logo_img {
-    width: 350px;
-    height: 200px;
-  }
-  .lb_sale_section_padding {
-    padding-top: 30px !important;
-  }
-  .disapear_on_mobile {
-    display: none;
-  }
-  .disapear_on_desktop {
-    display: block;
-  }
-  .lb_hero_bg {
-    background: url(../img/private_sale_background.png) no-repeat 50%;
-    background-size: cover;
-    height: 0;
-    min-height: 1200px;
-  }
+.lb_blue-gradient-text {
+  background-image: linear-gradient(to bottom, #026aa7, #20c4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
+
+.lb_vid_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.lb_vid_modal-content {
+  width: 80%;
+  height: 80%;
+  background: white;
+  padding: 20px;
+}
+
 
 .lb_support_grid_position {
   position: relative;
@@ -828,6 +843,27 @@ p[data-v-3942c62a] {
 }
 
 
+@media (max-width: 767px) {
+  .lb_game_logo_img {
+    width: 350px;
+    height: 200px;
+  }
+  .lb_sale_section_padding {
+    padding-top: 30px !important;
+  }
+  .disapear_on_mobile {
+    display: none;
+  }
+  .disapear_on_desktop {
+    display: block;
+  }
+  .lb_hero_bg {
+    background: url(../img/private_sale_background.png) no-repeat 50%;
+    background-size: cover;
+    height: 0;
+    min-height: 1200px;
+  }
+}
 
 @media (max-width: 990px) {
   .disapear_on_mobile {
@@ -851,7 +887,7 @@ p[data-v-3942c62a] {
   }
   .indicatorChart {
     width: 100% !important;
-    height: 70% !important;
+    height: 100% !important;
     position: absolute;
 }
 .lb_support_grid_cell {
@@ -860,4 +896,14 @@ p[data-v-3942c62a] {
 .padding_on_mobile{
   padding-top: 60px !important;
 }
+
+.lb_embeded_vid{
+  vertical-align: middle;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  box-sizing: border-box;
+  width: 100% !important;
+  min-height: 200px !important;
+}
+
 }

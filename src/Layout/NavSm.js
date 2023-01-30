@@ -15,20 +15,27 @@ const NavSm = ({ isAnimating, setIsAnimating, isScrolling }) => {
           {menus.map((menu) => (
             <div className='ms-3' key={menu.id}>
               <Heading>
-                <Link to={menu.path} onClick={() => setIsAnimating(false)}>
-                  {menu.name}
-                </Link>
+                {menu.path === "https://greedyverse.gitbook.io/white-paper" ? (
+                  <a className="text-black" href={menu.path} onClick={() => setIsAnimating(false)}>
+                    {menu.name}
+                  </a>
+                ) : (
+                  <Link to={menu.path} onClick={() => setIsAnimating(false)}>
+                    {menu.name}
+                  </Link>
+                )}
               </Heading>
             </div>
           ))}
           <div className='text-center'>
-            <Whitepaper>Whitepaper</Whitepaper>
+            <a href="mailto:support@greedyverse.co" className="lb_remove_text_decoration"><Whitepaper>Contact us</Whitepaper></a>
           </div>
         </NavContainer>
       </AnimatingContainer>
     </>
   );
 };
+
 const AnimatingContainer = styled.div`
   /* display: none; */
   position: absolute;

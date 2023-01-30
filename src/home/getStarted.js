@@ -2,6 +2,7 @@ import "./home.css";
 import "./home2.css";
 import img_app_store_btn_g_black from "../img/appStoreBtnBlack.png";
 import img_play_store_btn_bg_black from "../img/playstoreBtnBlack.png";
+import getAPK from "../img/getAPK.png";
 
 const getStarted = () => {
   return (
@@ -20,6 +21,21 @@ const getStarted = () => {
                 1. INSTALL GAME
               </div>{" "}
               <p class="wallet-desc text-1" data-v-3942c62a="">
+               
+              <button
+                  className="play-store-btn d-md-inline lb_padding5"
+                  data-v-2a374f33=""
+                >
+                  <a href="https://greedyverse.co/gameBuilds/GreedyClans.apk" target="_blank" data-v-2a374f33="">
+                    <img
+                      className="lb_fill_black"
+                      src={img_play_store_btn_bg_black}
+                      alt=""
+                      data-v-2a374f33=""
+                    />
+                  </a>
+                </button>
+               
                 <button
                   className="app-store-btn d-md-inline lb_padding5"
                   data-v-2a374f33=""
@@ -33,20 +49,9 @@ const getStarted = () => {
                     />
                   </a>
                 </button>
-                <button
-                  className="play-store-btn d-md-inline lb_padding5"
-                  data-v-2a374f33=""
-                >
-                  <a href="#" target="_blank" data-v-2a374f33="">
-                    <img
-                      className="lb_fill_black"
-                      src={img_play_store_btn_bg_black}
-                      alt=""
-                      data-v-2a374f33=""
-                    />
-                  </a>
-                </button>
+                
               </p>
+              
             </li>{" "}
             <li data-v-3942c62a="">
               <div class="connect-title title burbank" data-v-3942c62a="">
