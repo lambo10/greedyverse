@@ -77,7 +77,7 @@ const PrivateSaleSection = () => {
             className="gap-4 lb_game_logo lb_padding_top_15"
             data-v-0f1be33d=""
           >
-            <a href="https://t.me/GreedyVerseProject" target="_blank">
+            <a href="https://t.me/GreedyVerse_Portal" target="_blank">
               <BsTelegram style={iconStyling} />
             </a>
             <a
@@ -206,7 +206,7 @@ const PrivateSaleSection = () => {
             className="gap-4 lb_game_logo lb_padding_top_15"
             data-v-0f1be33d=""
           >
-             <a href="https://t.me/GreedyVerseProject" target="_blank">
+             <a href="https://t.me/GreedyVerse_Portal" target="_blank">
               <BsTelegram
                 style={{
                   width: "30px",

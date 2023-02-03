@@ -9,13 +9,13 @@ const getStarted = () => {
     <div data-v-1cbb962a>
       <div class="container" data-v-3942c62a="">
         <div
-          class="header burbank heading-1 lb_txt_color_orange mobileTxtAlignment"
+          class="header burbank heading-1 lb_txt_color_orange mobileTxtAlignment lb_margin_top_30 lb_margin_bottom_5"
           data-v-3942c62a=""
         >
           GET STARTED!
         </div>{" "}
         <div class="start-content" data-v-3942c62a="">
-          <ul data-v-3942c62a="">
+          <ul data-v-3942c62a="" className="lb_margin_bottom_30">
             <li data-v-3942c62a="">
               <div class="wallet-title title burbank" data-v-3942c62a="">
                 1. INSTALL GAME

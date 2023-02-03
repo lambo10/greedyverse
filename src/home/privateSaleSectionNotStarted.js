@@ -89,7 +89,7 @@ const PrivateSaleSection = () => {
               <div className="twitter-logo" data-v-0f1be33d=""></div>
             </a>{" "}
 
-            <a href="https://t.me/GreedyVerseProject" target="_blank">
+            <a href="https://t.me/GreedyVerse_Portal" target="_blank">
               <BsTelegram style={iconStyling} />
             </a>
           
@@ -218,7 +218,7 @@ const PrivateSaleSection = () => {
               <div className="twitter-logo" data-v-0f1be33d=""></div>
             </a>{" "}
 
-             <a href="https://t.me/GreedyVerseProject" target="_blank">
+             <a href="https://t.me/GreedyVerse_Portal" target="_blank">
               <BsTelegram
                 style={{
                   width: "30px",

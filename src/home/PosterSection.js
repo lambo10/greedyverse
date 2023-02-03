@@ -47,7 +47,7 @@ const PosterSection = () => {
             <div className="row h-100 p-3" data-v-2a374f33="">
                 <div className="col-12 col-lg-7 col-xl-10 mt-auto lb_margin-b-up mb-xl-0" data-v-2a374f33=""><h1
                     className="heading-1 burbank text-uppercase text-white mb-xl-0 lb_txt_color_orange" data-v-2a374f33="">
-                    <div className="text-yellow lb_txt_color_white">MAY THE GREEDIEST WIN!!</div>
+                    <div className="text-yellow lb_txt_color_white">BUILD, BATTLE, EARN</div>
                 </h1>
                     <div className="row gap-3" data-v-2a374f33="">
                         <br/>
@@ -56,12 +56,12 @@ const PosterSection = () => {
                         </div>
                         <div data-v-2a374f33=""><a href="https://greedyverse.gitbook.io/white-paper"
                                                    target="_blank" className="blackColor" data-v-2a374f33="">
-                            <button className="apes-btn-primary blackColor lb_txt_color_white_1" data-v-2a374f33="">Whitepaper</button>
+                            <button className="apes-btn-primary blackColor " data-v-2a374f33="">Whitepaper</button>
                         </a>
 
-                        <a href="https://t.me/GreedyVerseProject"
+                        <a href="https://t.me/GreedyVerse_Portal"
                                                    target="_blank" className="blackColor ml-2" data-v-2a374f33="">
-                            <button className="apes-btn-primary blackColor lb_txt_color_white_1" data-v-2a374f33="">Community</button>
+                            <button className="apes-btn-primary blackColor " data-v-2a374f33="">Community</button>
                         </a>
 
 {/* 

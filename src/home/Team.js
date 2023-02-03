@@ -1,11 +1,11 @@
 import "./home.css";
 import "./home2.css";
-import img_07b2fb6 from "../img/team1.webp";
-import img_561932f from "../img/team2.webp";
-import img_dbb7bef from "../img/team3.webp";
+import img_07b2fb6 from "../img/cT1.png";
+import img_561932f from "../img/cT2.png";
+import img_dbb7bef from "../img/cT3.png";
 
-import img_d59cb2a from "../img/team4.webp";
-import img_e2a0668 from "../img/team5.webp";
+import img_d59cb2a from "../img/cT4.png";
+import img_e2a0668 from "../img/cT5.png";
 
 const Team = () => {
   return (
@@ -124,7 +124,7 @@ const Team = () => {
           </div>{" "}
           <div className="fw-bold pt-4" data-v-107fd072="">
             <p data-v-107fd072="">Binh D</p>
-            <p data-v-107fd072="" className="lb_txt_orange">Lead Animator</p>
+            <p data-v-107fd072="" className="lb_txt_orange">Studio Director</p>
           </div>
         </div>
       </div>

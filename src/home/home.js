@@ -5,6 +5,7 @@ import VideoSection from "./videoSection";
 import AboutSection1 from "./aboutSection1";
 import AboutSection2 from "./aboutSection2";
 import AboutSection3 from "./aboutSection3";
+import KycAuditSection from "./Kyc_audit_section";
 import JoinDiscordSection from "./joinDiscordSection";
 import NftDisplaySection from "./nftDisplaySection";
 import RoadMapSection from "./RoadMapSection";
@@ -19,8 +20,10 @@ import Team from "./Team";
 import BrandsBanner from "./BrandsBanner";
 import Presale from "../components/presale/Presale";
 import UnderDevelopmentSection from "./UnderDevelopmentSection";
+import LoadingPanel from "./loadingPanel";
 import Nav from "../Layout/Nav";
 import PoweredBy from "../home/PoweredBy";
+
 
 import React from "react";
 
@@ -33,15 +36,18 @@ const home = () => {
     >
       {/* <UnderDevelopmentSection/> */}
 
+      <LoadingPanel />
       <Nav />
 
       {/* <SaleNotitficationBanner /> */}
       
       <PrivateSaleSectionNotStarted />
       <BrandsBanner />
+      <KycAuditSection />
       <PosterSection />
 
       <VideoSection/>
+
 
       <AboutSection1 />
       <AboutSection2 />
@@ -50,6 +56,7 @@ const home = () => {
       {/* <JoinDiscordSection/> */}
       {/* <NftDisplaySection/> */}
 
+    
       <TokenNomics />
       <RoadMapSection />
       <GetStarted />

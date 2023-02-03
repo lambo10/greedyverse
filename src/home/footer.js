@@ -29,7 +29,7 @@ const Footer = () => {
           data-v-0f1be33d=""
         >
           <div className="col-12 flex-wrap d-flex gap-4" data-v-0f1be33d="">
-          <a href="https://t.me/GreedyVerseProject" target="_blank">
+          <a href="https://t.me/GreedyVerse_Portal" target="_blank">
               <BsTelegram style={iconStyling} />
             </a>
             <a
@@ -106,7 +106,7 @@ const Footer = () => {
                 data-v-0f1be33d=""
               >
                 <a
-                  href="/audit.pdf"
+                  href="https://github.com/Coinsult/solidity/blob/main/Coinsult_Greedyverse_0x6F...2672_Audit.pdf"
                   target="_blank"
                   className="lb_txt_only_color_white link-light"
                   data-v-0f1be33d=""
@@ -156,7 +156,7 @@ const Footer = () => {
                 </a> */}
                 &nbsp;
                 <a
-                  href="/audit.pdf"
+                  href="https://github.com/Coinsult/solidity/blob/main/Coinsult_Greedyverse_0x6F...2672_Audit.pdf"
                   target="_blank"
                   className="lb_txt_only_color_white link-light"
                   data-v-0f1be33d=""

@@ -55,7 +55,7 @@ const RoadMapSection = () => {
               <Details className="fw-bold pt-4">
                 <h4>PHASE 3</h4>
                 <ul>
-                  <li>DEC & CEX listings</li>
+                  <li>DEX & CEX listings</li>
                   <li>Game full launch (Greedy Clans)</li>
                   <li>NFT marketplace</li>
                   <li>Greedy Wallet</li>

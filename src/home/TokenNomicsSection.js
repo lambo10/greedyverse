@@ -2,11 +2,14 @@ import "./home.css";
 import "./home2.css";
 import indicator from "../utils/tokenomicsIndicator.array";
 import tokenPicture from "../img/tokenomic-piechart.webp";
+import bnbIcon from "../img/bnbIcon.png";
+import gvIcon from "../img/GV.png";
+import s_logo_Icon from "../img/S-logo.png";
 import StyledHomeTokenomicsSection from "./HomeTokenomicSection.styles";
 const TokenNomicsSection = () => {
   return (
     <>
-      <div className="container-fluid p-t-150 p-b-120" data-v-107fd072="">
+      <div className="container-fluid lb_padding_top_45 lb_padding_bottom_45" data-v-107fd072="">
         <div data-v-107fd072="">
           <header
             style={{
@@ -72,22 +75,16 @@ const TokenNomicsSection = () => {
             className="col-lg-4 lb_txt_center lb_padding_full20"
             data-v-2a374f33=""
           >
+            
             <div className="lb_border_1px lb_radius_10 lb_padding_full20 lb_border_color_grey">
-              <div>
+            <div className="lb_tokenNomics_item lb_width_60 lb_padding_left_3px"><img src={bnbIcon}  className="lb_tokenNomics_icon"/></div>
+            <div className="lb_tokenNomics_item">
+            <div className="lb_txt_left">
                 <b>BEP-20</b>
               </div>
               <div>BSC Token</div>
             </div>
-          </div>
-          <div
-            className="col-lg-4 lb_txt_center lb_padding_full20"
-            data-v-2a374f33=""
-          >
-            <div className="lb_border_1px lb_radius_10 lb_padding_full20 lb_border_color_grey">
-              <div>
-                <b>10 BILLION</b>
-              </div>
-              <div>Total Supply</div>
+             
             </div>
           </div>
           <div
@@ -95,10 +92,27 @@ const TokenNomicsSection = () => {
             data-v-2a374f33=""
           >
             <div className="lb_border_1px lb_radius_10 lb_padding_full20 lb_border_color_grey">
-              <div>
+            <div className="lb_tokenNomics_item lb_width_60 lb_padding_left_3px"><img src={s_logo_Icon}  className="lb_tokenNomics_icon"/></div>
+            <div className="lb_tokenNomics_item">
+              <div className="lb_txt_left">
+                <b>10 BILLION</b>
+              </div>
+              <div>Total Supply</div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-lg-4 lb_txt_center lb_padding_full20"
+            data-v-2a374f33=""
+          >
+            <div className="lb_border_1px lb_radius_10 lb_padding_full20 lb_border_color_grey">
+            <div className="lb_tokenNomics_item lb_width_60 lb_padding_left_3px"><img src={gvIcon}  className="lb_tokenNomics_icon"/></div>
+            <div className="lb_tokenNomics_item">
+              <div className="lb_txt_left">
                 <b>GVERSE</b>
               </div>
-              <div>Symbol</div>
+              <div>Symbol <span className="lb_txt_only_color_white">.......</span></div>
+              </div>
             </div>
           </div>
         </div>

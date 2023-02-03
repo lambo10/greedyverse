@@ -9,7 +9,7 @@ const VideoSection = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="container-fluid bg-black-1 p-t-180 p-b-160">
+    <div className="container-fluid bg-black-1 lb_padding_top_45 lb_padding_bottom_45">
       <div className="container p-x-80">
         <div className="row g-0">
           <div className="col-12 col-xl-10">
