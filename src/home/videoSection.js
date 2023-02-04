@@ -20,11 +20,11 @@ const VideoSection = () => {
             These are the limited playable in-game assets in the Greedy Clans game. All NFTs are solely owned by the players and are classified into Lands, buildings, weapons and Warriors. <a className="lb_remove_text_decoration lb_blue-gradient-text" href="https://greedyverse.gitbook.io/white-paper/gameplay/in-game-nft-assets">Read more</a>
             </div>
           </div>
-          <div className="col-12 py-5 position-relative">
-        
-
-            <iframe  className="lb_embeded_vid" src="https://www.youtube.com/embed/wAuoJYnd-CY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+          <div className="col-12 py-3 position-relative">
+          
+            <div className='glowBorderWithShadow lb_with_100p'>
+           <iframe  className="lb_embeded_vid lb_image_withine_glowBorderDiv" src="https://www.youtube.com/embed/wAuoJYnd-CY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+           </div>
           
           </div>
         </div>

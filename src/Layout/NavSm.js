@@ -57,14 +57,14 @@ const NavContainer = styled.div`
   position: relative;
   z-index: 100;
   width: 100%;
-  height: 100%;
+  height: 80%;
   background-color: ${colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-transform: capitalize;
   border-radius: 1.5rem;
-  gap: 1.2rem;
+  gap: 0.3rem;
   & li {
     margin: 0.5rem 0;
   }
@@ -74,6 +74,7 @@ const Heading = styled.h6`
   a:link {
     color: ${colors.primary};
     text-decoration: none;
+    font-size: 20px !important;
   }
 `;
 const Whitepaper = styled.button`

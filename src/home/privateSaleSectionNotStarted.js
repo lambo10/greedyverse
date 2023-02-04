@@ -142,10 +142,10 @@ const PrivateSaleSection = () => {
           <div className="lb_padding_top_15">
            
             <div className="lb_txt_size_17 lb_padding_top_15 lb_txt_color_white2">
-            BUY $GVERSE 80% CHEAPER
+            BUY $GVERSE <span className="text-green">4X</span> CHEAPER
             </div>
             <div className="lb_txt_size_12 lb_padding_top_10 lb_txt_color_orange2">
-            Before Presale starts.
+            than Listing Price
             </div>
 
             <div className="lb_padding_top_10">

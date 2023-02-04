@@ -18,7 +18,15 @@ const Faq = () => {
 
   return (
     <div className="bg-yellow">
-      <div className="container p-y-90">
+      <div className="container">
+        <br/>
+      <h1
+          className="heading-5 burbank text-black fw-bold text-center"
+          data-v-107fd072=""
+        >
+          FAQs
+        </h1>
+
         <div className="row g-0 justify-content-center">
           <div className="col-12 col-xl-9 p-3">
             <div

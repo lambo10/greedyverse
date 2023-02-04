@@ -9,16 +9,11 @@ const menus = [
     name: "Private Sale",
     path: "/",
   },
-  // {
-  //   id: 2,
-  //   name: "Airdrop",
-  //   path: "airdrop",
-  // },
-  // {
-  //   id: 3,
-  //   name: "Presale",
-  //   path: "presale",
-  // },
+  {
+    id: 3,
+    name: "Utilities",
+    path: "https://greedyverse.gitbook.io/white-paper/tokenomics/gverse-utilities",
+  },
   {
     id: 4,
     name: "Whitepaper",

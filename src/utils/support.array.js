@@ -6,8 +6,22 @@ import metamask from "../img/metamask-removebg.png";
 import dex from "../img/banner_dex.png";
 import PancakeSwap from "../img/PancakeSwap.png";
 import coinCap from "../img/coinCap.png";
+import pixeldatLogo from "../img/pixeldatLogo.png";
+import cst from "../img/cst_full.png";
 
 const support = [
+  {
+    icon: pixeldatLogo,
+    title: "PixelDat",
+    alt: "PixelDat",
+    link: "#"
+  },
+  {
+    icon: cst,
+    title: "Coinsult",
+    alt: "Coinsult",
+    link: "https://coinsult.net/"
+  },
   {
     icon: trust,
     title: "Trust",

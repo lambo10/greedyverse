@@ -3,7 +3,7 @@ import "./home.css";
 const aboutSection2 = () => {
   return (
     <div className="container-fluid p-0 bg-black-1" data-v-1be0e606="">
-      <div className="row g-0 p-b-80" data-v-1be0e606="">
+      <div className="row g-0 p-b-80 lb_padding_bottom_0" data-v-1be0e606="">
         <div
           className="d-none d-xl-block col-12 col-xl-5 exploration-bg"
           data-v-1be0e606=""

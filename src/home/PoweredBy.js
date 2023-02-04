@@ -9,17 +9,17 @@ import support from "../utils/support.array";
 const TokenNomicsSection = () => {
   return (
    <div>
-<br/><br/>
+<br/>
 <div data-v-107fd072="">
         <h1
           className="heading-5 burbank text-black fw-bold text-center text-uppercase"
           data-v-107fd072=""
         >
-          POWERED BY
+          PARTNERS
         </h1>
       </div>
 
-    <div class="row m-5">
+    <div class="row m-1">
 
 
    
