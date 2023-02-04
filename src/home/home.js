@@ -23,6 +23,8 @@ import UnderDevelopmentSection from "./UnderDevelopmentSection";
 import LoadingPanel from "./loadingPanel";
 import Nav from "../Layout/Nav";
 import PoweredBy from "../home/PoweredBy";
+import OtherGamesSection from "./OtherGamesSection";
+import TrailerSection from "./TrailerSection";
 
 
 import React from "react";
@@ -42,9 +44,11 @@ const home = () => {
       {/* <SaleNotitficationBanner /> */}
       
       <PrivateSaleSectionNotStarted />
+      <TrailerSection />
       <BrandsBanner />
       <KycAuditSection />
       <PosterSection />
+      <OtherGamesSection />
 
       <VideoSection/>
 
@@ -52,6 +56,7 @@ const home = () => {
       <AboutSection1 />
       <AboutSection2 />
       <AboutSection3 />
+
 
       {/* <JoinDiscordSection/> */}
       {/* <NftDisplaySection/> */}

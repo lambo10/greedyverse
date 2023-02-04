@@ -10,7 +10,7 @@ import img_e2a0668 from "../img/cT5.png";
 const Team = () => {
   return (
     <div
-      className="container-fluid bg-black-1 p-t-150 p-b-120"
+      className="container-fluid bg-black-1 lb_padding_top_45 lb_padding_bottom_45"
       data-v-107fd072=""
     >
       <div data-v-107fd072="">

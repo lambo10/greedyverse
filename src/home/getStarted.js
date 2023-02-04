@@ -94,15 +94,15 @@ const getStarted = () => {
                 <p class="text-1" data-v-3942c62a="">
                   5. Login and <span className="lb_success_txt">Enjoy</span>.
                 </p>
-                <br />
-                If you need more support,please
+               <br/>
+                If you need more support,please <span className="lb_txt_only_color_white">.</span>
                 <a
-                  href="https://discord.gg/hvPDgZbEGY"
+                  href="https://t.me/GreedyVerse_Portal"
                   target="_blank"
                   class="link"
                   data-v-3942c62a=""
                 >
-                  join our Discord community.
+                   join our Telegram community
                 </a>
               </p>
             </li>
