@@ -23,8 +23,8 @@ const VideoSection = () => {
           <div className="col-12 py-3 position-relative">
           
             <div className='glowBorderWithShadow lb_with_100p'>
-           <iframe  className="lb_embeded_vid lb_image_withine_glowBorderDiv" src="https://www.youtube.com/embed/wAuoJYnd-CY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-           </div>
+            <iframe className="lb_embeded_vid lb_image_withine_glowBorderDiv" width="560" height="315" src="https://www.youtube.com/embed/wAuoJYnd-CY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
           
           </div>
         </div>
