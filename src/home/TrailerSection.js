@@ -10,7 +10,7 @@ const TrailerSection = () => {
     return(
         <div className=" lb_trailer_vid_padding bg-black-1" data-v-2a374f33="">
            <div className='glowBorderWithShadow lb_with_100p'>
-           <iframe className="lb_trailer_vid lb_image_withine_glowBorderDiv" width="560" height="315" src="https://www.youtube.com/embed/975aAJ0DFCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+           <iframe className="lb_trailer_vid lb_image_withine_glowBorderDiv" width="560" height="315" src="https://www.youtube.com/embed/c0iBcO69H4k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
            </div>
         </div>
     )
