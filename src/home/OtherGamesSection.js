@@ -14,6 +14,7 @@ const OtherGamesSection = () => {
           <h1 className="burbank heading-5 text-white text-uppercase">
             OTHER <span className="text-green">GAMES</span>
           </h1>
+          <h5 className="text-white">The GreedyVerse project got 2 other games in different stages of development. All games are powered by the $GVERSE.</h5>
         </div>
 
         <div className="row">

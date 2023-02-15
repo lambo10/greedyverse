@@ -12,8 +12,7 @@ import RoadMapSection from "./RoadMapSection";
 import GetStarted from "./getStarted";
 import Faq from "./faq";
 import Footer from "./footer";
-import PrivateSaleSection from "./PrivateSaleSection";
-import PrivateSaleSectionNotStarted from "./privateSaleSectionNotStarted";
+import SeedSaleSection from "./SeedSaleSection2";
 import NavigationBar from "./NavigationBar";
 import TokenNomics from "./TokenNomicsSection";
 import Team from "./Team";
@@ -43,7 +42,7 @@ const SeedSale = () => {
 
       {/* <SaleNotitficationBanner /> */}
       
-      <PrivateSaleSection />
+      <SeedSaleSection />
       <TrailerSection />
       <BrandsBanner />
       <KycAuditSection />

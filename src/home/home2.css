@@ -495,6 +495,18 @@ p[data-v-3942c62a] {
   font-size: 17px;
 }
 
+.lb_txt_size_20 {
+  font-size: 20px;
+}
+
+.lb_txt_size_40 {
+  font-size: 40px;
+}
+
+.lb_kyc_txt{
+  font-size: 50px;
+}
+
 .lb_padding_top_10 {
   padding-top: 10px;
 }
@@ -740,6 +752,7 @@ p[data-v-3942c62a] {
     width: auto;
     height: auto;
   }
+
 }
 
 @media (max-width: 990px) {
@@ -829,6 +842,28 @@ p[data-v-3942c62a] {
 }
 .lb_txt_orange{
   color: orange !important;
+}
+.lb_txt_red{
+  color: rgb(249, 48, 48) !important;
+}
+.lb_cusor_pointer{
+  cursor: pointer;
+}
+.lb_logout_btn{
+  border-radius: 10px;
+  background-color: #454545;
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+
+.lb_approve_btn{
+  border-radius: 10px;
+  background-color: rgb(17, 115, 253);
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  color: white;
 }
 
 .lb_blue-gradient-text {
@@ -992,6 +1027,10 @@ p[data-v-3942c62a] {
   padding-right: 0px !important
 }
 
+.lb_no_padding_left_1px{
+  padding-left: 1px !important;
+}
+
 .lb_image_withine_glowBorderDiv{
   border-radius: 2rem !important
 }
@@ -1027,6 +1066,52 @@ p[data-v-3942c62a] {
   padding: 20px;
 }
 
+.lb_width_60Mob_60Dex{
+  width: 60%;
+}
+
+.lb_sales_amount_input {
+  width: 100%;
+  height: 38px;
+  border-radius: 4px;
+  border: unset;
+  background: #303030;
+  padding-left: 16px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #f5f5ff;
+}
+
+.lb_sales_amount_input_border.text:focus {
+  border-color: orange !important;
+  outline: 0 !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+} 
+
+.lb_padding_top_5{
+  padding-top: 5px;
+}
+
+.lb_txt_color_white_only{
+  color: white;
+}
+
+.lb_select_currency{
+  width: 200px;
+}
+
+.lb_connect_wallet_txt{
+  color: greenyellow
+}
+
+.lb_connect_wallet_txt:hover{
+  color: white
+}
+
+.lb_txt_color_lightGreen{
+  color: greenyellow
+}
 
 @media (max-width: 767px) {
   .lb_game_logo_img {
@@ -1095,6 +1180,12 @@ p[data-v-3942c62a] {
   width: 100% !important;
   height: 90% !important;
   position: absolute;
+}
+.lb_width_60Mob_60Dex{
+  width: 100%;
+}
+.lb_kyc_txt{
+  font-size: 30px;
 }
 }
 

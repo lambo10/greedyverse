@@ -18,7 +18,7 @@ const Team = () => {
           className="heading-5 burbank text-white fw-bold text-center text-uppercase"
           data-v-107fd072=""
         >
-          CORE TEAM
+          CORE TEAM<span className="lb_kyc_txt"> (kyc)</span>
         </h1>
       </div>
 

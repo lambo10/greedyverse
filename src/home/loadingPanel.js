@@ -11,8 +11,12 @@ const LoadingPage = (props) => {
       setShowLoading(false);
       props.onPageLoad();
     };
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 5000);
     window.addEventListener('load', handleLoad);
     return () => {
+      clearTimeout(timer);
       window.removeEventListener('load', handleLoad);
     };
   }, [props.onPageLoad]);
