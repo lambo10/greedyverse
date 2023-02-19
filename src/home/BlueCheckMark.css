@@ -1,0 +1,96 @@
+.blue-checkmark-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(18, 18, 18, 0.9);
+  z-index: 2;
+  text-align: center;
+  padding-top: 20%;
+}
+
+.blue-checkmark-div{
+  display: inline-block;
+}
+
+.blue-checkmark {
+  width: 150px;
+  height: 150px;
+  fill: none;
+  stroke: #20a7fb;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: blue-checkmark-draw 1s ease-out forwards;
+}
+
+.blue-checkmark-circle {
+  fill: none;
+  stroke: #20a7fb;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.blue-checkmark-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: blue-checkmark-draw-check 0.5s ease-out forwards 0.5s;
+}
+
+@keyframes blue-checkmark-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes blue-checkmark-draw-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 990px) {
+  .blue-checkmark-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.888);
+    z-index: 2;
+    text-align: center;
+    padding-top: 30%;
+  }
+}
+
+@media (max-width: 767px) {
+  .blue-checkmark-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.888);
+    z-index: 2;
+    text-align: center;
+    padding-top: 40%;
+  }
+}
+
+@media (max-width: 382px) {
+  .blue-checkmark-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.888);
+    z-index: 2;
+    text-align: center;
+    padding-top: 65%;
+  }
+}

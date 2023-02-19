@@ -383,6 +383,14 @@ p[data-v-3942c62a] {
   height: 0;
   min-height: 700px;
 }
+
+.lb_hero_bg_dashboard{
+  background: url(../img/private_sale_background.webp) no-repeat 50%;
+  background-size: cover;
+  height: 0;
+  min-height: 1000px;
+}
+
 .lb_opacity_1 {
   opacity: 10;
   z-index: 1;
@@ -401,7 +409,7 @@ p[data-v-3942c62a] {
 }
 .lb_game_logo_img {
   width: 350px;
-  height: 200px;
+  height: 300px;
 }
 .lb_padding20 {
   padding-left: 10px;
@@ -458,9 +466,45 @@ p[data-v-3942c62a] {
   line-height: 64px;
   width: 180px;
   font-family: supercellmagic;
+  cursor: pointer;
+}
+.lb_claimBTN {
+  background: url(../img/salesBTN.svg) no-repeat;
+  background-size: 100% 100%;
+  color: black;
+  line-height: 64px;
+  margin: 0 10px 10px;
+  font-size: 10px;
+  height: 64px;
+  line-height: 64px;
+  width: 110px;
+  font-family: supercellmagic;
+  cursor: pointer;
+}
+.lb_claim_div {
+  padding: 10px;
+}
+.lb_claim_div .amount {
+  font-size: 13px;
+  font-family: supercellmagic;
+  color: greenyellow;
 }
 .lb_sale_section_padding {
   padding-top: 100px !important;
+}
+
+.lb_saleBTN_inactive{
+  background: url(../img/salesBTN_inactive.png) no-repeat;
+  background-size: 100% 100%;
+  color: black;
+  line-height: 64px;
+  margin: 0 10px 10px;
+  font-size: 19px;
+  height: 64px;
+  line-height: 64px;
+  width: 180px;
+  font-family: supercellmagic;
+  cursor: pointer;
 }
 
 .lb_salePanel {
@@ -497,6 +541,10 @@ p[data-v-3942c62a] {
 
 .lb_txt_size_20 {
   font-size: 20px;
+}
+
+.lb_txt_size_30 {
+  font-size: 30px;
 }
 
 .lb_txt_size_40 {
@@ -743,7 +791,7 @@ p[data-v-3942c62a] {
     display: block;
   }
   .lb_hero_bg {
-    background: url(../img/private_sale_background.png) no-repeat 50%;
+    background: url(../img/private_sale_background.webp) no-repeat 50%;
     background-size: cover;
     height: 0;
     min-height: 1200px;
@@ -764,7 +812,7 @@ p[data-v-3942c62a] {
   }
 
   .lb_hero_bg {
-    background: url(../img/private_sale_background.png) no-repeat 50%;
+    background: url(../img/private_sale_background.webp) no-repeat 50%;
     background-size: cover;
     height: 0;
     min-height: 1200px;
@@ -864,6 +912,15 @@ p[data-v-3942c62a] {
   cursor: pointer;
   border: none;
   color: white;
+}
+
+.lb_approve_btn_inactive{
+  border-radius: 10px;
+  background-color: rgb(44, 44, 44);
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  color: rgb(96, 96, 96);
 }
 
 .lb_blue-gradient-text {
@@ -1039,6 +1096,15 @@ p[data-v-3942c62a] {
   padding: 30px;
 }
 
+.lb_approve_btn_inactive .spinner{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px; /* adjust as needed */
+  height: 20px; /* adjust as needed */
+}
 
 
 @keyframes beating {
@@ -1068,6 +1134,10 @@ p[data-v-3942c62a] {
 
 .lb_width_60Mob_60Dex{
   width: 60%;
+}
+
+.lb_single_panel .lb_width_60Mob_60Dex{
+  width: 40%;
 }
 
 .lb_sales_amount_input {
@@ -1113,6 +1183,28 @@ p[data-v-3942c62a] {
   color: greenyellow
 }
 
+.lb_txt_e_dashoard_link{
+  text-decoration: none;
+  color: greenyellow;
+}
+
+.lb_txt_e_dashoard_link :hover{
+  text-decoration: none;
+  color: white;
+}
+
+.lb_d_table_padding{
+  padding: 15px;
+}
+
+
+
+.lb_dashboard_claim_divs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 767px) {
   .lb_game_logo_img {
     width: 350px;
@@ -1128,7 +1220,7 @@ p[data-v-3942c62a] {
     display: block;
   }
   .lb_hero_bg {
-    background: url(../img/private_sale_background.png) no-repeat 50%;
+    background: url(../img/private_sale_background.webp) no-repeat 50%;
     background-size: cover;
     height: 0;
     min-height: 1200px;
@@ -1184,6 +1276,9 @@ p[data-v-3942c62a] {
 .lb_width_60Mob_60Dex{
   width: 100%;
 }
+.lb_single_panel .lb_width_60Mob_60Dex{
+  width: 100%;
+}
 .lb_kyc_txt{
   font-size: 30px;
 }
@@ -1198,7 +1293,7 @@ p[data-v-3942c62a] {
   }
 
   .lb_hero_bg {
-    background: url(../img/private_sale_background.png) no-repeat 50%;
+    background: url(../img/private_sale_background.webp) no-repeat 50%;
     background-size: cover;
     height: 0;
     min-height: 1200px;

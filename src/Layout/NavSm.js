@@ -20,7 +20,7 @@ const NavSm = ({ isAnimating, setIsAnimating, isScrolling }) => {
                     {menu.name}
                   </a>
                 ) : (
-                  <Link to={menu.path} onClick={() => setIsAnimating(false)}>
+                  <Link to={menu.path} onClick={() => {setIsAnimating(false); window.location = menu.path}}>
                     {menu.name}
                   </Link>
                 )}

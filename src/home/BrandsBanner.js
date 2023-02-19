@@ -60,26 +60,25 @@ const BrandsBanner = () => {
   return (
     <div className="slider_container">
       <Slider {...settings}>
-        <a href="https://www.analyticsinsight.net/" target="_blank" rel="noreferrer">
+        <a target="_blank" rel="noreferrer">
           <div className="image_container">
             <img src={Insight} alt="unit" className="image_main" />
           </div>
         </a>
 
-        <a href="https://coincheckup.com/" target="_blank" rel="noreferrer">
+        <a target="_blank" rel="noreferrer">
           <div className="image_container">
             <img src={Coincheckup} alt="trustWallet" className="image_main" />
           </div>
         </a>
 
-        <a href="https://finance.yahoo.com/" target="_blank" rel="noreferrer">
+        <a target="_blank" rel="noreferrer">
           <div className="image_container">
             <img src={Yahoo} alt="metamask" className="image_main" />
           </div>
         </a>
 
         <a
-          href="https://www.coindesk.com/"
           target="_blank"
           rel="noreferrer"
         >
@@ -88,7 +87,7 @@ const BrandsBanner = () => {
           </div>
         </a>
 
-        <a href="https://coinmarketcap.com/" target="_blank" rel="noreferrer">
+        <a target="_blank" rel="noreferrer">
           <div className="image_container">
             <img
               src={Cointelegraph}
@@ -98,7 +97,7 @@ const BrandsBanner = () => {
           </div>
         </a>
 
-        <a href="https://coinsniper.net/" target="_blank" rel="noreferrer">
+        <a target="_blank" rel="noreferrer">
           <div className="image_container">
             <img src={CoinSniper} alt="bsc" className="image_main" />
           </div>

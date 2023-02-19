@@ -6,8 +6,8 @@ const menus = [
   },
   {
     id: 2,
-    name: "Private Sale",
-    path: "/",
+    name: "Seed Sale",
+    path: "/seedsale",
   },
   {
     id: 3,

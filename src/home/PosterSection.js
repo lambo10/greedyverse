@@ -1,6 +1,6 @@
 import './home.css';
 import './home2.css';
-import img_logo from '../img/GREEDY_CLANS_NORM.png';
+import img_logo from '../img/GREEDY_CLANS_NORM.webp';
 import img_app_store_btn_g  from '../img/app-store-btn-bg.ce495d2.svg';
 import img_play_store_btn_bg  from '../img/play-store-btn-bg.18b9bcd.svg';
 import img_app_store_btn_g_mobile from '../img/appStoreBtnBlack.png';

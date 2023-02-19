@@ -1,11 +1,14 @@
 {
   "name": "greedyverse",
   "version": "0.1.0",
+  "homepage": "https://greedyverse.co",
+  "description": "GreedyVerse is an innovative gamefi project building the next generation of Play-to-earn games that are fun and immersive, starting with GREEDY CLANS - A multiplayer real-time battle strategy game built on the blockchain where players can build, battle, earn and connect.",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@walletconnect/client": "^1.8.0",
     "@walletconnect/sign-client": "^2.4.0",
     "@walletconnect/web3-provider": "^1.8.0",
     "@web3modal/ethereum": "^2.1.1",
@@ -17,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-loader-spinner": "^5.3.4",
     "react-moralis": "^1.4.2",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",

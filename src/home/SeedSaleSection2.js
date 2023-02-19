@@ -12,13 +12,15 @@ import React, { useState,useEffect,useRef } from "react";
 import {ethers} from "ethers";
 import seedSaleAbi from "../abis/seedSaleABI.json";
 import typicalTokenJsonABI from "../abis/typicalTokenABI.json";
+import { ColorRing } from 'react-loader-spinner';
+import './BlueCheckMark.css'; 
 
 
 const SeedSaleSection = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [account, setAccount] = useState(null); 
   const seedSaleAddressETH = "";
-  const seedSaleAddress = "0x03408793bD3d0E86fc7FCcEdF13b485314C9A7c9";
+  const seedSaleAddress = "0x5B9ABCD1455100ec733B3821734C939269570349";
   const BusdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
   const UsdtAddress = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
   const [purchase_amount, setPurchase_amount] = useState(0);
@@ -28,6 +30,12 @@ const SeedSaleSection = () => {
   const [isMobileDevice, setIsMobileDevice] = useState(false);
   const [email, setEmail] = useState(false); 
   const [erroMsg, setErroMsg] = useState("");
+  const [buyBtnActive, setBuyBtnActive] = useState(false);
+  const [IsApprovalRequestNotDone, setIsApprovalRequestNotDone] = useState(false);
+  const [IsBuyRequestNotDone, setIsBuyRequestNotDone] = useState(false);
+  const [purchaseBalance, setPurchaseBalance] = useState(0);
+  const [visible, setVisible] = useState(false);
+  const [showPanel, setShowPanel] = useState(false);
   const ref = useRef(null);
   const iconStyling = {
     width: "30px",
@@ -50,6 +58,12 @@ const SeedSaleSection = () => {
     useEffect(() => {
         handleOptionChange_sub();
         getRate();
+        
+        if(selectedOption.localeCompare("BUSD") == 0 || selectedOption.localeCompare("USDT") == 0){
+            setBuyBtnActive(false);
+        }else{
+            setBuyBtnActive(true);
+        }
     }, [selectedOption]);
 
     const networks = {
@@ -100,6 +114,18 @@ const SeedSaleSection = () => {
         }
     }
 
+    function displayPaymentSuccessfull(){
+        setShowPanel(true);
+        setTimeout(() => {
+                  setVisible(true);
+                }, 500); 
+    
+                setTimeout(() => {
+                    setShowPanel(false);
+                    setVisible(false);
+                  }, 4000); 
+    }
+
     const networkschanged = () => {
         setErroMsg();
         const element = ref.current;
@@ -140,6 +166,26 @@ const SeedSaleSection = () => {
     }
   }
 
+  const getPurchaseBalance = async() => {
+    let Provider = new ethers.providers.Web3Provider(window.ethereum);
+    let Contract = null;
+  try{
+    if(selectedOption.localeCompare("USDT") == 0 || selectedOption.localeCompare("ETH") == 0){
+        await checkAndSwitchNetwork();
+         Contract = new ethers.Contract(seedSaleAddressETH,seedSaleAbi,Provider);
+         const _gversePurchases = await Contract.gversePurchases(account);
+         setPurchaseBalance(_gversePurchases["gverseEquivalent"]);
+    }else if(selectedOption.localeCompare("BUSD") == 0 || selectedOption.localeCompare("BNB") == 0){
+        await checkAndSwitchNetworkBNB();
+         Contract = new ethers.Contract(seedSaleAddress,seedSaleAbi,Provider);
+         const _gversePurchases = await Contract.gversePurchases(account);
+         setPurchaseBalance(ethers.utils.formatUnits(_gversePurchases["gverseEquivalent"],'ether'));
+    }
+  }catch(e){
+    console.log("getPurchaseBalance output",e);
+  }
+  }
+
   const getRate = async (_selectedOption) => {
     let Provider = new ethers.providers.Web3Provider(window.ethereum);
     let Signer = Provider.getSigner();
@@ -160,7 +206,13 @@ const SeedSaleSection = () => {
          Contract = new ethers.Contract(seedSaleAddress,seedSaleAbi,Signer);
     }
     try{
-        setRate(await Contract.gverse_usd_conversion_rate());
+        if(wkrSelectedOption.localeCompare("BNB") == 0 || wkrSelectedOption.localeCompare("ETH") == 0){
+            const gverseUsdRate = await Contract.gverse_usd_conversion_rate();
+            const bnbUsdRate = await Contract.getBNBtoBusdPrice("1");
+            setRate(gverseUsdRate*bnbUsdRate);
+        }else{
+            setRate(await Contract.gverse_usd_conversion_rate());
+        }
     }catch(e){
         console.log("geting rate erro",e);
     } 
@@ -178,20 +230,56 @@ const SeedSaleSection = () => {
   };
 
   const handleBuyClick1 = async ()=>{
+    setBuyBtnActive(false);
+    setIsBuyRequestNotDone(true);
     let Provider = new ethers.providers.Web3Provider(window.ethereum);
     let Signer = Provider.getSigner();
     
     try{
     if(selectedOption.localeCompare("USDT") == 0){
         let Contract = new ethers.Contract(seedSaleAddressETH,seedSaleAbi,Signer);
-        await Contract.receiveBUSD(purchase_amount);
+        Contract.receiveBUSD(ethers.utils.parseEther(purchase_amount)).then(e => {
+            setIsBuyRequestNotDone(false);
+            setBuyBtnActive(true);
+            getPurchaseBalance();
+            displayPaymentSuccessfull();
+            console.log("Transaction output",e);
+        });
     }else if(selectedOption.localeCompare("ETH") == 0){
+        const options = {
+            value: ethers.utils.parseEther(purchase_amount),
+            gasLimit: 4e5,
+        }
         let Contract = new ethers.Contract(seedSaleAddressETH,seedSaleAbi,Signer);
+        Contract.receiveBNB(options).then(e => {
+            setIsBuyRequestNotDone(false);
+            setBuyBtnActive(true);
+            getPurchaseBalance();
+            displayPaymentSuccessfull();
+            console.log("Transaction output",e);
+        });
     }else if(selectedOption.localeCompare("BUSD") == 0){
         let Contract = new ethers.Contract(seedSaleAddress,seedSaleAbi,Signer);
-        await Contract.receiveBUSD(purchase_amount);
+        Contract.receiveBUSD(ethers.utils.parseEther(purchase_amount)).then(e => {
+            setIsBuyRequestNotDone(false);
+            setBuyBtnActive(true);
+            getPurchaseBalance();
+            displayPaymentSuccessfull();
+            console.log("Transaction output",e);
+        });
     }else if(selectedOption.localeCompare("BNB") == 0){
+        const options = {
+            value: ethers.utils.parseEther(purchase_amount),
+            gasLimit: 4e5,
+        }
         let Contract = new ethers.Contract(seedSaleAddress,seedSaleAbi,Signer);
+        Contract.receiveBNB(options).then(e => {
+            setIsBuyRequestNotDone(false);
+            setBuyBtnActive(true);
+            getPurchaseBalance();
+            displayPaymentSuccessfull();
+            console.log("Transaction output",e);
+        });
     }
     }catch(e){
         var error = e.toString();
@@ -228,20 +316,28 @@ const SeedSaleSection = () => {
 
   const handle_busd_Usdt_approval_expenditure = async (paymentOption) => {
     setErroMsg("");
+    setIsApprovalRequestNotDone(true);
     try{
         if(paymentOption.localeCompare("USDT") == 0){
             if(await checkAndSwitchNetwork()){
             let Provider = new ethers.providers.Web3Provider(window.ethereum);
             let Signer = Provider.getSigner();
             let Contract = new ethers.Contract(UsdtAddress,typicalTokenJsonABI,Signer);
-            await Contract.approve(account, purchase_amount);
+            Contract.approve(seedSaleAddressETH, ethers.utils.parseEther(purchase_amount)).then(e => {
+                setBuyBtnActive(true);
+                setIsApprovalRequestNotDone(false);
+            });
+            
             }
         }else if(paymentOption.localeCompare("BUSD") == 0){
             if(await checkAndSwitchNetworkBNB()){
             let Provider = new ethers.providers.Web3Provider(window.ethereum);
             let Signer = Provider.getSigner();
             let Contract = new ethers.Contract(BusdAddress,typicalTokenJsonABI,Signer);
-            await Contract.approve(account, purchase_amount);
+            Contract.approve(seedSaleAddress, ethers.utils.parseEther(purchase_amount)).then(e => {
+                setBuyBtnActive(true);
+                setIsApprovalRequestNotDone(false);
+            });
             }
         }
     }catch(e){
@@ -313,6 +409,41 @@ const SeedSaleSection = () => {
         height: "auto",
       }}
     >
+        
+
+        <div >
+{showPanel && (
+
+<div className="blue-checkmark-container">
+
+<div>
+     <div className='blue-checkmark-div'>
+     {visible && (
+        <svg
+          className="blue-checkmark"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 52 52"
+        >
+          <circle className="blue-checkmark-circle" cx="26" cy="26" r="25" />
+          <path
+            className="blue-checkmark-check"
+            fill="none"
+            d="M14.1 27.2l7.1 7.2 16.7-16.8"
+          />
+        </svg>
+      )}
+     </div>
+      
+    </div>
+    <br/>
+    <div className='lb_txt_only_color_white'><h3>Payment Successfull</h3></div>
+    <div><a href='' className='lb_remove_text_decoration lb_txt_orange'><b>Dashboard</b></a></div>
+    </div>
+
+)}
+
+
+  </div>
 
       
     
@@ -476,15 +607,18 @@ const SeedSaleSection = () => {
 
 
           <div className="lb_padding_top_5 lb_txt_color_lightGreen">
-          <div className="">You bought: 0 $GVERSE</div>
+          <Link to="/dashoard" className="lb_txt_e_dashoard_link"><div className="">Enter Dashboard to View Your Purchases {`>>`} </div></Link>
           </div>
 
           {(!isMobileDevice && (selectedOption.localeCompare("USDT") == 0 || selectedOption.localeCompare("BUSD") == 0)) && (
-          <div className="lb_padding_top_15"><button onClick={() => handle_busd_Usdt_approval_expenditure(selectedOption)} className="lb_logout_btn lb_approve_btn"><b>Approve</b></button></div>
+          <div>
+            {(buyBtnActive || IsApprovalRequestNotDone) ? (<div className="lb_padding_top_15"><button className="lb_logout_btn lb_approve_btn_inactive"><ColorRing className="spinner" visible={IsApprovalRequestNotDone} height="30" width="30" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}></ColorRing><b>Approve</b></button></div>):(<div className="lb_padding_top_15"><button onClick={() => handle_busd_Usdt_approval_expenditure(selectedOption)} className="lb_logout_btn lb_approve_btn"><b>Approve</b></button></div>)}
+          </div>
           )}
           <div className="lb_padding_top_15">
               
-                <div onClick={handleBuyClick1} className="lb_saleBTN lb_game_logo">Buy now</div>
+          {buyBtnActive ? (<div onClick={handleBuyClick1} className="lb_saleBTN lb_game_logo">Buy now</div>):(<div className="lb_saleBTN_inactive lb_game_logo"><ColorRing className="spinner" visible={IsBuyRequestNotDone} height="30" width="30" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}></ColorRing>Buy now</div>)}
+                
            
           </div>
           <div className="lb_txt_size_12 lb_padding_top_15 lb_txt_color_orange2">

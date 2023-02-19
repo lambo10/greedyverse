@@ -1,11 +1,11 @@
 import "./home.css";
 import "./home2.css";
-import img_07b2fb6 from "../img/cT1.png";
-import img_561932f from "../img/cT2.png";
-import img_dbb7bef from "../img/cT3.png";
+import img_07b2fb6 from "../img/cT1.jpeg";
+import img_561932f from "../img/cT2.jpeg";
+import img_dbb7bef from "../img/cT3.jpeg";
 
-import img_d59cb2a from "../img/cT4.png";
-import img_e2a0668 from "../img/cT5.png";
+import img_d59cb2a from "../img/cT4.jpeg";
+import img_e2a0668 from "../img/cT5.jpeg";
 
 const Team = () => {
   return (
