@@ -3,6 +3,13 @@ import "./home2.css";
 import game_logo from "../img/gameLogo.png";
 import img_app_store_btn_g from "../img/app-store-btn-bg.ce495d2.svg";
 import img_play_store_btn_bg from "../img/play-store-btn-bg.18b9bcd.svg";
+import img_usdt from "../img/tinyIcon_usdt.svg";
+import img_eth from "../img/tinyIcon_ETH.svg";
+import img_busd from "../img/tinyIcon_BUSD.svg";
+import img_bnb from "../img/tinyIcon_BNB.svg";
+import img_gverse from "../img/GV.png";
+import img_copy from "../img/copy.svg"
+import img_closeBTN from "../img/closeBTN.webp"
 import { Link } from "react-router-dom";
 import { AiFillMediumCircle } from "react-icons/ai";
 import { BsTelegram } from "react-icons/bs";
@@ -16,8 +23,11 @@ import { ColorRing } from 'react-loader-spinner';
 import './BlueCheckMark.css'; 
 
 
+
 const SeedSaleSection = () => {
+  const [isNetworkInputSelectedOption, setNetworkInputSelectedOption] = useState("USDT ERC20");
   const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const [isInCorrectNetwork, setIsInCorrectNetwork] = useState(false);
   const [account, setAccount] = useState(null); 
   const seedSaleAddressETH = "";
   const seedSaleAddress = "0x5B9ABCD1455100ec733B3821734C939269570349";
@@ -36,6 +46,7 @@ const SeedSaleSection = () => {
   const [purchaseBalance, setPurchaseBalance] = useState(0);
   const [visible, setVisible] = useState(false);
   const [showPanel, setShowPanel] = useState(false);
+  const [isNetworkInputSelectedOptionImg, setNetworkInputSelectedOptionImg] = useState(img_usdt);
   const ref = useRef(null);
   const iconStyling = {
     width: "30px",
@@ -43,6 +54,15 @@ const SeedSaleSection = () => {
     color: "#fff",
     margin: "5px",
     transform: "translateY(-10px)",
+  };
+  const [dispCurrencyOptions, setdispCurrencyOptions] = useState(false);
+
+  const toggleOptions = () => {
+    setdispCurrencyOptions((prev) => !prev);
+  };
+
+  const hideOptions = () => {
+    setdispCurrencyOptions(false);
   };
 
   useEffect(() => {
@@ -64,6 +84,7 @@ const SeedSaleSection = () => {
         }else{
             setBuyBtnActive(true);
         }
+        hideOptions();
     }, [selectedOption]);
 
     const networks = {
@@ -114,6 +135,7 @@ const SeedSaleSection = () => {
         }
     }
 
+
     function displayPaymentSuccessfull(){
         setShowPanel(true);
         setTimeout(() => {
@@ -132,6 +154,8 @@ const SeedSaleSection = () => {
         setSelectedOption(element.value);
         getRate(element.value);
     }
+
+  
 
     const handleNetworkChange = async (networkName) => {
         setErroMsg();
@@ -294,8 +318,18 @@ const SeedSaleSection = () => {
     
   }
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+  const handleOptionChange = (optionValue,inputTXT) => {
+    setSelectedOption(optionValue);
+    setNetworkInputSelectedOption(inputTXT);
+    if(optionValue === "USDT"){
+        setNetworkInputSelectedOptionImg(img_usdt);
+    }else if(optionValue === "ETH"){
+        setNetworkInputSelectedOptionImg(img_eth);
+    }else if(optionValue === "BUSD"){
+        setNetworkInputSelectedOptionImg(img_busd);
+    }else if(optionValue === "BNB"){
+        setNetworkInputSelectedOptionImg(img_bnb);
+    }
     setErroMsg("");
   };
 
@@ -315,34 +349,42 @@ const SeedSaleSection = () => {
   }
 
   const handle_busd_Usdt_approval_expenditure = async (paymentOption) => {
-    setErroMsg("");
-    setIsApprovalRequestNotDone(true);
-    try{
-        if(paymentOption.localeCompare("USDT") == 0){
-            if(await checkAndSwitchNetwork()){
-            let Provider = new ethers.providers.Web3Provider(window.ethereum);
-            let Signer = Provider.getSigner();
-            let Contract = new ethers.Contract(UsdtAddress,typicalTokenJsonABI,Signer);
-            Contract.approve(seedSaleAddressETH, ethers.utils.parseEther(purchase_amount)).then(e => {
-                setBuyBtnActive(true);
-                setIsApprovalRequestNotDone(false);
-            });
-            
+    if(isWalletConnected){
+        if(isInCorrectNetwork){
+            setErroMsg("");
+        setIsApprovalRequestNotDone(true);
+        try{
+            if(paymentOption.localeCompare("USDT") == 0){
+                if(await checkAndSwitchNetwork()){
+                let Provider = new ethers.providers.Web3Provider(window.ethereum);
+                let Signer = Provider.getSigner();
+                let Contract = new ethers.Contract(UsdtAddress,typicalTokenJsonABI,Signer);
+                Contract.approve(seedSaleAddressETH, ethers.utils.parseEther(purchase_amount)).then(e => {
+                    setBuyBtnActive(true);
+                    setIsApprovalRequestNotDone(false);
+                });
+                
+                }
+            }else if(paymentOption.localeCompare("BUSD") == 0){
+                if(await checkAndSwitchNetworkBNB()){
+                let Provider = new ethers.providers.Web3Provider(window.ethereum);
+                let Signer = Provider.getSigner();
+                let Contract = new ethers.Contract(BusdAddress,typicalTokenJsonABI,Signer);
+                Contract.approve(seedSaleAddress, ethers.utils.parseEther(purchase_amount)).then(e => {
+                    setBuyBtnActive(true);
+                    setIsApprovalRequestNotDone(false);
+                });
+                }
             }
-        }else if(paymentOption.localeCompare("BUSD") == 0){
-            if(await checkAndSwitchNetworkBNB()){
-            let Provider = new ethers.providers.Web3Provider(window.ethereum);
-            let Signer = Provider.getSigner();
-            let Contract = new ethers.Contract(BusdAddress,typicalTokenJsonABI,Signer);
-            Contract.approve(seedSaleAddress, ethers.utils.parseEther(purchase_amount)).then(e => {
-                setBuyBtnActive(true);
-                setIsApprovalRequestNotDone(false);
-            });
-            }
+        }catch(e){
+            var error = e.toString();
+            setErroMsg(error);
         }
-    }catch(e){
-        var error = e.toString();
+        }
+    }else{
+        setErroMsg("Pls Connect Wallet")
     }
+    
   };
 
   async function checkAndSwitchNetwork() {
@@ -353,15 +395,19 @@ const SeedSaleSection = () => {
           console.log(`Connected to ${networkName}`);
           if (networkName === 'Unknown Network') {
             setErroMsg('Please switch to the Ethereum Network in MetaMask');
+            setIsInCorrectNetwork(false);
             return false;
           }else{
+            setIsInCorrectNetwork(true);
             return true;
           }
         });
         if(window.ethereum.networkVersion == 1){
+            setIsInCorrectNetwork(true);
             return true
         }else{
             setErroMsg('Please switch to the Ethereum Network in MetaMask');
+            setIsInCorrectNetwork(false);
             return false;
         }
      
@@ -381,15 +427,19 @@ const SeedSaleSection = () => {
           console.log(`Connected to ${networkName}`);
           if (networkName === 'Unknown Network') {
             setErroMsg('Please switch to the Binance Smart Chain Network in MetaMask');
+            setIsInCorrectNetwork(false);
             return false;
           }else{
+            setIsInCorrectNetwork(true);
             return true;
           }
         });
         if(window.ethereum.networkVersion == 56){
+            setIsInCorrectNetwork(true);
             return true
         }else{
             setErroMsg('Please switch to the Binance Smart Chain Network in MetaMask');
+            setIsInCorrectNetwork(false);
             return false;
         }
      
@@ -409,7 +459,62 @@ const SeedSaleSection = () => {
         height: "auto",
       }}
     >
-        
+      
+
+        <div >
+{true && (
+
+<div className="blue-checkmark-container_lpadding">
+<div className=" lb_txt_center lb_padding_full20">
+    <div className="lb_game_logo lb_transfer_payment_modal_div">
+        <div className="lb_txt_right lb_modalCloseBTN"><img src={img_closeBTN} width={20} height={20} /></div>
+    <div className="lb_tp_padding">
+    <div className="lb_transfer_payment_header"><b>Transfer <br/> 500 USDT to</b></div>
+    <div className="lb_transfer_payment_note_txt lb_padding_top_15_real">Scan the QR code, or copy and paste the address into your wallet.</div>
+    <div className="lb_padding_top_15_real"><img width={150} height={150} /></div>
+
+    <div className="lb_padding_top_15_real MuiDivider-root MuiDivider-fullWidth MuiDivider-withChildren e1ubno920 css-15rqsm7" role="separator"><span class="MuiDivider-wrapper css-c1ovea">or</span></div>
+
+    <div className="lb_padding_top_15_real">
+    <div className="lb_txt_left"><b>Amount</b></div>
+    <div data-test="p-invoice-amount" className="css-kzuic3 e15y8aaw2"><span className="lb_txt_tp_amount_margin">95.4356 XRP</span>
+    <button className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  e10oj9ve4 css-i9u842" tabindex="0" type="button" data-test="btn-copy-amount">
+        <div className="css-f5h8od e1hx9n3z0">
+            <span className="lb_copyBtnSpan1">
+                   
+                    </span>
+                    <img alt="Copy" src={img_copy} decoding="async" data-nimg="intrinsic" className="lb_copyBtnCopyImg" />
+                    <span className="lb_txt_size_12">Copy</span>
+                    </div></button></div>
+    </div>
+
+    <div className="lb_padding_top_15_real">
+    <div className="lb_txt_left"><b>Address</b></div>
+    <div data-test="p-invoice-amount" className="css-kzuic3 e15y8aaw2"><span className="lb_txt_tp_amount_margin">95.4356 XRP</span>
+    <button className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  e10oj9ve4 css-i9u842" tabindex="0" type="button" data-test="btn-copy-amount">
+        <div className="css-f5h8od e1hx9n3z0">
+            <span className="lb_copyBtnSpan1">
+                   
+                    </span>
+                    <img alt="Copy" src={img_copy} decoding="async" data-nimg="intrinsic" className="lb_copyBtnCopyImg" />
+                    <span className="lb_txt_size_12">Copy</span>
+                    </div></button></div>
+
+    </div>
+<br/>
+    <div className="lb_padding_top_15_real">
+        <span>Powered by</span><img src={img_gverse} width={20} height={20} /><span><b>Greedyverse</b></span>
+        </div>
+   
+    </div>
+    </div>
+    </div>
+</div>
+
+)}
+  </div>
+
+
 
         <div >
 {showPanel && (
@@ -571,35 +676,89 @@ const SeedSaleSection = () => {
             <div><div className="lb_txt_color_white_only">Wallet Address</div><div className="lb_txt_size_20 lb_txt_color_lightGreen"><b>{account.slice(0,4)+"..."+account.slice((account.length-4),account.length)}</b></div><div><button onClick={() => setIsWalletConnected(false)} className="lb_logout_btn">Disconnect</button></div></div>
           )}
           </div>
-          <div className="lb_padding_top_10">
-            <div className="lb_txt_color_white_only">
-            Select Currency
-            </div>
-       <div>
-       <select ref={ref} className="lb_select_currency" value={selectedOption} onChange={handleOptionChange}>
-            <option value="USDT">USDT</option>
-            <option value="ETH">ETH</option>
-            <option value="BUSD">BUSD</option>
-            <option value="BNB">BNB</option>
-          </select>
-       </div>
-       
-          </div>
           </div>
           )}
+          
           <div className="lb_padding_top_15">
-          <input onChange={handleInputChange}  className="lb_sales_amount_input lb_sales_amount_input_border" type="text" placeholder="Eg: 1000"/>          </div>
+            <div className="input-with-select">
+              
+<div className="dropdown">
+      <div className="dropbtn" onClick={toggleOptions}>
+        <img src={isNetworkInputSelectedOptionImg} width="20" height="20" />
+        <span> {isNetworkInputSelectedOption}</span>
+        <span aria-hidden="true">
+          <svg
+            height="20"
+            width="20"
+            viewBox="0 0 20 20"
+            aria-hidden="true"
+            focusable="false"
+            className="lb_txt_only_color_white"
+          >
+            <path
+              class="lb_fill_white"
+              d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+            ></path>
+          </svg>
+        </span>
+      </div>
+      <div className={`dropText ${dispCurrencyOptions ? "lb_display_block" : ""}`}>
+        <a href="#" onClick={() => handleOptionChange("USDT","USDT ERC20")}>
+          <img src={img_usdt} width="20" height="20" /> USDT ERC20
+        </a>
+        <a href="#" onClick={() => handleOptionChange("ETH","ETH ERC20")}>
+          <img src={img_eth} width="20" height="20" /> ETH ERC20
+        </a>
+        <a href="#" onClick={() => handleOptionChange("BUSD","BUSD BEB20")}>
+          <img src={img_busd} width="20" height="20" /> BUSD BEB20
+        </a>
+        <a href="#" onClick={() => handleOptionChange("BNB","BNB BEB20")}>
+          <img src={img_bnb} width="20" height="20" /> BNB BEB20
+        </a>
+      </div>
+    </div>
+
+          <input onChange={handleInputChange}  className="lb_sales_amount_input lb_sales_amount_input_border" type="text" placeholder="Eg: 1000"/>       
+             </div>
+             </div>
+
+             {!isMobileDevice && (
+             <div class={`sale__arrow-wrapper ${isWalletConnected ? "lb_arrow_position2" : "lb_arrow_position"}`}><div class="sale__arrow">
+            </div></div>
+             )}
+
+            {isMobileDevice && (
+             <div class={`sale__arrow-wrapper lb_arrow_position_mobile`}><div class="sale__arrow">
+            </div></div>
+             )}
+
+          
+             <div className="lb_padding_top_10">
+            <div className="input-with-select">
+            <div className="dropdown">
+      <div className="dropbtn" onClick={toggleOptions}>
+        <img src={img_gverse} width="20" height="20" />
+        <span> $GVERSE</span>
+      </div>
+      </div>
+          <input  className="lb_sales_amount_input lb_sales_amount_input_border" value={total} type="text" disabled/>     
+          </div></div>
+
+          <div class="sale__exchange-info lb_with_100p"><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MINIMUM BUY</span> $500</div></div><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MAX</span> $25,000</div></div></div>
+
           {isMobileDevice && (
-            <div className="lb_padding_top_5">
-            <input onChange={handleEmailInputChange}  className="lb_sales_amount_input lb_sales_amount_input_border" type="text" placeholder="Enter Email"/>  
+             <div className="lb_padding_top_10">
+             <div className="input-with-select-email">
+          
+            <div className="lb_padding_top_5 lb_game_logo">
+            <input onChange={handleEmailInputChange}  className="lb_sales_amount_input-email lb_sales_amount_input_border lb_with_100p" type="text" placeholder="Enter Email"/>  
             </div>
+            </div></div>
           )}
-          <div className="lb_txt_left lb_no_padding_left_1px lb_txt_color_white_only lb_padding_top_5">
-          <div className="">{total} $GVERSE</div>
-          </div> 
+        
 
           {erroMsg && (
-            <div className="lb_padding_top_5 lb_txt_red">
+            <div className="lb_padding_top_5 lb_txt_orange">
             <div className="">{erroMsg}</div>
             </div>
           )}
@@ -607,7 +766,7 @@ const SeedSaleSection = () => {
 
 
           <div className="lb_padding_top_5 lb_txt_color_lightGreen">
-          <Link to="/dashoard" className="lb_txt_e_dashoard_link"><div className="">Enter Dashboard to View Your Purchases {`>>`} </div></Link>
+          <Link to="/dashoard" className="lb_txt_e_dashoard_link"><div className="">Enter Dashboard{`>>`} </div></Link>
           </div>
 
           {(!isMobileDevice && (selectedOption.localeCompare("USDT") == 0 || selectedOption.localeCompare("BUSD") == 0)) && (
