@@ -21,10 +21,16 @@ import seedSaleAbi from "../abis/seedSaleABI.json";
 import typicalTokenJsonABI from "../abis/typicalTokenABI.json";
 import { ColorRing } from 'react-loader-spinner';
 import './BlueCheckMark.css'; 
+import CircularCountdownTimer from "../components/circlerCountDown/CircularCountdownTimer";
+import QRCodeGenerator from "./QRCodeGenerator";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios';
 
 
 
 const SeedSaleSection = () => {
+  const [isTransferModalActive, setIsTransferModalActive] = useState(false);
   const [isNetworkInputSelectedOption, setNetworkInputSelectedOption] = useState("USDT ERC20");
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [isInCorrectNetwork, setIsInCorrectNetwork] = useState(false);
@@ -38,7 +44,7 @@ const SeedSaleSection = () => {
   const [total, setTotal] = useState(0);
   const [selectedOption, setSelectedOption] = useState(() => {return "USDT"});
   const [isMobileDevice, setIsMobileDevice] = useState(false);
-  const [email, setEmail] = useState(false); 
+  const [email, setEmail] = useState(""); 
   const [erroMsg, setErroMsg] = useState("");
   const [buyBtnActive, setBuyBtnActive] = useState(false);
   const [IsApprovalRequestNotDone, setIsApprovalRequestNotDone] = useState(false);
@@ -47,6 +53,8 @@ const SeedSaleSection = () => {
   const [visible, setVisible] = useState(false);
   const [showPanel, setShowPanel] = useState(false);
   const [isNetworkInputSelectedOptionImg, setNetworkInputSelectedOptionImg] = useState(img_usdt);
+  const [gen_address, setGen_address] = useState("");
+  const [minPurchaseAmount, setMinPurchaseAmount] = useState(1);
   const ref = useRef(null);
   const iconStyling = {
     width: "30px",
@@ -66,17 +74,24 @@ const SeedSaleSection = () => {
   };
 
   useEffect(() => {
+  
     if (!window.ethereum) {
         setIsMobileDevice(true);
     }else{
+        if(!isMobileDevice){
         window.ethereum.on("chainChanged",networkschanged);
         getRate();
+    }else{
+        setBuyBtnActive(true);
+        getRate_from_api();
     }
+   }
 
     }, []);
 
     useEffect(() => {
-        handleOptionChange_sub();
+        if(!isMobileDevice){
+            handleOptionChange_sub();
         getRate();
         
         if(selectedOption.localeCompare("BUSD") == 0 || selectedOption.localeCompare("USDT") == 0){
@@ -85,7 +100,20 @@ const SeedSaleSection = () => {
             setBuyBtnActive(true);
         }
         hideOptions();
+        }else{
+            getRate_from_api();
+            hideOptions();
+            setBuyBtnActive(true);
+        }
     }, [selectedOption]);
+
+    useEffect(() => {
+        if(isMobileDevice){
+            setIsTransferModalActive(true);
+            setIsBuyRequestNotDone(false);
+            setBuyBtnActive(true);
+        }
+    }, [gen_address]);
 
     const networks = {
         eth:{
@@ -247,7 +275,25 @@ const SeedSaleSection = () => {
   const handleInputChange = (event) => {
     setPurchase_amount(event.target.value);
     setTotal(event.target.value * rate);
+    if(isMobileDevice){
+        setBuyBtnActive(true);
+    }
   };
+
+
+  const getRate_from_api = async () => {
+    try{
+        const new_tmp_wallet_request = await axios.get("https://greedyverseblockchainoperation.herokuapp.com/get-seed-sale-rate?network="+selectedOption);
+        if(new_tmp_wallet_request.data.success){
+            setRate(parseFloat(new_tmp_wallet_request.data.msg)); 
+        }else{
+            setRate(0);
+        }
+    }catch(e){
+        console.log(e);
+    }
+  }
+
 
   const handleEmailInputChange = (event) => {
     setEmail(event.target.value);
@@ -256,6 +302,11 @@ const SeedSaleSection = () => {
   const handleBuyClick1 = async ()=>{
     setBuyBtnActive(false);
     setIsBuyRequestNotDone(true);
+
+    if(isMobileDevice){
+        startTransferPayment();
+    }else{
+
     let Provider = new ethers.providers.Web3Provider(window.ethereum);
     let Signer = Provider.getSigner();
     
@@ -315,6 +366,7 @@ const SeedSaleSection = () => {
                     setErroMsg("Transfer failed. Pls try again");
                 }
     }
+}
     
   }
 
@@ -449,6 +501,49 @@ const SeedSaleSection = () => {
     }
   }
 
+
+  async function handleCopy(txt) {
+   await navigator.clipboard.writeText(txt);
+  }
+
+  async function handleCopyClick(txt,type) {
+    try{
+        await handleCopy(txt);
+        alert(type+" Copied successfully");
+    
+    }catch(e){
+        console.log("copy erro",e);
+    }
+}
+
+async function startTransferPayment(){
+   try{
+   if(email === '' || email == null){
+    setErroMsg("Pls Enter Email");
+    setIsBuyRequestNotDone(false);
+    setBuyBtnActive(true);
+   }else{
+    if((purchase_amount >= minPurchaseAmount && selectedOption === "USDT") || (purchase_amount >= minPurchaseAmount && selectedOption === "BUSD")){
+        const new_tmp_wallet_request = await axios.get("https://greedyverse.co/api/create_new_tmp_wallet.php?email="+email);
+        setGen_address(new_tmp_wallet_request.data.gen_address);
+       const check_seed_sale_payments = await axios.get("https://greedyverse.co/api/check_seedSale_payments.php?gen_address="+new_tmp_wallet_request.data.gen_address+"&email="+email+"&token="+selectedOption+"&amount="+purchase_amount);
+       if(check_seed_sale_payments.data.success){
+            setIsTransferModalActive(false);
+            displayPaymentSuccessfull();
+       }
+    }else{
+        setErroMsg("Amount Below Minimum");
+        setIsBuyRequestNotDone(false);
+        setBuyBtnActive(true);
+    }
+   }
+}catch(e){
+    console.log("Transfer Request Erro",e);
+    setIsBuyRequestNotDone(false);
+    setBuyBtnActive(true);
+   }
+  }
+
  
   return (
     // <div className="container-fluid lb_hero_bg" data-v-2a374f33="">
@@ -462,36 +557,43 @@ const SeedSaleSection = () => {
       
 
         <div >
-{true && (
 
-<div className="blue-checkmark-container_lpadding">
+        {isTransferModalActive && (
+<div className={`blue-checkmark-container_lpadding`}>
 <div className=" lb_txt_center lb_padding_full20">
     <div className="lb_game_logo lb_transfer_payment_modal_div">
-        <div className="lb_txt_right lb_modalCloseBTN"><img src={img_closeBTN} width={20} height={20} /></div>
+        <div onClick={()=>{setIsTransferModalActive(false)}} className="lb_txt_right lb_modalCloseBTN"><img src={img_closeBTN} width={20} height={20} /></div>
     <div className="lb_tp_padding">
-    <div className="lb_transfer_payment_header"><b>Transfer <br/> 500 USDT to</b></div>
+    <div className="lb_transfer_payment_header_container"><div className="lb_transfer_payment_header"><b>Transfer <br/> {purchase_amount} {selectedOption} to</b></div>
+    <div className="lb_tp_timer"> <CircularCountdownTimer    duration={900}
+        updateInterval={1000}
+        diameter={70}
+        borderThickness={10}></CircularCountdownTimer> </div>
+    </div>
     <div className="lb_transfer_payment_note_txt lb_padding_top_15_real">Scan the QR code, or copy and paste the address into your wallet.</div>
-    <div className="lb_padding_top_15_real"><img width={150} height={150} /></div>
+    <div className="lb_padding_top_15_real"><QRCodeGenerator value={gen_address}/></div>
 
     <div className="lb_padding_top_15_real MuiDivider-root MuiDivider-fullWidth MuiDivider-withChildren e1ubno920 css-15rqsm7" role="separator"><span class="MuiDivider-wrapper css-c1ovea">or</span></div>
 
     <div className="lb_padding_top_15_real">
     <div className="lb_txt_left"><b>Amount</b></div>
-    <div data-test="p-invoice-amount" className="css-kzuic3 e15y8aaw2"><span className="lb_txt_tp_amount_margin">95.4356 XRP</span>
-    <button className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  e10oj9ve4 css-i9u842" tabindex="0" type="button" data-test="btn-copy-amount">
+    <div data-test="p-invoice-amount" className="css-kzuic3 e15y8aaw2"><span className="lb_txt_tp_amount_margin">{purchase_amount}</span>
+    
+    <button onClick={()=>{handleCopyClick(purchase_amount,"Amount")}} className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  e10oj9ve4 css-i9u842" tabindex="0" type="button" data-test="btn-copy-amount">
         <div className="css-f5h8od e1hx9n3z0">
             <span className="lb_copyBtnSpan1">
                    
                     </span>
                     <img alt="Copy" src={img_copy} decoding="async" data-nimg="intrinsic" className="lb_copyBtnCopyImg" />
                     <span className="lb_txt_size_12">Copy</span>
-                    </div></button></div>
+                    </div></button>
+                    </div>
     </div>
 
     <div className="lb_padding_top_15_real">
     <div className="lb_txt_left"><b>Address</b></div>
-    <div data-test="p-invoice-amount" className="css-kzuic3 e15y8aaw2"><span className="lb_txt_tp_amount_margin">95.4356 XRP</span>
-    <button className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  e10oj9ve4 css-i9u842" tabindex="0" type="button" data-test="btn-copy-amount">
+    <div data-test="p-invoice-amount" className="css-kzuic3 e15y8aaw2"><span className="lb_txt_tp_amount_margin">{gen_address.slice(0,10)+"..."+gen_address.slice((gen_address.length-10),gen_address.length)}</span>
+    <button onClick={()=>{handleCopyClick(gen_address,"Address")}} className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  e10oj9ve4 css-i9u842" tabindex="0" type="button" data-test="btn-copy-amount">
         <div className="css-f5h8od e1hx9n3z0">
             <span className="lb_copyBtnSpan1">
                    
@@ -510,8 +612,9 @@ const SeedSaleSection = () => {
     </div>
     </div>
 </div>
+        )}
 
-)}
+
   </div>
 
 
@@ -744,7 +847,7 @@ const SeedSaleSection = () => {
           <input  className="lb_sales_amount_input lb_sales_amount_input_border" value={total} type="text" disabled/>     
           </div></div>
 
-          <div class="sale__exchange-info lb_with_100p"><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MINIMUM BUY</span> $500</div></div><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MAX</span> $25,000</div></div></div>
+          <div class="sale__exchange-info lb_with_100p"><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MINIMUM BUY</span> $250</div></div><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MAX</span> $25,000</div></div></div>
 
           {isMobileDevice && (
              <div className="lb_padding_top_10">

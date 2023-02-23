@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <RootLayout>
         <Routes>
-          <Route path="/" element={<SeedSale />} />
+          <Route path="/" element={<Home />} />
           <Route path="/dashoard" element={<Dashboard />} />
           <Route path="/seedsale" element={<SeedSale />} />
           <Route path="*" element={<Error />} />
