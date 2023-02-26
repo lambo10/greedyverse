@@ -1473,6 +1473,13 @@ p[data-v-3942c62a] {
   border-radius: 24px 24px 24px 24px;
 }
 
+.lb_orderExpired_modal_div{
+  width: 40% !important;
+  background-color: rgb(235, 87, 87);
+  box-shadow: 0px -4px 30px rgba(235, 87, 87, 0.6);
+  border-radius: 24px 24px 24px 24px;
+}
+
 .css-kzuic3 {
   display: flex;
   -webkit-box-pack: justify;
@@ -1614,6 +1621,30 @@ p[data-v-3942c62a] {
   display: block;
 }
 
+.lb_odf_txtPadding1{
+  padding: 30px;
+  text-align: left;
+  color: rgb(119, 127, 137);
+  background-color: white;
+  font-size: 13px;
+  border-radius: 10px;
+}
+
+.lb_margin_top_10{
+  padding-top:10px;
+}
+
+.lb_background_white{
+  background-color: white !important;
+  box-shadow: none !important;
+}
+
+.lb_loader_in_input{
+  width: 100%;
+  flex: 1 1;
+  text-align: right;
+}
+
 @media (max-width: 767px) {
   .lb_tp_padding{
     padding: 30px 30px 30px 30px;
@@ -1622,6 +1653,13 @@ p[data-v-3942c62a] {
     width: 100% !important;
     background-color: white;
   box-shadow: 0px -4px 30px rgba(231, 193, 57, 0.6);
+  border-radius: 24px 24px 24px 24px;
+  }
+  
+  .lb_orderExpired_modal_div{
+    width: 100% !important;
+    background-color: rgb(235, 87, 87);
+  box-shadow: 0px -4px 30px rgba(235, 87, 87, 0.6);
   border-radius: 24px 24px 24px 24px;
   }
   .lb_game_logo_img {
@@ -1774,6 +1812,13 @@ p[data-v-3942c62a] {
   width: 70%;
   background-color: white;
 box-shadow: 0px -4px 30px rgba(231, 193, 57, 0.6);
+border-radius: 24px 24px 24px 24px;
+}
+
+.lb_orderExpired_modal_div{
+  width: 70%;
+  background-color: rgb(235, 87, 87);
+box-shadow: 0px -4px 30px rgba(235, 87, 87, 0.6);
 border-radius: 24px 24px 24px 24px;
 }
 }

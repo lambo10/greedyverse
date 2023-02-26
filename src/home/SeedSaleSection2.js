@@ -23,9 +23,8 @@ import { ColorRing } from 'react-loader-spinner';
 import './BlueCheckMark.css'; 
 import CircularCountdownTimer from "../components/circlerCountDown/CircularCountdownTimer";
 import QRCodeGenerator from "./QRCodeGenerator";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
+// import WalletConnectProvider from "@walletconnect/web3-provider";
 
 
 
@@ -36,7 +35,7 @@ const SeedSaleSection = () => {
   const [isInCorrectNetwork, setIsInCorrectNetwork] = useState(false);
   const [account, setAccount] = useState(null); 
   const seedSaleAddressETH = "";
-  const seedSaleAddress = "0x5B9ABCD1455100ec733B3821734C939269570349";
+  const seedSaleAddress = "0x07731BC0c5D220FCAfeEcFb775B2935A64B03483";
   const BusdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
   const UsdtAddress = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
   const [purchase_amount, setPurchase_amount] = useState(0);
@@ -55,6 +54,10 @@ const SeedSaleSection = () => {
   const [isNetworkInputSelectedOptionImg, setNetworkInputSelectedOptionImg] = useState(img_usdt);
   const [gen_address, setGen_address] = useState("");
   const [minPurchaseAmount, setMinPurchaseAmount] = useState(1);
+  const timerIdRef = useRef(null);
+  const [remainingTime, setRemainingTime] = useState(900); // Time to run the function for (in seconds)
+  const [orderExpired, setOrderExpired] = useState(false);
+  const [gverseRateloading, setGverseRateloading] = useState(false);
   const ref = useRef(null);
   const iconStyling = {
     width: "30px",
@@ -73,6 +76,7 @@ const SeedSaleSection = () => {
     setdispCurrencyOptions(false);
   };
 
+
   useEffect(() => {
   
     if (!window.ethereum) {
@@ -86,6 +90,10 @@ const SeedSaleSection = () => {
         getRate_from_api();
     }
    }
+
+   return () => {
+    stopTimer();
+  };
 
     }, []);
 
@@ -114,6 +122,12 @@ const SeedSaleSection = () => {
             setBuyBtnActive(true);
         }
     }, [gen_address]);
+
+    useEffect(() => {
+        if (remainingTime <= 0) {
+          stopTimer();
+        }
+      }, [remainingTime]);
 
     const networks = {
         eth:{
@@ -242,6 +256,7 @@ const SeedSaleSection = () => {
     let Provider = new ethers.providers.Web3Provider(window.ethereum);
     let Signer = Provider.getSigner();
     let Contract = null;
+    setGverseRateloading(true);
    
     let wkrSelectedOption = null;
     if(_selectedOption == null){
@@ -262,8 +277,10 @@ const SeedSaleSection = () => {
             const gverseUsdRate = await Contract.gverse_usd_conversion_rate();
             const bnbUsdRate = await Contract.getBNBtoBusdPrice("1");
             setRate(gverseUsdRate*bnbUsdRate);
+            setGverseRateloading(false);
         }else{
             setRate(await Contract.gverse_usd_conversion_rate());
+            setGverseRateloading(false);
         }
     }catch(e){
         console.log("geting rate erro",e);
@@ -282,10 +299,12 @@ const SeedSaleSection = () => {
 
 
   const getRate_from_api = async () => {
+    setGverseRateloading(true);
     try{
         const new_tmp_wallet_request = await axios.get("https://greedyverseblockchainoperation.herokuapp.com/get-seed-sale-rate?network="+selectedOption);
         if(new_tmp_wallet_request.data.success){
             setRate(parseFloat(new_tmp_wallet_request.data.msg)); 
+            setGverseRateloading(false);
         }else{
             setRate(0);
         }
@@ -317,6 +336,7 @@ const SeedSaleSection = () => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
+            stopTimer();
             displayPaymentSuccessfull();
             console.log("Transaction output",e);
         });
@@ -330,6 +350,7 @@ const SeedSaleSection = () => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
+            stopTimer();
             displayPaymentSuccessfull();
             console.log("Transaction output",e);
         });
@@ -339,6 +360,7 @@ const SeedSaleSection = () => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
+            stopTimer();
             displayPaymentSuccessfull();
             console.log("Transaction output",e);
         });
@@ -352,6 +374,7 @@ const SeedSaleSection = () => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
+            stopTimer();
             displayPaymentSuccessfull();
             console.log("Transaction output",e);
         });
@@ -516,7 +539,45 @@ const SeedSaleSection = () => {
     }
 }
 
+const startTimer = (tmpWalletRequest) => {
+    const id = setInterval(() => {
+            startPaymentReciveChecks(tmpWalletRequest);
+            setRemainingTime((prevTime) => prevTime - 20);   
+    }, 20000);
+
+    timerIdRef.current = id
+    console.log("here ---- here --- here");
+  };
+
+  const stopTimer = (_dispSuccessfull = false) => {
+    try{
+        console.log("timer object->",timerIdRef.current);
+        clearInterval(timerIdRef.current);
+        if(_dispSuccessfull){
+        displayPaymentSuccessfull();
+        }
+    }catch(e){
+        console.log("Erro Stoping timer",e);
+    }
+  };
+
+async function startPaymentReciveChecks(new_tmp_wallet_request){
+    const check_seed_sale_payments = await axios.get("https://greedyverse.co/api/check_seedSale_payments.php?gen_address="+new_tmp_wallet_request.data.gen_address+"&email="+email+"&token="+selectedOption+"&amount="+purchase_amount);
+      
+       if (check_seed_sale_payments.data.success) {
+        stopTimer(true);
+        setIsTransferModalActive(false);
+      }
+}
+
+const setOrderExpired_func = (_state) => {
+    setOrderExpired(_state);
+    stopTimer();
+}
+
 async function startTransferPayment(){
+
+    setOrderExpired_func(false);
    try{
    if(email === '' || email == null){
     setErroMsg("Pls Enter Email");
@@ -526,11 +587,8 @@ async function startTransferPayment(){
     if((purchase_amount >= minPurchaseAmount && selectedOption === "USDT") || (purchase_amount >= minPurchaseAmount && selectedOption === "BUSD")){
         const new_tmp_wallet_request = await axios.get("https://greedyverse.co/api/create_new_tmp_wallet.php?email="+email);
         setGen_address(new_tmp_wallet_request.data.gen_address);
-       const check_seed_sale_payments = await axios.get("https://greedyverse.co/api/check_seedSale_payments.php?gen_address="+new_tmp_wallet_request.data.gen_address+"&email="+email+"&token="+selectedOption+"&amount="+purchase_amount);
-       if(check_seed_sale_payments.data.success){
-            setIsTransferModalActive(false);
-            displayPaymentSuccessfull();
-       }
+        startTimer(new_tmp_wallet_request);
+
     }else{
         setErroMsg("Amount Below Minimum");
         setIsBuyRequestNotDone(false);
@@ -561,11 +619,13 @@ async function startTransferPayment(){
         {isTransferModalActive && (
 <div className={`blue-checkmark-container_lpadding`}>
 <div className=" lb_txt_center lb_padding_full20">
+
+{!orderExpired && (
     <div className="lb_game_logo lb_transfer_payment_modal_div">
-        <div onClick={()=>{setIsTransferModalActive(false)}} className="lb_txt_right lb_modalCloseBTN"><img src={img_closeBTN} width={20} height={20} /></div>
+        <div onClick={()=>{setIsTransferModalActive(false); stopTimer()}} className="lb_txt_right lb_modalCloseBTN"><img src={img_closeBTN} width={20} height={20} /></div>
     <div className="lb_tp_padding">
     <div className="lb_transfer_payment_header_container"><div className="lb_transfer_payment_header"><b>Transfer <br/> {purchase_amount} {selectedOption} to</b></div>
-    <div className="lb_tp_timer"> <CircularCountdownTimer    duration={900}
+    <div className="lb_tp_timer"> <CircularCountdownTimer onOrderExpired={setOrderExpired_func} duration={40}
         updateInterval={1000}
         diameter={70}
         borderThickness={10}></CircularCountdownTimer> </div>
@@ -610,6 +670,22 @@ async function startTransferPayment(){
    
     </div>
     </div>
+)}
+
+{orderExpired && (
+    <div className="lb_game_logo lb_orderExpired_modal_div">
+        <div className="lb_tp_padding">
+            <br/><br/><br/><br/>
+        <div className="lb_transfer_payment_header lb_txt_only_color_white"><b>Order has <br/> Expired!</b></div>
+        <br/>
+        <div className="lb_odf_txtPadding1">
+        No payment was detected within the given time. To pay for your order, please restart the payment process.
+        </div>
+        <div className="lb_margin_top_10"><button onClick={()=>{setIsTransferModalActive(false); stopTimer()}} class="apes-btn-primary blackColor lb_background_white" data-v-2a374f33="">Back</button></div>
+        </div>
+    </div>
+)}
+
     </div>
 </div>
         )}
@@ -844,7 +920,10 @@ async function startTransferPayment(){
         <span> $GVERSE</span>
       </div>
       </div>
-          <input  className="lb_sales_amount_input lb_sales_amount_input_border" value={total} type="text" disabled/>     
+      {gverseRateloading && (
+         <div className="lb_loader_in_input"><ColorRing className="spinner lb_game_logo" visible={gverseRateloading} height="30" width="30" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}></ColorRing></div>
+      )}
+          <input  className={`lb_sales_amount_input lb_sales_amount_input_border ${gverseRateloading ? "lb_display_none" : "lb_display_block"}`} value={total} type="text" disabled/>     
           </div></div>
 
           <div class="sale__exchange-info lb_with_100p"><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MINIMUM BUY</span> $250</div></div><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MAX</span> $25,000</div></div></div>

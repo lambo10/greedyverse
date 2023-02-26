@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './CircularCountDown.css'
+import './CircularCountDown.css';
 
-const CircularCountdownTimer = ({ duration, updateInterval, diameter, borderThickness }) => {
+const CircularCountdownTimer = ({ duration, updateInterval, diameter, borderThickness, onOrderExpired }) => {
   const [timeRemaining, setTimeRemaining] = useState(duration);
 
   useEffect(() => {
+    if (timeRemaining <= 0) {
+      handleOrderExpired();
+      return;
+    }
+
     const interval = setInterval(() => {
       setTimeRemaining(prevTimeRemaining => prevTimeRemaining - updateInterval / 1000);
     }, updateInterval);
 
     return () => clearInterval(interval);
-  }, [duration, updateInterval]);
+  }, [duration, updateInterval, timeRemaining]);
+
+  const handleOrderExpired = () => {
+    clearInterval();
+    onOrderExpired(true);
+  };
 
   const calculateBorderAngle = () => {
     const percentageRemaining = timeRemaining / duration;
@@ -24,6 +34,9 @@ const CircularCountdownTimer = ({ duration, updateInterval, diameter, borderThic
     strokeDashoffset: '90',
     strokeWidth: `${borderThickness}px`,
   };
+
+  const minutes = Math.floor(timeRemaining / 60);
+  const seconds = Math.floor(timeRemaining % 60);
 
   return (
     <svg width={diameter} height={diameter} viewBox="0 0 100 100">
@@ -44,8 +57,8 @@ const CircularCountdownTimer = ({ duration, updateInterval, diameter, borderThic
         strokeWidth={`${borderThickness}px`}
         style={borderStyle}
       />
-      <text x="50" y="50" textAnchor="middle" dominantBaseline="central">
-        {timeRemaining.toFixed(0)}
+      <text x="50" y="50" textAnchor="middle" dominantBaseline="central" fontSize="20">
+        {`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}
       </text>
     </svg>
   );
@@ -56,6 +69,7 @@ CircularCountdownTimer.propTypes = {
   updateInterval: PropTypes.number.isRequired,
   diameter: PropTypes.number.isRequired,
   borderThickness: PropTypes.number.isRequired,
+  onOrderExpired: PropTypes.func.isRequired,
 };
 
 export default CircularCountdownTimer;
