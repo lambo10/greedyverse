@@ -129,6 +129,10 @@ const SeedSaleSection = () => {
         }
       }, [remainingTime]);
 
+      useEffect(() => {
+        handleInputChange2();
+      }, [rate]);
+
     const networks = {
         eth:{
             chainId: `0x${Number(1).toString(16)}`,
@@ -183,11 +187,11 @@ const SeedSaleSection = () => {
         setTimeout(() => {
                   setVisible(true);
                 }, 500); 
-    
-                setTimeout(() => {
-                    setShowPanel(false);
-                    setVisible(false);
-                  }, 4000); 
+    }
+
+    function closePaymentSuccessfull(){
+        setVisible(false);
+        setShowPanel(false);
     }
 
     const networkschanged = () => {
@@ -297,6 +301,13 @@ const SeedSaleSection = () => {
     }
   };
 
+  const handleInputChange2 = () => {
+    setPurchase_amount(purchase_amount);
+    setTotal(purchase_amount * rate);
+    if(isMobileDevice){
+        setBuyBtnActive(true);
+    }
+  };
 
   const getRate_from_api = async () => {
     setGverseRateloading(true);
@@ -721,7 +732,7 @@ async function startTransferPayment(){
     </div>
     <br/>
     <div className='lb_txt_only_color_white'><h3>Payment Successfull</h3></div>
-    <div><a href='' className='lb_remove_text_decoration lb_txt_orange'><b>Dashboard</b></a></div>
+    <div><a href='/dashoard' className='lb_remove_text_decoration lb_txt_orange'><b>Dashboard</b></a></div>
     </div>
 
 )}
