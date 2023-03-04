@@ -25,39 +25,45 @@ import CircularCountdownTimer from "../components/circlerCountDown/CircularCount
 import QRCodeGenerator from "./QRCodeGenerator";
 import axios from 'axios';
 // import WalletConnectProvider from "@walletconnect/web3-provider";
+import CountdownTimer from './CountdownTimer';
+// import TranslateApp from "../Layout/TranslateApp";
+import NotificationModal from '../Layout/NotificationModal';
 
 
 
 const SeedSaleSection = () => {
   const [isTransferModalActive, setIsTransferModalActive] = useState(false);
-  const [isNetworkInputSelectedOption, setNetworkInputSelectedOption] = useState("USDT ERC20");
+  const [isNetworkInputSelectedOption, setNetworkInputSelectedOption] = useState("BUSD BEB20");
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [isInCorrectNetwork, setIsInCorrectNetwork] = useState(false);
   const [account, setAccount] = useState(null); 
-  const seedSaleAddressETH = "";
-  const seedSaleAddress = "0x07731BC0c5D220FCAfeEcFb775B2935A64B03483";
+  const seedSaleAddressETH = "0x6F155F1cB165635e189062a3e6e3617184E52672";
+  const seedSaleAddress = "0x8ad2B931A9aB12caA19DdBe9b4cdF69a9f261374";
   const BusdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
   const UsdtAddress = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
   const [purchase_amount, setPurchase_amount] = useState(0);
   const [rate, setRate] = useState(0);
   const [total, setTotal] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(() => {return "USDT"});
+  const [selectedOption, setSelectedOption] = useState(() => {return "BUSD"});
   const [isMobileDevice, setIsMobileDevice] = useState(false);
   const [email, setEmail] = useState(""); 
   const [erroMsg, setErroMsg] = useState("");
+  const [notificationMsg, setNotificationMsg] = useState(null);
+  const [isnotificationModalOpen, setIsnotificationModalOpen] = useState(false);
   const [buyBtnActive, setBuyBtnActive] = useState(false);
   const [IsApprovalRequestNotDone, setIsApprovalRequestNotDone] = useState(false);
   const [IsBuyRequestNotDone, setIsBuyRequestNotDone] = useState(false);
   const [purchaseBalance, setPurchaseBalance] = useState(0);
   const [visible, setVisible] = useState(false);
   const [showPanel, setShowPanel] = useState(false);
-  const [isNetworkInputSelectedOptionImg, setNetworkInputSelectedOptionImg] = useState(img_usdt);
+  const [isNetworkInputSelectedOptionImg, setNetworkInputSelectedOptionImg] = useState(img_busd);
   const [gen_address, setGen_address] = useState("");
   const [minPurchaseAmount, setMinPurchaseAmount] = useState(1);
   const timerIdRef = useRef(null);
   const [remainingTime, setRemainingTime] = useState(900); // Time to run the function for (in seconds)
   const [orderExpired, setOrderExpired] = useState(false);
   const [gverseRateloading, setGverseRateloading] = useState(false);
+  const [firstTimeLoad, setFirstTimeLoad] = useState(false);
   const ref = useRef(null);
   const iconStyling = {
     width: "30px",
@@ -79,17 +85,20 @@ const SeedSaleSection = () => {
 
   useEffect(() => {
   
+   try{
     if (!window.ethereum) {
-        setIsMobileDevice(true);
-    }else{
-        if(!isMobileDevice){
-        window.ethereum.on("chainChanged",networkschanged);
-        getRate();
-    }else{
-        setBuyBtnActive(true);
-        getRate_from_api();
-    }
+      setIsMobileDevice(true);
+      setBuyBtnActive(true);
+      getRate_from_api();
+  }else{
+      // checkAlreadyLogedIn();
+      window.ethereum.on("chainChanged",networkschanged);
+      getRate();
+ }
+   }catch(e){
+    console.log(e);
    }
+   
 
    return () => {
     stopTimer();
@@ -99,8 +108,11 @@ const SeedSaleSection = () => {
 
     useEffect(() => {
         if(!isMobileDevice){
+          if(firstTimeLoad){
             handleOptionChange_sub();
-        getRate();
+          }else{
+            setFirstTimeLoad(true);
+          }
         
         if(selectedOption.localeCompare("BUSD") == 0 || selectedOption.localeCompare("USDT") == 0){
             setBuyBtnActive(false);
@@ -132,6 +144,23 @@ const SeedSaleSection = () => {
       useEffect(() => {
         handleInputChange2();
       }, [rate]);
+
+      useEffect(() => {
+        if(notificationMsg != null){
+          setIsnotificationModalOpen(true);
+        }
+      }, [notificationMsg]);
+
+      function checkAlreadyLogedIn(){
+        try{
+          if(window.ethereum.selectedAddress == null || window.ethereum.selectedAddress === ""){
+          }else{
+            handleconnect();
+          }
+        }catch(e){
+          console.log(e);
+        }
+      }
 
     const networks = {
         eth:{
@@ -196,9 +225,9 @@ const SeedSaleSection = () => {
 
     const networkschanged = () => {
         setErroMsg();
-        const element = ref.current;
-        setSelectedOption(element.value);
-        getRate(element.value);
+        // const element = ref.current;
+        // setSelectedOption(element.value);
+        getRate();
     }
 
   
@@ -230,6 +259,7 @@ const SeedSaleSection = () => {
         window.ethereum.request({method: 'eth_requestAccounts'}).then(result => {
             setAccount(result[0]);
             setIsWalletConnected(true);
+            handleOptionChange_sub();
         });
     }else{
         setIsWalletConnected(false);
@@ -419,14 +449,47 @@ const SeedSaleSection = () => {
     setErroMsg("");
   };
 
-  const handleOptionChange_sub = () => {
+  const handleOptionChange_sub = async () => {
     try{
 
             if(selectedOption.localeCompare("BUSD") == 0 || selectedOption.localeCompare("BNB") == 0){
-                if(window.ethereum.networkVersion != 56){
-                    handleNetworkChange("bsc");
+
+                      const networkId = 56; // replace with the ID of the network you want to switch to
+
+                      if (window.ethereum) {
+                        // Request account access if needed
+                        await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+                        // Switch the network
+                        await window.ethereum.request({
+                          method: 'wallet_switchEthereumChain',
+                          params: [{ chainId: `0x${networkId.toString(16)}` }]
+                        });
+
+                        getRate();
+                      } else {
+                        setErroMsg('Metamask not detected');
+                      }
+
+                }else{
+                    const networkId = 1; // replace with the ID of the network you want to switch to
+
+                    if (window.ethereum) {
+                      // Request account access if needed
+                      await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+                      // Switch the network
+                      await window.ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: `0x${networkId.toString(16)}` }]
+                      });
+
+                      getRate();
+                    } else {
+                      setErroMsg('Metamask not detected');
+                    }
                 }
-            }
+            
         
       }catch(e){
         setErroMsg(e);
@@ -466,9 +529,11 @@ const SeedSaleSection = () => {
             var error = e.toString();
             setErroMsg(error);
         }
+        }else{
+          handleOptionChange_sub();
         }
     }else{
-        setErroMsg("Pls Connect Wallet")
+        setErroMsg("Please Connect Wallet")
     }
     
   };
@@ -496,6 +561,7 @@ const SeedSaleSection = () => {
             setIsInCorrectNetwork(false);
             return false;
         }
+
      
     } catch (error) {
       setErroMsg(error);
@@ -543,7 +609,7 @@ const SeedSaleSection = () => {
   async function handleCopyClick(txt,type) {
     try{
         await handleCopy(txt);
-        alert(type+" Copied successfully");
+        setNotificationMsg(type+" Copied successfully");
     
     }catch(e){
         console.log("copy erro",e);
@@ -573,6 +639,7 @@ const startTimer = (tmpWalletRequest) => {
   };
 
 async function startPaymentReciveChecks(new_tmp_wallet_request){
+  setErroMsg("");
     const check_seed_sale_payments = await axios.get("https://greedyverse.co/api/check_seedSale_payments.php?gen_address="+new_tmp_wallet_request.data.gen_address+"&email="+email+"&token="+selectedOption+"&amount="+purchase_amount);
       
        if (check_seed_sale_payments.data.success) {
@@ -587,7 +654,7 @@ const setOrderExpired_func = (_state) => {
 }
 
 async function startTransferPayment(){
-
+  setErroMsg("");
     setOrderExpired_func(false);
    try{
    if(email === '' || email == null){
@@ -613,6 +680,11 @@ async function startTransferPayment(){
    }
   }
 
+  const closeNotificationModal = () => {
+    setIsnotificationModalOpen(false);
+    setNotificationMsg(null);
+  }
+
  
   return (
     // <div className="container-fluid lb_hero_bg" data-v-2a374f33="">
@@ -623,6 +695,16 @@ async function startTransferPayment(){
         height: "auto",
       }}
     >
+{/* 
+      <div className="">
+      <TranslateApp/>
+      </div> */}
+
+      <div>
+      {isnotificationModalOpen && (
+        <NotificationModal isOpen={isnotificationModalOpen} text={notificationMsg} zIndex={2000} onClose={closeNotificationModal}/>
+      )}
+      </div>
       
 
         <div >
@@ -636,7 +718,7 @@ async function startTransferPayment(){
         <div onClick={()=>{setIsTransferModalActive(false); stopTimer()}} className="lb_txt_right lb_modalCloseBTN"><img src={img_closeBTN} width={20} height={20} /></div>
     <div className="lb_tp_padding">
     <div className="lb_transfer_payment_header_container"><div className="lb_transfer_payment_header"><b>Transfer <br/> {purchase_amount} {selectedOption} to</b></div>
-    <div className="lb_tp_timer"> <CircularCountdownTimer onOrderExpired={setOrderExpired_func} duration={40}
+    <div className="lb_tp_timer"> <CircularCountdownTimer onOrderExpired={setOrderExpired_func} duration={900}
         updateInterval={1000}
         diameter={70}
         borderThickness={10}></CircularCountdownTimer> </div>
@@ -732,7 +814,7 @@ async function startTransferPayment(){
     </div>
     <br/>
     <div className='lb_txt_only_color_white'><h3>Payment Successfull</h3></div>
-    <div><a href='/dashoard' className='lb_remove_text_decoration lb_txt_orange'><b>Dashboard</b></a></div>
+    <div className="lb_padding_top_15"><a href='/dashoard' className='lb_remove_text_decoration lb_ps_dashboard_btn'><b>Dashboard</b></a></div>
     </div>
 
 )}
@@ -756,14 +838,25 @@ async function startTransferPayment(){
           />
           <div className="lb_padding20">
             <div
-              className="lb_sale1_section supercellmagic_font text-uppercase text-white mb-xl-0 "
+              className="lb_sale1_section text-white mb-xl-0 "
               data-v-2a374f33=""
             >
-              <span className="text-yellow ">GreedyVerse</span> is an innovative
+
+              {/* <span className="text-yellow ">GreedyVerse</span> is an innovative
               gamefi project building the next generation of Play-to-earn games
               that are fun and immersive, starting with GREEDY CLANS - A
               multiplayer real-time battle strategy game built on the blockchain
               where players can build, battle, earn and connect. Our <a className="lb_txt_orange lb_remove_text_decoration" href="https://greedyverse.gitbook.io/white-paper/introduction/problems-with-crypto-games-and-our-solutions">SOLUTIONS</a>.
+             */}
+
+             <div className="supercellmagic_font text-uppercase text-white lb_txt_size_20">
+             BUILDING THE WORLD’S LARGEST COLLECTION OF FUN PLAY-TO-EARN GAMES.
+             </div>
+             <br/>
+             <div className="">
+                  Backed by the PixelDat Studio, <span className="text-yellow ">GreedyVerse</span> is building the world’s largest collection of fun and immersive play-to-earn games powered by the <span className="text-yellow ">GVERSE token</span>, starting with the Greedy Clans - a multiplayer real-time battle strategy game where players can build, battle, earn and connect. Invest in the future of Gamefi
+             </div>
+            
             </div>
           </div>
           <a href="https://greedyverse.gitbook.io/white-paper">
@@ -844,32 +937,64 @@ async function startTransferPayment(){
             className="lb_sale2_section supercellmagic_font text-uppercase text-white mb-xl-0"
             data-v-2a374f33=""
           >
-            <span className="">SeedSale</span>
+            <span className="">Private Sale</span>
           </div>
-          <div className="lb_txt_size_12 lb_padding_top_15 lb_txt_color_orange2">
-          Buy any amount with USDT (min. 50 USDT)
-          </div>
+
+         <div className="lb_txt_only_color_white lb_txt_size_17 lb_padding_top_10">
+          <div>Starts In</div>
+         <b><CountdownTimer className="" targetDate="2023-03-04T23:59:59Z" /></b>
+         </div>
          
-          <div className="lb_padding_top_5 lb_txt_color_white_only">
-          Buy 0.2 BNB in tokens to earn 1 NFT
-          </div>
           {!isMobileDevice && (
             <div>
-          <div className="lb_padding_top_15">
+          <div className="lb_padding_top_15_real">
           {!isWalletConnected && (
-          <a id="connect" onClick={() => handleconnect()} className="lb_connect_wallet_txt lb_remove_text_decoration lb_cusor_pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet" viewBox="0 0 16 16"> <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"></path> </svg>
-                    &nbsp; Connect Wallet
-            </a>
+          // <a id="connect" onClick={() => handleconnect()} className="lb_connect_wallet_txt lb_remove_text_decoration lb_cusor_pointer">
+          //                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet" viewBox="0 0 16 16"> <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"></path> </svg>
+          //           &nbsp; Connect Wallet
+          //   </a>
+            <div onClick={() => handleconnect()} className="lb_txt_center lb_cusor_pointer"><div className="lb_game_logo lb_walletAddress"><div className="lb_game_logo lb_txt_size_12 lb_txt_only_color_white"><b>
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet" viewBox="0 0 16 16"> <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"></path> </svg>
+         &nbsp; Connect Wallet
+              
+              </b></div></div></div>
           )}
           {isWalletConnected && (
-            <div><div className="lb_txt_color_white_only">Wallet Address</div><div className="lb_txt_size_20 lb_txt_color_lightGreen"><b>{account.slice(0,4)+"..."+account.slice((account.length-4),account.length)}</b></div><div><button onClick={() => setIsWalletConnected(false)} className="lb_logout_btn">Disconnect</button></div></div>
-          )}
+            // <div><div className="lb_txt_color_white_only">Wallet Address</div><div className="lb_txt_size_20 lb_txt_color_lightGreen"><b>{account.slice(0,4)+"..."+account.slice((account.length-4),account.length)}</b></div><div><button onClick={() => {setIsWalletConnected(false); window.ethereum.disconnect();}} className="lb_logout_btn">Disconnect</button></div></div>
+            <div className="lb_txt_center"><div className="lb_game_logo lb_walletAddress"><div className="lb_game_logo lb_txt_size_17 lb_txt_only_color_white"><b>{account.slice(0,4)+"..."+account.slice((account.length-4),account.length)}</b> <button onClick={() => {setIsWalletConnected(false); window.ethereum.disconnect();}} className="lb_logout_btn2"><img src={img_closeBTN} width={20} height={20} /></button></div></div></div>
+         )}
           </div>
           </div>
           )}
+
+<div className="lb_2sideBTN_row lb_padding_top_10">
+          <div className="lb_2sideBTN lb_align-self_start">
+
+          <div className="lb_width_100P lb_txt_only_color_white lb_txt_size_12 ">Private sale</div>
+            <div className="">
+            <b><span className="gradient_txt_color">$0.0002</span></b>
+            </div>
+           
+          </div>
+          <div className="lb_2sideBTN lb_align-self_end">
+          <div className="lb_width_100P lb_txt_only_color_white lb_txt_size_12">Listing Price</div>
+            <div className="">
+            <b><span className="gradient_txt_color">$0.0008</span></b>
+            </div>
+          </div>
+        </div>
+
+          <div className="lb_txt_center lb_padding_top_15_real">
+            <div className="lb_game_logo lb_txt_color_orange2">
+            <b>15,051,423</b> <span> Tokens sold</span>
+            </div>
           
-          <div className="lb_padding_top_15">
+          </div>
+
+         
+          
+          <div className="lb_padding_top_10">
             <div className="input-with-select">
               
 <div className="dropdown">
@@ -892,6 +1017,7 @@ async function startTransferPayment(){
           </svg>
         </span>
       </div>
+      {isMobileDevice && (
       <div className={`dropText ${dispCurrencyOptions ? "lb_display_block" : ""}`}>
         <a href="#" onClick={() => handleOptionChange("USDT","USDT ERC20")}>
           <img src={img_usdt} width="20" height="20" /> USDT ERC20
@@ -906,6 +1032,23 @@ async function startTransferPayment(){
           <img src={img_bnb} width="20" height="20" /> BNB BEB20
         </a>
       </div>
+      )}
+       {!isMobileDevice && (
+      <div className={`dropText ${dispCurrencyOptions ? "lb_display_block" : ""}`}>
+        {/* <a href="#" onClick={() => handleOptionChange("USDT","USDT ERC20")}>
+          <img src={img_usdt} width="20" height="20" /> USDT ERC20
+        </a>
+        <a href="#" onClick={() => handleOptionChange("ETH","ETH ERC20")}>
+          <img src={img_eth} width="20" height="20" /> ETH ERC20
+        </a> */}
+        <a href="#" onClick={() => handleOptionChange("BUSD","BUSD BEB20")}>
+          <img src={img_busd} width="20" height="20" /> BUSD BEB20
+        </a>
+        <a href="#" onClick={() => handleOptionChange("BNB","BNB BEB20")}>
+          <img src={img_bnb} width="20" height="20" /> BNB BEB20
+        </a>
+      </div>
+      )}
     </div>
 
           <input onChange={handleInputChange}  className="lb_sales_amount_input lb_sales_amount_input_border" type="text" placeholder="Eg: 1000"/>       
@@ -937,7 +1080,30 @@ async function startTransferPayment(){
           <input  className={`lb_sales_amount_input lb_sales_amount_input_border ${gverseRateloading ? "lb_display_none" : "lb_display_block"}`} value={total} type="text" disabled/>     
           </div></div>
 
-          <div class="sale__exchange-info lb_with_100p"><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MINIMUM BUY</span> $250</div></div><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MAX</span> $25,000</div></div></div>
+          <div class="sale__exchange-info lb_with_100p"><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MINIMUM BUY</span> $200</div></div><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MAX</span> $25,000</div></div></div>
+         
+
+          {/* {!isMobileDevice && (
+          <div className="lb_dapp_Notice">
+            <div>How to buy</div>
+            <div>1. Connect wallet</div>
+            <div>2. Input desired amount</div>
+            <div>3. Approve transactions</div>
+            <div>4. Swap for $GVERSE tokens</div>
+          </div>
+          )}
+
+          {isMobileDevice && (
+          <div className="lb_dapp_Notice">
+            <div>How to buy</div>
+            <div>1. Input desired amount</div>
+            <div>2. Enter email address</div>
+            <div>3. Send tokens to the wallet shown</div>
+            <div>4. Wait for transaction confirmation</div>
+          </div>
+          )} */}
+
+        
 
           {isMobileDevice && (
              <div className="lb_padding_top_10">
@@ -951,31 +1117,65 @@ async function startTransferPayment(){
         
 
           {erroMsg && (
-            <div className="lb_padding_top_5 lb_txt_orange">
+            <div className="lb_padding_top_5 lb_txt_red">
             <div className="">{erroMsg}</div>
             </div>
           )}
 
-
-
-          <div className="lb_padding_top_5 lb_txt_color_lightGreen">
-          <Link to="/dashoard" className="lb_txt_e_dashoard_link"><div className="">Enter Dashboard{`>>`} </div></Link>
-          </div>
-
           {(!isMobileDevice && (selectedOption.localeCompare("USDT") == 0 || selectedOption.localeCompare("BUSD") == 0)) && (
           <div>
-            {(buyBtnActive || IsApprovalRequestNotDone) ? (<div className="lb_padding_top_15"><button className="lb_logout_btn lb_approve_btn_inactive"><ColorRing className="spinner" visible={IsApprovalRequestNotDone} height="30" width="30" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}></ColorRing><b>Approve</b></button></div>):(<div className="lb_padding_top_15"><button onClick={() => handle_busd_Usdt_approval_expenditure(selectedOption)} className="lb_logout_btn lb_approve_btn"><b>Approve</b></button></div>)}
+            {(buyBtnActive || IsApprovalRequestNotDone) ? (<div className="lb_padding_top_10"><button className="lb_logout_btn lb_approve_btn_inactive"><ColorRing className="spinner" visible={IsApprovalRequestNotDone} height="30" width="30" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}></ColorRing><b>Approve</b></button></div>):(<div className="lb_padding_top_10"><button onClick={() => handle_busd_Usdt_approval_expenditure(selectedOption)} className="lb_logout_btn lb_approve_btn"><b>Approve</b></button></div>)}
           </div>
           )}
+          
           <div className="lb_padding_top_15">
               
           {buyBtnActive ? (<div onClick={handleBuyClick1} className="lb_saleBTN lb_game_logo">Buy now</div>):(<div className="lb_saleBTN_inactive lb_game_logo"><ColorRing className="spinner" visible={IsBuyRequestNotDone} height="30" width="30" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}></ColorRing>Buy now</div>)}
                 
            
           </div>
-          <div className="lb_txt_size_12 lb_padding_top_15 lb_txt_color_orange2">
-          15,051,423 tokens sold
+
+          {/* <div className="lb_2sideBTN_row lb_padding_top_15">
+          <div className="lb_2sideBTN lb_align-self_start">
+            <div className="lb_2sideBTN_design lb_dapp_grey">
+            <b><span className="lb_txt_only_color_white">15,051,423</span></b>
+            </div>
+            <div className="lb_width_100P lb_txt_only_color_white lb_txt_size_12 ">tokens sold</div>
           </div>
+          <div className="lb_2sideBTN lb_align-self_end">
+            <div className="lb_2sideBTN_design">
+            <b>Dashboard</b>
+            </div>
+            <Link to="/dashoard" className="lb_txt_e_dashoard_link"><div className="lb_width_100P lb_txt_only_color_white lb_txt_size_12">Enter dashboard</div></Link>
+          </div>
+        </div> */}
+
+
+        <div className="lb_txt_center lb_padding_top_10">
+
+        <Link to="/dashoard" className="lb_txt_e_dashoard_link lb_cusor_pointer">
+            <div className="lb_dashboardBTN lb_game_logo">
+            <b>Enter Dashboard</b>
+            </div>
+        </Link>
+
+          </div>
+
+
+          <div className="lb_2sideBTN_row lb_padding_top_15">
+          <div className="lb_2sideBTN_45 lb_align-self_start">
+            <div className="">
+            <b><a href="https://greedyverse.gitbook.io/white-paper/other-links/how-to-buy" className="lb_txt_only_color_white lb_cusor_pointer lb_txt_only_color_orange_onHover">How to buy?</a></b>
+            </div>
+          </div>
+          <div className="lb_2sideBTN_45 lb_align-self_end">
+            <div className="">
+            <b><a className="lb_txt_only_color_white lb_cusor_pointer lb_txt_only_color_orange_onHover">New to crypto?</a></b>
+            </div>
+          </div>
+        </div>
+
+
         </div>
       </div>
 
@@ -986,14 +1186,18 @@ async function startTransferPayment(){
         <div className="blackColor ml-2" data-v-2a374f33="">
           <div className="lb_padding20">
             <div
-              className="lb_sale1_section supercellmagic_font text-uppercase text-white mb-xl-0 "
+              className="lb_sale1_section text-white mb-xl-0 "
               data-v-2a374f33=""
             >
-              <span className="text-yellow ">GreedyVerse</span> is an innovative
-              gamefi project building the next generation of Play-to-earn games
-              that are fun and immersive, starting with GREEDY CLANS - A
-              multiplayer real-time battle strategy game built on the blockchain
-              where players can build, battle, earn and connect. Our <a className="lb_txt_orange lb_remove_text_decoration" href="https://greedyverse.gitbook.io/white-paper/introduction/problems-with-crypto-games-and-our-solutions">SOLUTIONS</a>.
+              
+              <div className="supercellmagic_font text-uppercase text-white lb_txt_size_20">
+             BUILDING THE WORLD’S LARGEST COLLECTION OF FUN PLAY-TO-EARN GAMES.
+             </div>
+             <br/>
+             <div className="">
+                  Backed by the PixelDat Studio, <span className="text-yellow ">GreedyVerse</span> is building the world’s largest collection of fun and immersive play-to-earn games powered by the <span className="text-yellow ">GVERSE token</span>, starting with the Greedy Clans - a multiplayer real-time battle strategy game where players can build, battle, earn and connect. Invest in the future of Gamefi
+             </div>
+
              </div>
           </div>
           <a href="https://greedyverse.gitbook.io/white-paper">
@@ -1078,6 +1282,7 @@ async function startTransferPayment(){
           </div>
         </div>
       </div>
+
     </div>
   );
 };

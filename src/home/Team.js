@@ -6,6 +6,10 @@ import img_dbb7bef from "../img/cT3.jpeg";
 
 import img_d59cb2a from "../img/cT4.jpeg";
 import img_e2a0668 from "../img/cT5.jpeg";
+import { BsTelegram } from "react-icons/bs";
+import { BsTwitter } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
+import { BsLinkedin } from "react-icons/bs";
 
 const Team = () => {
   return (
@@ -18,7 +22,7 @@ const Team = () => {
           className="heading-5 burbank text-white fw-bold text-center text-uppercase"
           data-v-107fd072=""
         >
-          CORE TEAM<span className="lb_kyc_txt"> (kyc)</span>
+          CORE TEAM<span className="lb_kyc_txt"> (kyc'd)</span>
         </h1>
       </div>
 
@@ -44,6 +48,19 @@ const Team = () => {
           <div className="fw-bold pt-4" data-v-107fd072="">
             <p data-v-107fd072="">Franklin C</p>
             <p data-v-107fd072="" className="lb_txt_orange">Co-Founder/COO</p>
+            <p data-v-107fd072="">
+              <span>
+              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+             <BsLinkedin width={50} height={50} />
+              </a>
+              </span>
+              &nbsp;&nbsp;
+              <span>
+              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+             <BsTwitter width={50} height={50} />
+              </a>
+              </span>
+              </p>
           </div>
         </div>
         <div data-v-107fd072="">
@@ -64,6 +81,19 @@ const Team = () => {
           <div className="fw-bold pt-4" data-v-107fd072="">
             <p data-v-107fd072="">Lambert N</p>
             <p data-v-107fd072="" className="lb_txt_orange">Co-Founder/CTO</p>
+            <p data-v-107fd072="">
+              <span>
+              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+             <BsGithub width={50} height={50} />
+              </a>
+              </span>
+              &nbsp;&nbsp;
+              <span>
+              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+             <BsTelegram width={50} height={50} />
+              </a>
+              </span>
+              </p>
           </div>
         </div>
         <div data-v-107fd072="">
@@ -84,6 +114,13 @@ const Team = () => {
           <div className="fw-bold pt-4" data-v-107fd072="">
             <p data-v-107fd072="">Taofiq I</p>
             <p data-v-107fd072="" className="lb_txt_orange">CMO</p>
+            <p data-v-107fd072="">
+              <span>
+              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+             <BsTelegram width={50} height={50} />
+              </a>
+              </span>
+              </p>
           </div>
         </div>
         <div data-v-107fd072="">
@@ -104,6 +141,13 @@ const Team = () => {
           <div className="fw-bold pt-4" data-v-107fd072="">
             <p data-v-107fd072="">Peter O</p>
             <p data-v-107fd072="" className="lb_txt_orange">Project Manager</p>
+            <p data-v-107fd072="">
+              <span>
+              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+             <BsTelegram width={50} height={50} />
+              </a>
+              </span>
+              </p>
           </div>
         </div>
 
@@ -125,6 +169,13 @@ const Team = () => {
           <div className="fw-bold pt-4" data-v-107fd072="">
             <p data-v-107fd072="">Binh D</p>
             <p data-v-107fd072="" className="lb_txt_orange">Studio Director</p>
+            <p data-v-107fd072="">
+              <span>
+              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+             <BsTelegram width={50} height={50} />
+              </a>
+              </span>
+              </p>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import colors from "../constants/colors";
 import NavSm from "./NavSm";
 import { motion } from "framer-motion";
 import { BiMenu } from "react-icons/bi";
+// import TranslateApp from "../Layout/TranslateApp";
 
 const Nav = () => {
   const [show, setShow] = useState(true);
@@ -74,6 +75,7 @@ const Nav = () => {
           </NavMenu>
         </div>
       </NavContainer>
+      {/* <TranslateApp /> */}
       <NavIcon onClick={() => setIsAnimating((prev) => !prev)}>
         <BiMenu size={30} color={colors.white} />
       </NavIcon>

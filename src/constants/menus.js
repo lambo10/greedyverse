@@ -4,11 +4,11 @@ const menus = [
     name: "Home",
     path: "/",
   },
-  {
-    id: 2,
-    name: "Seed Sale",
-    path: "/seedsale",
-  },
+  // {
+  //   id: 2,
+  //   name: "Private Sale",
+  //   path: "/privatesale",
+  // },
   {
     id: 3,
     name: "Utilities",
