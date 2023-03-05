@@ -568,11 +568,17 @@ p[data-v-3942c62a] {
 .lb_padding_top_15 {
   padding-top: 25px;
 }
+.lb_padding_top_20 {
+  padding-top: 20px;
+}
 .lb_padding_top_45 {
   padding-top: 45px;
 }
 .lb_padding_bottom_45 {
   padding-bottom: 45px;
+}
+.lb_margin_bottom_30 {
+  padding-bottom: 30px;
 }
 .lb_margin_bottom_20 {
   padding-bottom: 20px;
@@ -1489,7 +1495,7 @@ p[data-v-3942c62a] {
 
 .lb_arrow_position_mobile{
   position: absolute;
-  top: 198px;
+  top: 268px;
   left: 50%;
 }
 
@@ -1872,6 +1878,10 @@ p[data-v-3942c62a] {
   width: 75%;
 }
 
+.lb_txt_uppercase{
+  text-transform: uppercase;
+}
+
 @media (max-width: 767px) {
   .lb_tp_padding{
     padding: 30px 30px 30px 30px;
@@ -1973,6 +1983,9 @@ p[data-v-3942c62a] {
   width: 54px;
   height: 54px;
 }
+.lb_footerOtherCl{
+  padding-top: 40px;
+}
 }
 
 @media (max-width: 990px) {
@@ -2032,7 +2045,7 @@ p[data-v-3942c62a] {
 }
 .lb_arrow_position_mobile{
   position: absolute;
-  top: 218px;
+  top: 268px;
   left: 50%;
 }
 .lb_transfer_payment_modal_div{

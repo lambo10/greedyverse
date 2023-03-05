@@ -50,14 +50,14 @@ const Team = () => {
             <p data-v-107fd072="" className="lb_txt_orange">Co-Founder/COO</p>
             <p data-v-107fd072="">
               <span>
-              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+              <a href="https://www.linkedin.com/in/franklin-chuck-7979ab268/" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
              <BsLinkedin width={50} height={50} />
               </a>
               </span>
               &nbsp;&nbsp;
               <span>
-              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
-             <BsTwitter width={50} height={50} />
+              <a href="https://t.me/GreedyFrank" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+             <BsTelegram width={50} height={50} />
               </a>
               </span>
               </p>
@@ -83,13 +83,13 @@ const Team = () => {
             <p data-v-107fd072="" className="lb_txt_orange">Co-Founder/CTO</p>
             <p data-v-107fd072="">
               <span>
-              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+              <a href="https://github.com/lambo10" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
              <BsGithub width={50} height={50} />
               </a>
               </span>
               &nbsp;&nbsp;
               <span>
-              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+              <a href="https://t.me/greedy_lambert" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
              <BsTelegram width={50} height={50} />
               </a>
               </span>
@@ -116,7 +116,7 @@ const Team = () => {
             <p data-v-107fd072="" className="lb_txt_orange">CMO</p>
             <p data-v-107fd072="">
               <span>
-              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+              <a href="https://t.me/greedy_TQ" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
              <BsTelegram width={50} height={50} />
               </a>
               </span>
@@ -143,7 +143,7 @@ const Team = () => {
             <p data-v-107fd072="" className="lb_txt_orange">Project Manager</p>
             <p data-v-107fd072="">
               <span>
-              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+              <a href="https://t.me/greedypete" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
              <BsTelegram width={50} height={50} />
               </a>
               </span>
@@ -171,7 +171,7 @@ const Team = () => {
             <p data-v-107fd072="" className="lb_txt_orange">Studio Director</p>
             <p data-v-107fd072="">
               <span>
-              <a href="https://t.me/GreedyVerse_Portal" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+              <a href="https://t.me/GreedyBinh" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
              <BsTelegram width={50} height={50} />
               </a>
               </span>

@@ -252,7 +252,7 @@ const Footer = () => {
           RENQ LIMITED
           </div>
           <div>
-          Registration Number: 236483
+          Registration Number: 213559
           </div>
           <div>
           Mahe, Seychelles
@@ -265,7 +265,7 @@ const Footer = () => {
 
         </div>
 
-        <div className="col-md-3">
+        <div className="col-md-3 lb_footerOtherCl">
           <div className="lb_margin_bottom_13 lb_txt_size_20 lb_txt_orange">
             <b>Resources</b>
           </div>
@@ -275,16 +275,16 @@ const Footer = () => {
           <a href="mailto:support@greedyverse.co" className="lb_remove_text_decoration lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">Contact Us</a>
           </div>
           <div className="lb_margin_bottom_13">
-          <a href="" className="lb_remove_text_decoration lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">New To Crypto</a>
+          <a href="https://t.me/GreedyVerse_Support" className="lb_remove_text_decoration lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">New To Crypto</a>
           </div>
           <div className="lb_margin_bottom_13">
-          <a href="https://coinsult.net/projects/greedyverse/" className="lb_remove_text_decoration lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">Audit</a>
+          <a href="https://github.com/Coinsult/solidity/blob/main/Coinsult_Greedyverse_0x6F...2672_Audit.pdf" className="lb_remove_text_decoration lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">Audit</a>
           </div>
           </div>
 
         </div>
 
-        <div className="col-md-3">
+        <div className="col-md-3 lb_footerOtherCl">
           <div className="lb_margin_bottom_13 lb_txt_size_20 lb_txt_orange">
             <b>Agreements</b>
           </div>

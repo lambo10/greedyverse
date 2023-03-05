@@ -54,11 +54,13 @@ const SeedSaleSection = () => {
   const [IsApprovalRequestNotDone, setIsApprovalRequestNotDone] = useState(false);
   const [IsBuyRequestNotDone, setIsBuyRequestNotDone] = useState(false);
   const [purchaseBalance, setPurchaseBalance] = useState(0);
+  const [totalSeedSaleTokenPurchased, setTotalSeedSaleTokenPurchased] = useState(0);
+  const [totalSeedSaleTokenPurchased_loading, setTotalSeedSaleTokenPurchased_loading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [showPanel, setShowPanel] = useState(false);
   const [isNetworkInputSelectedOptionImg, setNetworkInputSelectedOptionImg] = useState(img_busd);
   const [gen_address, setGen_address] = useState("");
-  const [minPurchaseAmount, setMinPurchaseAmount] = useState(1);
+  const [minPurchaseAmount, setMinPurchaseAmount] = useState(100);
   const timerIdRef = useRef(null);
   const [remainingTime, setRemainingTime] = useState(900); // Time to run the function for (in seconds)
   const [orderExpired, setOrderExpired] = useState(false);
@@ -73,6 +75,7 @@ const SeedSaleSection = () => {
     transform: "translateY(-10px)",
   };
   const [dispCurrencyOptions, setdispCurrencyOptions] = useState(false);
+  const privateSaleNotStarted = true;
 
   const toggleOptions = () => {
     setdispCurrencyOptions((prev) => !prev);
@@ -95,6 +98,7 @@ const SeedSaleSection = () => {
       window.ethereum.on("chainChanged",networkschanged);
       getRate();
  }
+ getTotalGverseSold();
    }catch(e){
     console.log(e);
    }
@@ -267,23 +271,23 @@ const SeedSaleSection = () => {
   }
 
   const getPurchaseBalance = async() => {
-    let Provider = new ethers.providers.Web3Provider(window.ethereum);
-    let Contract = null;
-  try{
-    if(selectedOption.localeCompare("USDT") == 0 || selectedOption.localeCompare("ETH") == 0){
-        await checkAndSwitchNetwork();
-         Contract = new ethers.Contract(seedSaleAddressETH,seedSaleAbi,Provider);
-         const _gversePurchases = await Contract.gversePurchases(account);
-         setPurchaseBalance(_gversePurchases["gverseEquivalent"]);
-    }else if(selectedOption.localeCompare("BUSD") == 0 || selectedOption.localeCompare("BNB") == 0){
-        await checkAndSwitchNetworkBNB();
-         Contract = new ethers.Contract(seedSaleAddress,seedSaleAbi,Provider);
-         const _gversePurchases = await Contract.gversePurchases(account);
-         setPurchaseBalance(ethers.utils.formatUnits(_gversePurchases["gverseEquivalent"],'ether'));
-    }
-  }catch(e){
-    console.log("getPurchaseBalance output",e);
-  }
+  //   let Provider = new ethers.providers.Web3Provider(window.ethereum);
+  //   let Contract = null;
+  // try{
+  //   if(selectedOption.localeCompare("USDT") == 0 || selectedOption.localeCompare("ETH") == 0){
+  //       await checkAndSwitchNetwork();
+  //        Contract = new ethers.Contract(seedSaleAddressETH,seedSaleAbi,Provider);
+  //        const _gversePurchases = await Contract.gversePurchases(account);
+  //        setPurchaseBalance(_gversePurchases["gverseEquivalent"]);
+  //   }else if(selectedOption.localeCompare("BUSD") == 0 || selectedOption.localeCompare("BNB") == 0){
+  //       await checkAndSwitchNetworkBNB();
+  //        Contract = new ethers.Contract(seedSaleAddress,seedSaleAbi,Provider);
+  //        const _gversePurchases = await Contract.gversePurchases(account);
+  //        setPurchaseBalance(ethers.utils.formatUnits(_gversePurchases["gverseEquivalent"],'ether'));
+  //   }
+  // }catch(e){
+  //   console.log("getPurchaseBalance output",e);
+  // }
   }
 
   const getRate = async (_selectedOption) => {
@@ -360,12 +364,17 @@ const SeedSaleSection = () => {
   };
 
   const handleBuyClick1 = async ()=>{
+    if(!privateSaleNotStarted){
+      // if(true){
     setBuyBtnActive(false);
     setIsBuyRequestNotDone(true);
 
     if(isMobileDevice){
         startTransferPayment();
     }else{
+
+
+      if(((purchase_amount >= minPurchaseAmount) && (selectedOption === "USDT")) || ((purchase_amount >= minPurchaseAmount) && (selectedOption === "BUSD")) || ((((purchase_amount * rate)/5000) >= minPurchaseAmount) && (selectedOption === "BNB")) || ((((purchase_amount * rate)/5000) >= minPurchaseAmount) && (selectedOption === "ETH"))){
 
     let Provider = new ethers.providers.Web3Provider(window.ethereum);
     let Signer = Provider.getSigner();
@@ -377,6 +386,7 @@ const SeedSaleSection = () => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
+            getTotalGverseSold();
             stopTimer();
             displayPaymentSuccessfull();
             console.log("Transaction output",e);
@@ -391,6 +401,7 @@ const SeedSaleSection = () => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
+            getTotalGverseSold();
             stopTimer();
             displayPaymentSuccessfull();
             console.log("Transaction output",e);
@@ -401,6 +412,7 @@ const SeedSaleSection = () => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
+            getTotalGverseSold();
             stopTimer();
             displayPaymentSuccessfull();
             console.log("Transaction output",e);
@@ -415,6 +427,7 @@ const SeedSaleSection = () => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
+            getTotalGverseSold();
             stopTimer();
             displayPaymentSuccessfull();
             console.log("Transaction output",e);
@@ -430,8 +443,15 @@ const SeedSaleSection = () => {
                     setErroMsg("Transfer failed. Pls try again");
                 }
     }
+}else{
+  setErroMsg("Amount Below Minimum");
 }
-    
+    }
+}else{
+  setNotificationMsg("Private Sale not Started");
+}
+
+
   }
 
   const handleOptionChange = (optionValue,inputTXT) => {
@@ -645,6 +665,7 @@ async function startPaymentReciveChecks(new_tmp_wallet_request){
        if (check_seed_sale_payments.data.success) {
         stopTimer(true);
         setIsTransferModalActive(false);
+        getTotalGverseSold();
       }
 }
 
@@ -662,7 +683,7 @@ async function startTransferPayment(){
     setIsBuyRequestNotDone(false);
     setBuyBtnActive(true);
    }else{
-    if((purchase_amount >= minPurchaseAmount && selectedOption === "USDT") || (purchase_amount >= minPurchaseAmount && selectedOption === "BUSD")){
+    if(((purchase_amount >= minPurchaseAmount) && (selectedOption === "USDT")) || ((purchase_amount >= minPurchaseAmount) && (selectedOption === "BUSD")) || ((((purchase_amount * rate)/5000) >= minPurchaseAmount) && (selectedOption === "BNB")) || ((((purchase_amount * rate)/5000) >= minPurchaseAmount) && (selectedOption === "ETH"))){
         const new_tmp_wallet_request = await axios.get("https://greedyverse.co/api/create_new_tmp_wallet.php?email="+email);
         setGen_address(new_tmp_wallet_request.data.gen_address);
         startTimer(new_tmp_wallet_request);
@@ -684,6 +705,31 @@ async function startTransferPayment(){
     setIsnotificationModalOpen(false);
     setNotificationMsg(null);
   }
+
+  async function getTotalGverseSold(){
+    setTotalSeedSaleTokenPurchased_loading(true);
+      try{
+        const check_seed_sale_payments = await axios.get("https://greedyverse.co/api/checkTotalAmountPurchasedOnSeedSale.php");
+        
+         if (check_seed_sale_payments.data.success) {
+          if(privateSaleNotStarted){
+            setTotalSeedSaleTokenPurchased(0);
+          }else{
+            setTotalSeedSaleTokenPurchased(check_seed_sale_payments.data.amount);
+          }
+
+          setTotalSeedSaleTokenPurchased_loading(false);
+
+        }
+      }catch(e){
+        console.log(e);
+      }
+  }
+
+  function addCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  
 
  
   return (
@@ -813,7 +859,7 @@ async function startTransferPayment(){
       
     </div>
     <br/>
-    <div className='lb_txt_only_color_white'><h3>Payment Successfull</h3></div>
+    <div className='lb_txt_only_color_white'><h3>Payment Successful</h3></div>
     <div className="lb_padding_top_15"><a href='/dashoard' className='lb_remove_text_decoration lb_ps_dashboard_btn'><b>Dashboard</b></a></div>
     </div>
 
@@ -942,7 +988,7 @@ async function startTransferPayment(){
 
          <div className="lb_txt_only_color_white lb_txt_size_17 lb_padding_top_10">
           <div>Starts In</div>
-         <b><CountdownTimer className="" targetDate="2023-03-04T23:59:59Z" /></b>
+         <b><CountdownTimer className="" targetDate="2023-03-06T13:00:00Z" /></b>
          </div>
          
           {!isMobileDevice && (
@@ -987,7 +1033,14 @@ async function startTransferPayment(){
 
           <div className="lb_txt_center lb_padding_top_15_real">
             <div className="lb_game_logo lb_txt_color_orange2">
-            <b>15,051,423</b> <span> Tokens sold</span>
+              {!totalSeedSaleTokenPurchased_loading && (
+                <div><b>{addCommas(totalSeedSaleTokenPurchased)}</b> <span> Tokens sold</span></div>
+              )}
+
+              {totalSeedSaleTokenPurchased_loading && (
+                  <div><ColorRing className="spinner" visible={totalSeedSaleTokenPurchased_loading} height="30" width="30" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}></ColorRing></div>
+                )}
+            
             </div>
           
           </div>
@@ -1026,10 +1079,10 @@ async function startTransferPayment(){
           <img src={img_eth} width="20" height="20" /> ETH ERC20
         </a>
         <a href="#" onClick={() => handleOptionChange("BUSD","BUSD BEB20")}>
-          <img src={img_busd} width="20" height="20" /> BUSD BEB20
+          <img src={img_busd} width="20" height="20" /> BUSD BEP20
         </a>
         <a href="#" onClick={() => handleOptionChange("BNB","BNB BEB20")}>
-          <img src={img_bnb} width="20" height="20" /> BNB BEB20
+          <img src={img_bnb} width="20" height="20" /> BNB BEP20
         </a>
       </div>
       )}
@@ -1080,7 +1133,7 @@ async function startTransferPayment(){
           <input  className={`lb_sales_amount_input lb_sales_amount_input_border ${gverseRateloading ? "lb_display_none" : "lb_display_block"}`} value={total} type="text" disabled/>     
           </div></div>
 
-          <div class="sale__exchange-info lb_with_100p"><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MINIMUM BUY</span> $200</div></div><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MAX</span> $25,000</div></div></div>
+          <div class="sale__exchange-info lb_with_100p"><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MINIMUM BUY</span> $100</div></div><div class="sale__exchange-item"><div class="sale__exchange-text"><span class="sale__exchange-title">MAX</span> $25,000</div></div></div>
          
 
           {/* {!isMobileDevice && (
@@ -1170,7 +1223,7 @@ async function startTransferPayment(){
           </div>
           <div className="lb_2sideBTN_45 lb_align-self_end">
             <div className="">
-            <b><a className="lb_txt_only_color_white lb_cusor_pointer lb_txt_only_color_orange_onHover">New to crypto?</a></b>
+            <b><a href="https://t.me/GreedyVerse_Support" className="lb_txt_only_color_white lb_cusor_pointer lb_txt_only_color_orange_onHover">New to crypto?</a></b>
             </div>
           </div>
         </div>

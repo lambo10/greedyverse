@@ -30,7 +30,7 @@ const indicator = [
     percent: "10.0%",
   },
   {
-    title: "Advisors & Patner",
+    title: "Advisors/Partners",
     color: "#fbae04",
     percent: "5.0%",
   },

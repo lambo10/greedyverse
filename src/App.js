@@ -12,7 +12,8 @@ function App() {
     <BrowserRouter>
       <RootLayout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<SeedSale />} />
           <Route path="/dashoard" element={<Dashboard />} />
           <Route path="/seedsale" element={<SeedSale />} />
           <Route path="/privatesale" element={<SeedSale />} />

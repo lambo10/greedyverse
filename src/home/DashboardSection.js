@@ -461,7 +461,7 @@ const claimTokens = async (_vestingNo) => {
             className="lb_sale2_section supercellmagic_font text-uppercase text-white mb-xl-0"
             data-v-2a374f33=""
           >
-            <span className="">SeedSale</span>
+            <span className="">Private Sale</span>
           </div>
           <div className="lb_padding_top_15 lb_txt_size_20 lb_txt_only_color_white">
           <b>Total $GVERSE</b>
@@ -615,7 +615,7 @@ const claimTokens = async (_vestingNo) => {
             <br/>
             <div className="lb_dashboard_note_txt">
               <span className=""><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 -0.00109863C4.48 -0.00109863 0 4.4789 0 9.9989C0 15.5189 4.48 19.9989 10 19.9989C15.52 19.9989 20 15.5189 20 9.9989C20 4.4789 15.52 -0.00109863 10 -0.00109863ZM10 14.9989C9.45 14.9989 9 14.5489 9 13.9989V9.9989C9 9.4489 9.45 8.9989 10 8.9989C10.55 8.9989 11 9.4489 11 9.9989V13.9989C11 14.5489 10.55 14.9989 10 14.9989ZM11 6.9989H9V4.9989H11V6.9989Z" fill="currentColor"></path></svg> </span>
-               <b>Please Note that your tokens would be available for claim at lunch</b></div>
+               <b>Please note that your tokens would be available for claim when presale ends</b></div>
   
             <div>
             <br/>
