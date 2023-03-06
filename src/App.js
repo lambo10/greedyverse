@@ -17,6 +17,7 @@ function App() {
           <Route path="/dashoard" element={<Dashboard />} />
           <Route path="/seedsale" element={<SeedSale />} />
           <Route path="/privatesale" element={<SeedSale />} />
+          <Route path="/partnersDashboard" element={<Dashboard />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </RootLayout>
