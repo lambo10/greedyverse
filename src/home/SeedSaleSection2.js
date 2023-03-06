@@ -66,6 +66,7 @@ const SeedSaleSection = () => {
   const [orderExpired, setOrderExpired] = useState(false);
   const [gverseRateloading, setGverseRateloading] = useState(false);
   const [firstTimeLoad, setFirstTimeLoad] = useState(false);
+  const [amountBelowMinimum, setAmountBelowMinimum] = useState(false);
   const ref = useRef(null);
   const iconStyling = {
     width: "30px",
@@ -75,7 +76,7 @@ const SeedSaleSection = () => {
     transform: "translateY(-10px)",
   };
   const [dispCurrencyOptions, setdispCurrencyOptions] = useState(false);
-  const privateSaleNotStarted = true;
+  const privateSaleNotStarted = false;
 
   const toggleOptions = () => {
     setdispCurrencyOptions((prev) => !prev);
@@ -217,6 +218,7 @@ const SeedSaleSection = () => {
 
     function displayPaymentSuccessfull(){
         setShowPanel(true);
+        setAmountBelowMinimum(false);
         setTimeout(() => {
                   setVisible(true);
                 }, 500); 
@@ -264,6 +266,7 @@ const SeedSaleSection = () => {
             setAccount(result[0]);
             setIsWalletConnected(true);
             handleOptionChange_sub();
+            setErroMsg();
         });
     }else{
         setIsWalletConnected(false);
@@ -323,6 +326,7 @@ const SeedSaleSection = () => {
     }catch(e){
         console.log("geting rate erro",e);
     } 
+    setAmountBelowMinimum(false);
   }
 
 
@@ -382,7 +386,7 @@ const SeedSaleSection = () => {
     try{
     if(selectedOption.localeCompare("USDT") == 0){
         let Contract = new ethers.Contract(seedSaleAddressETH,seedSaleAbi,Signer);
-        Contract.receiveBUSD(ethers.utils.parseEther(purchase_amount)).then(e => {
+        await Contract.receiveBUSD(ethers.utils.parseEther(purchase_amount)).then(e => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
@@ -397,7 +401,7 @@ const SeedSaleSection = () => {
             gasLimit: 4e5,
         }
         let Contract = new ethers.Contract(seedSaleAddressETH,seedSaleAbi,Signer);
-        Contract.receiveBNB(options).then(e => {
+        await Contract.receiveBNB(options).then(e => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
@@ -408,7 +412,7 @@ const SeedSaleSection = () => {
         });
     }else if(selectedOption.localeCompare("BUSD") == 0){
         let Contract = new ethers.Contract(seedSaleAddress,seedSaleAbi,Signer);
-        Contract.receiveBUSD(ethers.utils.parseEther(purchase_amount)).then(e => {
+        await Contract.receiveBUSD(ethers.utils.parseEther(purchase_amount)).then(e => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
@@ -423,7 +427,7 @@ const SeedSaleSection = () => {
             gasLimit: 4e5,
         }
         let Contract = new ethers.Contract(seedSaleAddress,seedSaleAbi,Signer);
-        Contract.receiveBNB(options).then(e => {
+        await Contract.receiveBNB(options).then(e => {
             setIsBuyRequestNotDone(false);
             setBuyBtnActive(true);
             getPurchaseBalance();
@@ -439,12 +443,16 @@ const SeedSaleSection = () => {
                    setErroMsg("Insufficient BUSD Balance");
                 }else if(error.includes("Amount Below Minimum")){
                     setErroMsg("Amount Below Minimum");
+                    setAmountBelowMinimum(true);
                 }else if(error.includes("Transfer failed")){
                     setErroMsg("Transfer failed. Pls try again");
                 }
+                setBuyBtnActive(true);
     }
 }else{
   setErroMsg("Amount Below Minimum");
+  setBuyBtnActive(true);
+  setAmountBelowMinimum(true);
 }
     }
 }else{
@@ -528,9 +536,10 @@ const SeedSaleSection = () => {
                 let Provider = new ethers.providers.Web3Provider(window.ethereum);
                 let Signer = Provider.getSigner();
                 let Contract = new ethers.Contract(UsdtAddress,typicalTokenJsonABI,Signer);
-                Contract.approve(seedSaleAddressETH, ethers.utils.parseEther(purchase_amount)).then(e => {
+                await Contract.approve(seedSaleAddressETH, ethers.utils.parseEther(purchase_amount)).then(e => {
                     setBuyBtnActive(true);
                     setIsApprovalRequestNotDone(false);
+                    setAmountBelowMinimum(false);
                 });
                 
                 }
@@ -539,9 +548,10 @@ const SeedSaleSection = () => {
                 let Provider = new ethers.providers.Web3Provider(window.ethereum);
                 let Signer = Provider.getSigner();
                 let Contract = new ethers.Contract(BusdAddress,typicalTokenJsonABI,Signer);
-                Contract.approve(seedSaleAddress, ethers.utils.parseEther(purchase_amount)).then(e => {
+                await Contract.approve(seedSaleAddress, ethers.utils.parseEther(purchase_amount)).then(e => {
                     setBuyBtnActive(true);
                     setIsApprovalRequestNotDone(false);
+                    setAmountBelowMinimum(false);
                 });
                 }
             }
@@ -914,7 +924,7 @@ async function startTransferPayment(){
               className="play-store-btn d-md-inline d-none"
               data-v-2a374f33=""
             >
-              <a href="#" target="_blank" data-v-2a374f33="">
+              <a href="https://greedyverse.co/gameBuilds/GreedyClans.apk" target="_blank" data-v-2a374f33="">
                 <img src={img_play_store_btn_bg} alt="" data-v-2a374f33="" />
               </a>
             </button>
@@ -987,8 +997,8 @@ async function startTransferPayment(){
           </div>
 
          <div className="lb_txt_only_color_white lb_txt_size_17 lb_padding_top_10">
-          <div>Starts In</div>
-         <b><CountdownTimer className="" targetDate="2023-03-06T13:00:00Z" /></b>
+          <div>Ends In</div>
+         <b><CountdownTimer className="" targetDate="2023-03-13T13:00:00Z" /></b>
          </div>
          
           {!isMobileDevice && (
@@ -1177,7 +1187,17 @@ async function startTransferPayment(){
 
           {(!isMobileDevice && (selectedOption.localeCompare("USDT") == 0 || selectedOption.localeCompare("BUSD") == 0)) && (
           <div>
-            {(buyBtnActive || IsApprovalRequestNotDone) ? (<div className="lb_padding_top_10"><button className="lb_logout_btn lb_approve_btn_inactive"><ColorRing className="spinner" visible={IsApprovalRequestNotDone} height="30" width="30" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}></ColorRing><b>Approve</b></button></div>):(<div className="lb_padding_top_10"><button onClick={() => handle_busd_Usdt_approval_expenditure(selectedOption)} className="lb_logout_btn lb_approve_btn"><b>Approve</b></button></div>)}
+            {(buyBtnActive || IsApprovalRequestNotDone) ? (
+              <div>
+                 {amountBelowMinimum ? (
+                  <div className="lb_padding_top_10"><button onClick={() => handle_busd_Usdt_approval_expenditure(selectedOption)} className="lb_logout_btn lb_approve_btn"><b>Approve</b></button></div>
+                 ):(
+                  <div className="lb_padding_top_10"><button className="lb_logout_btn lb_approve_btn_inactive"><ColorRing className="spinner" visible={IsApprovalRequestNotDone} height="30" width="30" ariaLabel="blocks-loading" wrapperStyle={{}} wrapperClass="blocks-wrapper" colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}></ColorRing><b>Approve</b></button></div>
+                 )}
+                
+              </div>
+            
+            ):(<div className="lb_padding_top_10"><button onClick={() => handle_busd_Usdt_approval_expenditure(selectedOption)} className="lb_logout_btn lb_approve_btn"><b>Approve</b></button></div>)}
           </div>
           )}
           
@@ -1230,6 +1250,24 @@ async function startTransferPayment(){
 
 
         </div>
+
+        {isMobileDevice && (
+        <div className="lb_salePanel lb_game_logo lb_width_60Mob_60Dex">
+          <div
+            className="lb_sale2_section supercellmagic_font text-uppercase text-white mb-xl-0 lb_txt_size_15"
+            data-v-2a374f33=""
+          >
+            <span className="">REFER and EARN</span>
+          </div>
+          <br/>
+             <div className="lb_txt_only_color_white lb_margin_bottom_20">
+             Invite your friends and earn 10% of $GVERSE tokens bought
+             </div>
+             <Link to="/dashoard" className="lb_cusor_pointer"><button className="lb_approve_btn">Get Started</button></Link>
+          </div>
+        )}
+
+
       </div>
 
       <div
@@ -1259,7 +1297,7 @@ async function startTransferPayment(){
           <br />
           <div>
             <button className="play-store-btn d-md-inline" data-v-2a374f33="">
-              <a href="#" target="_blank" data-v-2a374f33="">
+              <a href="https://greedyverse.co/gameBuilds/GreedyClans.apk" target="_blank" data-v-2a374f33="">
                 <img src={img_play_store_btn_bg} alt="" data-v-2a374f33="" />
               </a>
             </button>

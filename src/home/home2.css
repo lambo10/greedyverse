@@ -514,7 +514,6 @@ p[data-v-3942c62a] {
   -webkit-filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.8));
   filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.8));
   margin: 0 auto;
-  max-width: 450px;
   padding: 30px;
   position: relative;
   width: 100%;
@@ -523,6 +522,26 @@ p[data-v-3942c62a] {
   max-width: 100%;
   box-sizing: border-box;
 }
+
+
+.lb_salePanel_offchain {
+  background: rgba(12, 13, 19, 0.2);
+  border: 2.5px solid #cf8b4a;
+  border-radius: 20px;
+  -webkit-filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.8));
+  margin: 0 auto;
+  padding: 30px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin: 10px auto 30px;
+  max-width: 100%;
+  min-height: 520px;
+  box-sizing: border-box;
+
+}
+
 .disapear_on_mobile {
   display: block;
 }
@@ -829,6 +848,23 @@ p[data-v-3942c62a] {
 
 
 @media (max-width: 767px) {
+  .lb_salePanel_offchain {
+    background: rgba(12, 13, 19, 0.2);
+    border: 2.5px solid #cf8b4a;
+    border-radius: 20px;
+    -webkit-filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.8));
+    margin: 0 auto;
+    padding: 30px;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin: 10px auto 30px;
+    max-width: 100%;
+    min-height:fit-content;
+    box-sizing: border-box;
+  
+  }
   .lb_game_logo_img {
     width: 350px;
     height: 200px;
@@ -1194,6 +1230,10 @@ p[data-v-3942c62a] {
 
 .lb_single_panel .lb_width_60Mob_60Dex{
   width: 40%;
+}
+
+.lb_width_100Mob_90Dex{
+  width: 90%;
 }
 
 .lb_sales_amount_input-email {
@@ -1615,6 +1655,11 @@ p[data-v-3942c62a] {
   font-size: 12px;
 }
 
+.lb_txt_rf_amount_margin{
+  margin-top: 5px;
+  font-size: 12px;
+}
+
 .css-15rqsm7 {
   margin: 0px;
   flex-shrink: 0;
@@ -1728,6 +1773,24 @@ p[data-v-3942c62a] {
   font-family: rubik;
   width: 100%;
 }
+
+
+.lb_inactiveClaimBTN {
+  cursor: pointer;
+  /* box-shadow: 1px 8px 15px 0 #ffb703; */
+  color: #000 !important;
+  padding: 16px;
+  background-color: #605f5a;
+  border: none;
+  border-radius: 8px;
+  transition: 0.25s;
+  font-weight: 600;
+  font-size: 17px;
+  font-family: rubik;
+  min-width: 260px;
+}
+
+
 
 .lb_orange_borderColor{
   border: 2.5px solid #cf8b4a;
@@ -1970,6 +2033,9 @@ p[data-v-3942c62a] {
   width: 100%;
 }
 .lb_single_panel .lb_width_60Mob_60Dex{
+  width: 100%;
+}
+.lb_width_100Mob_90Dex{
   width: 100%;
 }
 .lb_kyc_txt{
