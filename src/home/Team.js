@@ -49,12 +49,12 @@ const Team = () => {
             <p data-v-107fd072="">Franklin C</p>
             <p data-v-107fd072="" className="lb_txt_orange">Co-Founder/COO</p>
             <p data-v-107fd072="">
-              <span>
+              {/* <span>
               <a href="https://www.linkedin.com/in/franklin-chuck-7979ab268/" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
              <BsLinkedin width={50} height={50} />
               </a>
               </span>
-              &nbsp;&nbsp;
+              &nbsp;&nbsp; */}
               <span>
               <a href="https://t.me/GreedyFrank" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
              <BsTelegram width={50} height={50} />

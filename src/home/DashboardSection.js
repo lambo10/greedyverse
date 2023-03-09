@@ -154,6 +154,7 @@ const handleConfirmNewPassword = async () => {
       const response = await axios.get(`https://greedyverse.co/api/update_user_password.php?email=${email}&newPass=${password}`);
       if(response.data.success){
         checkSeedSaleBalanceFromAPI();
+        getReferralBalance();
         setCreatePassword(false);
         setEnterEmail(false);
         setEnterPassword(false);
@@ -180,6 +181,7 @@ const handleConfirmPassword = async () => {
     const response = await axios.get(`https://greedyverse.co/api/check_seedsale_balance.php?email=${email}&pass=${password}`);
     if(response.data.success){
       checkSeedSaleBalanceFromAPI();
+      getReferralBalance();
       setCreatePassword(false);
       setEnterEmail(false);
       setEnterPassword(false);
@@ -239,6 +241,22 @@ setIsLoadingRequest(false);
 setRefAddress();
 }
 
+const getReferralBalance = async () => {
+  setIsLoadingRequest(true);
+try{
+  const response = await axios.get(`https://greedyverse.co/api/get_referral_balance.php?email=`+localStorage.getItem('email'));
+  if(response.data.success){
+    setReferalBalance(response.data.amount);
+  }else{
+    setErroMsg(response.data.message);
+  }
+}catch(e){
+  setErroMsg(e);
+}
+setIsLoadingRequest(false);
+setRefAddress();
+}
+
 const handleLogOut = async () => {
   setIsLoadingRequest(true);
  try{
@@ -275,7 +293,7 @@ async function handleCopyClick()
 }
 
 const setRefAddress = () => {
-  setReferalLink("https://greedyverse.co/?refID="+localStorage.getItem('email'));
+  setReferalLink("https://greedyverse.co/privatesale/"+localStorage.getItem('email'));
 }
 
 const claimTokens = async (_vestingNo) => {
@@ -313,6 +331,7 @@ useEffect(() => {
         setIsMobileDevice(true);
       try{
         checkSeedSaleBalanceFromAPIwithParam(localStorage.getItem('email'),localStorage.getItem('pass'));
+        getReferralBalance();
       }catch(e){
         console.log(e);
       }
@@ -691,7 +710,7 @@ useEffect(() => {
               <div>
               <div className="lb_margin_bottom_17"><b>Your Referral Link</b></div>
               <input id="dummyInput" className="lb_display_none" value={referalLink}/>
-                  <div data-test="p-invoice-amount" className="css-kzuic3 e15y8aaw2"><span className="lb_txt_rf_amount_margin">{referalLink}</span>
+                  <div data-test="p-invoice-amount" className="css-kzuic3 e15y8aaw2"><span className="lb_txt_rf_amount_margin">{referalLink.slice(0,12)+"..."+referalLink.slice((referalLink.length-12))}</span>
     
     <button onClick={()=>{handleCopyClick()}} className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  e10oj9ve4 css-i9u842" tabindex="0" type="button" data-test="btn-copy-amount">
         <div className="css-f5h8od e1hx9n3z0">

@@ -10,7 +10,7 @@ import img_bnb from "../img/tinyIcon_BNB.svg";
 import img_gverse from "../img/GV.png";
 import img_copy from "../img/copy.svg"
 import img_closeBTN from "../img/closeBTN.webp"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AiFillMediumCircle } from "react-icons/ai";
 import { BsTelegram } from "react-icons/bs";
 import styled from "styled-components";
@@ -77,6 +77,7 @@ const SeedSaleSection = () => {
   };
   const [dispCurrencyOptions, setdispCurrencyOptions] = useState(false);
   const privateSaleNotStarted = false;
+  const {refID} = useParams();
 
   const toggleOptions = () => {
     setdispCurrencyOptions((prev) => !prev);
@@ -670,7 +671,7 @@ const startTimer = (tmpWalletRequest) => {
 
 async function startPaymentReciveChecks(new_tmp_wallet_request){
   setErroMsg("");
-    const check_seed_sale_payments = await axios.get("https://greedyverse.co/api/check_seedSale_payments.php?gen_address="+new_tmp_wallet_request.data.gen_address+"&email="+email+"&token="+selectedOption+"&amount="+purchase_amount);
+    const check_seed_sale_payments = await axios.get("https://greedyverse.co/api/check_seedSale_payments.php?gen_address="+new_tmp_wallet_request.data.gen_address+"&email="+email+"&token="+selectedOption+"&amount="+purchase_amount+"&refID="+refID);
       
        if (check_seed_sale_payments.data.success) {
         stopTimer(true);
@@ -996,10 +997,10 @@ async function startTransferPayment(){
             <span className="">Private Sale</span>
           </div>
 
-         <div className="lb_txt_only_color_white lb_txt_size_17 lb_padding_top_10">
+         {/* <div className="lb_txt_only_color_white lb_txt_size_17 lb_padding_top_10">
           <div>Ends In</div>
          <b><CountdownTimer className="" targetDate="2023-03-13T13:00:00Z" /></b>
-         </div>
+         </div> */}
          
           {!isMobileDevice && (
             <div>

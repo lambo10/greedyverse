@@ -8,7 +8,7 @@ const joinDiscordSection = () => {
       </h1></div> <div className="container pt-4 -top-margin position-relative" ><div className="row justify-content-center gap-4" ><div className="col-12 col-xl-6 text-center text-1" >
           Check out the Greedyverse community on Discord — hang out with 2 other
           members and enjoy free voice and text chat.
-        </div> <div className="text-center" ><a href="https://discord.gg/qhtxG4BrtX" target="_blank" ><button className="apes-btn-primary blackColor" >Join Discord</button></a></div></div></div></div></div>
+        </div> <div className="text-center" ><a href="https://discord.gg/dDnaMYtk" target="_blank" ><button className="apes-btn-primary blackColor" >Join Discord</button></a></div></div></div></div></div>
         )
    
 }

@@ -584,6 +584,9 @@ p[data-v-3942c62a] {
 .lb_padding_top_15_real {
   padding-top: 15px;
 }
+.lb_padding_top_5_important {
+  padding-top: 5px !important;
+}
 .lb_padding_top_15 {
   padding-top: 25px;
 }
@@ -608,6 +611,9 @@ p[data-v-3942c62a] {
 .lb_margin_bottom_13 {
   padding-bottom: 13px;
 }
+.lb_margin_bottom_10 {
+  padding-bottom: 13px;
+}
 
 
 .lb_margin_top_30 {
@@ -618,6 +624,10 @@ p[data-v-3942c62a] {
 }
 .lb_margin_bottom_5 {
   margin-bottom: 5px !important
+}
+
+.lb_margin_0_onMob {
+  margin: 50px auto 0px !important;
 }
 
 .lb_txt_color_orange2 {
@@ -878,18 +888,15 @@ p[data-v-3942c62a] {
   .disapear_on_desktop {
     display: block;
   }
-  .lb_hero_bg {
-    background: url(../img/private_sale_background.webp) no-repeat 50%;
-    background-size: cover;
-    height: 0;
-    min-height: 1200px;
-  }
+ 
   .lb_trailer_video {
     width: auto;
     height: auto;
   }
 
 }
+
+
 
 @media (max-width: 990px) {
   .disapear_on_mobile {
@@ -899,12 +906,7 @@ p[data-v-3942c62a] {
     display: block;
   }
 
-  .lb_hero_bg {
-    background: url(../img/private_sale_background.webp) no-repeat 50%;
-    background-size: cover;
-    height: 0;
-    min-height: 1200px;
-  }
+
   .lb_img_tokeknNomics {
     width: 100% !important;
   }
@@ -912,6 +914,8 @@ p[data-v-3942c62a] {
     text-align: left !important;
   }
 }
+
+
 .disapear_on_desktop {
   display: none;
 }
@@ -1656,7 +1660,7 @@ p[data-v-3942c62a] {
 }
 
 .lb_txt_rf_amount_margin{
-  margin-top: 5px;
+  margin-top: 15px;
   font-size: 12px;
 }
 
@@ -1946,6 +1950,9 @@ p[data-v-3942c62a] {
 }
 
 @media (max-width: 767px) {
+  .lb_pinksale_ps_section_height_onMobile{
+    height: 300px;
+  }
   .lb_tp_padding{
     padding: 30px 30px 30px 30px;
   }
@@ -1979,7 +1986,7 @@ p[data-v-3942c62a] {
     background: url(../img/private_sale_background.webp) no-repeat 50%;
     background-size: cover;
     height: 0;
-    min-height: 1200px;
+    min-height: 500px !important;
   }
   .lb_txt_right_mob_left{
     text-align: left;
@@ -2051,6 +2058,9 @@ p[data-v-3942c62a] {
 }
 .lb_footerOtherCl{
   padding-top: 40px;
+}
+.lb_margin_0_onMob {
+  margin: 0px !important;
 }
 }
 

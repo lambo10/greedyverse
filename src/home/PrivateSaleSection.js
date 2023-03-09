@@ -89,7 +89,7 @@ const PrivateSaleSection = () => {
               <div className="twitter-logo" data-v-0f1be33d=""></div>
             </a>{" "}
             <a
-              href="https://discord.gg/hvPDgZbEGY"
+              href="https://discord.gg/dDnaMYtk"
               className="lb_game_logo"
               target="_blank"
               data-v-0f1be33d=""

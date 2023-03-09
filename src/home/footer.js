@@ -41,7 +41,7 @@ const Footer = () => {
     //           <div className="twitter-logo" data-v-0f1be33d=""></div>
     //         </a>{" "}
     //         <a
-    //           href="https://discord.gg/hvPDgZbEGY"
+    //           href="https://discord.gg/dDnaMYtk"
     //           target="_blank"
     //           data-v-0f1be33d=""
     //         >
@@ -207,7 +207,7 @@ const Footer = () => {
               <div className="twitter-logo" data-v-0f1be33d=""></div>
             </a>{" "}
             <a
-              href="https://discord.gg/hvPDgZbEGY"
+              href="https://discord.gg/dDnaMYtk"
               target="_blank"
               data-v-0f1be33d=""
             >
@@ -249,13 +249,13 @@ const Footer = () => {
 
           <div className="lb_txt_color_grey">
           <div>
-          RENQ LIMITED
+          BUILDING THE WORLD’S  
           </div>
           <div>
-          Registration Number: 213559
+          LARGEST COLLECTION OF FUN
           </div>
           <div>
-          Mahe, Seychelles
+          PLAY-TO-EARN GAMES.
           </div>
           </div>
           <br/>

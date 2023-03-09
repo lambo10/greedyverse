@@ -13,10 +13,10 @@ function App() {
       <RootLayout>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<SeedSale />} />
+          <Route path="/" element={<Home />} />
           <Route path="/dashoard" element={<Dashboard />} />
           <Route path="/seedsale" element={<SeedSale />} />
-          <Route path="/privatesale" element={<SeedSale />} />
+          <Route path="/privatesale/:refID" element={<SeedSale />} />
           <Route path="/partnersDashboard" element={<Dashboard />} />
           <Route path="*" element={<Error />} />
         </Routes>
