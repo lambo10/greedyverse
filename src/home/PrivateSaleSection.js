@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { AiFillMediumCircle } from "react-icons/ai";
 import { BsTelegram } from "react-icons/bs";
 import styled from "styled-components";
+import CountdownTimer from './CountdownTimer';
 
 const PrivateSaleSection = () => {
   const iconStyling = {
@@ -128,11 +129,11 @@ const PrivateSaleSection = () => {
             className="lb_sale2_section supercellmagic_font text-uppercase text-white mb-xl-0"
             data-v-2a374f33=""
           >
-            <span className="">Presale is live!</span>
+            <span className="">BUY IN BEFORE PRICE INCREASES!</span>
           </div>
           <div className="lb_txt_size_12 lb_padding_top_15 lb_txt_color_orange2">
-            Buy $GVERSE with BNB or stablecoins before price increase. Tokens
-            will be available for claim at launch.
+            {/* add countdown */}
+            <div style={{fontSize:"20px"}}><CountdownTimer targetDate="2023-11-15T14:00:00" /></div>
           </div>
 
           <div className="lb_padding_top_15">
@@ -151,18 +152,13 @@ const PrivateSaleSection = () => {
               Hurry before the end of presale!
             </div>
             <div className="lb_txt_size_12 lb_padding_top_10 lb_txt_color_white2">
-              Raised <span className="lb_txt_size_15">2,686,660 USDT</span> out
-              of <span className="lb_txt_size_15">3,075,000 USDT</span>
-            </div>
-            <div className="lb_txt_size_12 lb_padding_top_10 lb_txt_color_white2">
-              Sold <span className="lb_txt_size_15">138,051,106 $GVERSE</span>{" "}
-              out of <span className="lb_txt_size_15">150,000,000 $GVERSE</span>
+            USDT Raised: <span className="lb_txt_size_15">$1,000,0000</span> out $3,075,000
             </div>
             <div className="lb_padding_top_10">
               {" "}
-              <Link to="/presale">
+              <a href="https://sale.greedyverse.co">
                 <div className="lb_saleBTN lb_game_logo">Buy now</div>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
