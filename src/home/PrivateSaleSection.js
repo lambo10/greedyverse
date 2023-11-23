@@ -90,14 +90,6 @@ const PrivateSaleSection = () => {
               <div className="twitter-logo" data-v-0f1be33d=""></div>
             </a>{" "}
             <a
-              href="https://discord.gg/dDnaMYtk"
-              className="lb_game_logo"
-              target="_blank"
-              data-v-0f1be33d=""
-            >
-              <div className="discord-logo" data-v-0f1be33d=""></div>
-            </a>{" "}
-            <a
               href="https://www.instagram.com/GreedyVerse/"
               className="lb_game_logo"
               target="_blank"
@@ -221,14 +213,6 @@ const PrivateSaleSection = () => {
               data-v-0f1be33d=""
             >
               <div className="twitter-logo" data-v-0f1be33d=""></div>
-            </a>{" "}
-            <a
-              href="https://discord.gg/hvPDgZbEGY"
-              className="lb_game_logo"
-              target="_blank"
-              data-v-0f1be33d=""
-            >
-              <div className="discord-logo" data-v-0f1be33d=""></div>
             </a>{" "}
             <a
               href="https://www.instagram.com/GreedyVerse/"

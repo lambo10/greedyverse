@@ -89,7 +89,7 @@ const Team = () => {
               </span>
               &nbsp;&nbsp;
               <span>
-              <a href="https://t.me/greedy_lambert" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
+              <a href="https://t.me/greedylambert" target="_blank" className="lb_txt_only_color_white lb_txt_only_color_greyOrange_onHover">
              <BsTelegram width={50} height={50} />
               </a>
               </span>
