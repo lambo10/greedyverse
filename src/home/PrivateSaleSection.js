@@ -121,11 +121,11 @@ const PrivateSaleSection = () => {
             className="lb_sale2_section supercellmagic_font text-uppercase text-white mb-xl-0"
             data-v-2a374f33=""
           >
-            <span className="">BUY IN BEFORE PRICE INCREASES!</span>
+            <span className="">SALE STARTS IN</span>
           </div>
           <div className="lb_txt_size_12 lb_padding_top_15 lb_txt_color_orange2">
             {/* add countdown */}
-            <div style={{fontSize:"20px"}}><CountdownTimer targetDate="2023-11-15T14:00:00" /></div>
+            <div style={{fontSize:"20px"}}><CountdownTimer targetDate="2023-11-27T14:00:00" /></div>
           </div>
 
           <div className="lb_padding_top_15">
@@ -135,16 +135,16 @@ const PrivateSaleSection = () => {
               </span>
             </div>
             <div className="lb_txt_size_12 lb_padding_top_10 lb_txt_color_orange2 lb_txt_align_left">
-              Stage 5 progress: 87%
+            Stage 1 progress: 0%
             </div>
             <div className="lb_txt_size_17 lb_padding_top_15 lb_txt_color_white2">
-              1 USDT = 30.77 $GVERSE
+            1 $GVERSE : $0.0007
             </div>
             <div className="lb_txt_size_12 lb_padding_top_10 lb_txt_color_orange2">
               Hurry before the end of presale!
             </div>
             <div className="lb_txt_size_12 lb_padding_top_10 lb_txt_color_white2">
-            USDT Raised: <span className="lb_txt_size_15">$1,000,0000</span> out $3,075,000
+            USDT Raised: <span className="lb_txt_size_15">$0</span> / $100,000
             </div>
             <div className="lb_padding_top_10">
               {" "}
