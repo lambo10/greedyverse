@@ -179,7 +179,7 @@ const PrivateSaleSection = () => {
           <br />
           <div>
             <button className="play-store-btn d-md-inline" data-v-2a374f33="">
-              <a href="#" target="_blank" data-v-2a374f33="">
+              <a href="https://greedyverse.co/gameBuilds/GreedyClans.apk" target="_blank" data-v-2a374f33="">
                 <img src={img_play_store_btn_bg} alt="" data-v-2a374f33="" />
               </a>
             </button>
