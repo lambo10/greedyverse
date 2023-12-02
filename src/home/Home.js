@@ -43,7 +43,7 @@ const home = () => {
 
       {/* <SaleNotitficationBanner /> */}
       
-      <PrivateSaleSectionNotStarted />
+      <PrivateSaleSection />
       <TrailerSection />
       <BrandsBanner />
       <KycAuditSection />

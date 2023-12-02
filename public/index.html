@@ -9,6 +9,46 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCnz4R8EYpoHbEcl871XeSDUenDkax8J9s",
+        authDomain: "greedyverse-bb19c.firebaseapp.com",
+        projectId: "greedyverse-bb19c",
+        storageBucket: "greedyverse-bb19c.appspot.com",
+        messagingSenderId: "743016457445",
+        appId: "1:743016457445:web:8dea3f89208ffe9b04600c",
+        measurementId: "G-0ZY3BJMG87"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11422228616"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11422228616');
+</script>
+<!-- Event snippet for Purchase (1) conversion page -->
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-11422228616/jgXgCIyVx_kYEIjBxcYq',
+      'transaction_id': ''
+  });
+</script>
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
